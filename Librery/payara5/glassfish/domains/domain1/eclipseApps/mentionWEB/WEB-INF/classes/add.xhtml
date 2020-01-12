@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<title>Start Page</title>
+<meta http-equiv="
+	Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	
+	<h1>#{utilisateurControl.doDisplayList()}</h1>
+	<br/>
+	<h:dataTable value='#{utilisateurControl.doDisplayUtilisateur()}' var="u">
+		<h:column>
+			<f:facet name = "header">login</f:facet>
+			#{u.login}
+		</h:column>
+		<h:column>
+			<f:facet name = "header">ip</f:facet>
+			#{u.adresseIp}
+		</h:column>
+		<h:column>
+			<f:facet name = "header">email</f:facet>
+			#{u.email}
+		</h:column>
+	
+	</h:dataTable>
+
+	
+	
+</body>
+</html>

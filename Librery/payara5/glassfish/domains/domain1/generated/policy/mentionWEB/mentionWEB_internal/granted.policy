@@ -1,0 +1,15 @@
+/* AUTOMATICALLY GENERATED ON Sun Jan 12 18:04:09 CET 2020*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.EJBMethodPermission "VisiteurDAO", "findAll,Local,";
+  permission javax.security.jacc.EJBMethodPermission "UtilisateurDAO", "findAll,Local,";
+  permission javax.security.jacc.EJBMethodPermission "GestionUtilisateurEJB", "findAll,Local,";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.EJBRoleRefPermission "VisiteurDAO", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "GestionUtilisateurEJB", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "UtilisateurDAO", "**";
+};
+
