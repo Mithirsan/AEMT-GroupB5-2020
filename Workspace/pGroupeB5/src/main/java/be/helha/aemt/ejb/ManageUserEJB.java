@@ -10,9 +10,9 @@ import javax.ejb.Stateless;
 import be.helha.aemt.dao.UserDAO;
 import be.helha.aemt.entities.User;
 
-@LocalBean
+
 @Stateless
-public class ManageUserEJB{
+public class ManageUserEJB implements IManageUserEJB{
 
 
 	@EJB
@@ -22,7 +22,7 @@ public class ManageUserEJB{
 		return dao.findAll();
 	}
 	
-	public void addUser(User user) {
+	public void add(User user) {
 		dao.add(user);
 	}
 	

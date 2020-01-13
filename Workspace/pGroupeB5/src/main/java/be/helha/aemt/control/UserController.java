@@ -10,21 +10,18 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import be.helha.aemt.ejb.IManageUserEJB;
 import be.helha.aemt.ejb.ManageUserEJB;
 import be.helha.aemt.entities.User;
 
-@SessionScoped
-@Named
+
 public class UserController implements Serializable{
 	
-	@EJB
-	private  ManageUserEJB bean;
+	private IManageUserEJB bean;
 	
 	public List<User> doSelectAllUserAsList() {
-		Context ctx;
 		try {
-			ctx = new InitialContext();
-			bean = (ManageUserEJB) ctx.lookup("java:global/pGroupeB5/ManageUserEJB");
+			bean = (IManageUserEJB) new InitialContext().lookup("java:global/pGroupeB5/ManageUserEJB");
 			return bean.findAll();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
@@ -34,11 +31,9 @@ public class UserController implements Serializable{
 	}
 	
 	public void doAddUser(User user) {
-		Context ctx;
 		try {
-			ctx = new InitialContext();
-			bean = (ManageUserEJB) ctx.lookup("java:global/pGroupeB5/ManageUserEJB");
-			bean.addUser(user);
+			bean = (IManageUserEJB) new InitialContext().lookup("java:global/pGroupeB5/ManageUserEJB");
+			bean.add(user);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

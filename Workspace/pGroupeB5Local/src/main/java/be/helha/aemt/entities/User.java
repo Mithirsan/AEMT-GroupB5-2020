@@ -1,42 +1,28 @@
 package be.helha.aemt.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
-import be.helha.aemt.model.SectionEconomicHELHaMons;
 import be.helha.aemt.model.UserGroup;
 
 @Entity
-public class User implements Serializable{
+public class User{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	private String email, password, lastName, firstName, career, describtion, picture, birtDate, graduateDate;
-	
-	private Boolean validAccount, privateAccount;
-	
-	@ManyToOne
-	private Address adress;
-
+	private String email, password, lastName, firstName, career, describtion, picture, birtDate, graduateDate;	
+	private boolean validAccount, privateAccount;
 	private UserGroup groupName;
-	
-	private SectionEconomicHELHaMons graduationSection;
 
 	public User() { }
 	
 	
-	public User(Integer id, String email, String password, String lastName, String firstName, String career,
-			String describtion, String picture, String birtDate, String graduateDate, Boolean privateAccount) {
+	public User(String email, String password, String lastName, String firstName, String career,
+			String describtion, String picture, String birtDate, String graduateDate, boolean privateAccount) {
 		super();
-		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.lastName = lastName;
@@ -156,19 +142,19 @@ public class User implements Serializable{
 		this.graduateDate = graduateDate;
 	}
 
-	public Boolean isValidAccount() {
+	public boolean isValidAccount() {
 		return validAccount;
 	}
 
-	public void setValidAccount(Boolean validAccount) {
+	public void setValidAccount(boolean validAccount) {
 		this.validAccount = validAccount;
 	}
 
-	public Boolean isPrivateAccount() {
+	public boolean isPrivateAccount() {
 		return privateAccount;
 	}
 
-	public void setPrivateAccount(Boolean privateAccount) {
+	public void setPrivateAccount(boolean privateAccount) {
 		this.privateAccount = privateAccount;
 	}
 
@@ -180,11 +166,4 @@ public class User implements Serializable{
 		this.groupName = groupName;
 	}
 
-	public SectionEconomicHELHaMons getGraduationSection() {
-		return graduationSection;
-	}
-
-	public void setGraduationSection(SectionEconomicHELHaMons graduationSection) {
-		this.graduationSection = graduationSection;
-	}
 }
