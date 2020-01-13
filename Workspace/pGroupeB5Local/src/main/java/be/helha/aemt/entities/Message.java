@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import be.helha.aemt.model.MessageType;
 
 @Entity
-public class Message implements Serializable{
+public class Message{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

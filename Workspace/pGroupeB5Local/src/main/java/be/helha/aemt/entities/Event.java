@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -15,7 +16,7 @@ import javax.persistence.OneToOne;
 import be.helha.aemt.model.SectionEconomicHELHaMons;
 
 @Entity
-public class Event implements Serializable{
+public class Event{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +31,7 @@ public class Event implements Serializable{
 	
 	public Event() {
 		// TODO Auto-generated constructor stub
+		pictures = new ArrayList<Picture>();
 	}
 
 	public Event(String eventName, String planner, String describe, SectionEconomicHELHaMons sectionVise,String date) {
@@ -39,8 +41,11 @@ public class Event implements Serializable{
 		this.describe = describe;
 		this.sectionVise = sectionVise;
 		this.date = date;
-		
-		this.pictures = new ArrayList<Picture>();
+		pictures = new ArrayList<Picture>();
+	}
+	
+	public void add(Picture picture) {
+		this.pictures.add(picture);
 	}
 
 	public String getEventName() {

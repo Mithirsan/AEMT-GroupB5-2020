@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class News implements Serializable{
+public class News{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
