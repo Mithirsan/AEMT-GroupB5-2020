@@ -22,7 +22,7 @@ public class ManageUserEJB{
 		return dao.findAll();
 	}
 	
-	public void addUser(User user) {
+	public void add(User user) {
 		dao.add(user);
 	}
 	

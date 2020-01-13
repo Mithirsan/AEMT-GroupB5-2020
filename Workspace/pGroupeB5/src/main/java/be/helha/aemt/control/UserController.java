@@ -38,7 +38,7 @@ public class UserController implements Serializable{
 		try {
 			ctx = new InitialContext();
 			bean = (ManageUserEJB) ctx.lookup("java:global/pGroupeB5/ManageUserEJB");
-			bean.addUser(user);
+			bean.add(user);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
