@@ -12,7 +12,11 @@ import be.helha.aemt.entities.User;
 
 @LocalBean
 @Stateless
+<<<<<<< HEAD:Workspace/pGroupeB5/src/main/java/be/helha/aemt/ejb/ManageUser.java
 public class ManageUser{
+=======
+public class ManageUserEJB implements IManageUserEJB{
+>>>>>>> master:Workspace/pGroupeB5/src/main/java/be/helha/aemt/ejb/ManageUserEJB.java
 
 	@EJB
 	private UserDAO dao;

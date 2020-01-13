@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import be.helha.aemt.util.UserGroup;
+import be.helha.aemt.model.UserGroup;
 
 @Entity
 public class User implements Serializable{
