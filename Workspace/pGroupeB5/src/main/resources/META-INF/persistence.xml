@@ -6,6 +6,8 @@
 		<jta-data-source>jdbc/groupeB5</jta-data-source>
 		
 		<class>be.helha.aemt.entities.User</class>
+		<class>be.helha.aemt.entities.Address</class>
+		<class>be.helha.aemt.entities.Offer</class>
 		
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>

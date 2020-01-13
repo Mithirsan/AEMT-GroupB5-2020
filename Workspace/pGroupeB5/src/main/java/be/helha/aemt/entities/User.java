@@ -6,7 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
+import be.helha.aemt.model.SectionEconomicHELHaMons;
 import be.helha.aemt.model.UserGroup;
 
 @Entity
@@ -15,15 +18,23 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String email="", password="", lastName="", firstName="", career="", describtion="", picture="", birtDate="", graduateDate="";	
-	private boolean validAccount=false, privateAccount=false;
-	private UserGroup groupName = null;
+	
+	private String email, password, lastName, firstName, career, describtion, picture, birtDate, graduateDate;
+	
+	private Boolean validAccount, privateAccount;
+	
+	@ManyToOne
+	private Address adress;
+
+	private UserGroup groupName;
+	
+	private SectionEconomicHELHaMons graduationSection;
 
 	public User() { }
 	
 	
 	public User(Integer id, String email, String password, String lastName, String firstName, String career,
-			String describtion, String picture, String birtDate, String graduateDate, boolean privateAccount) {
+			String describtion, String picture, String birtDate, String graduateDate, Boolean privateAccount) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -145,19 +156,19 @@ public class User implements Serializable{
 		this.graduateDate = graduateDate;
 	}
 
-	public boolean isValidAccount() {
+	public Boolean isValidAccount() {
 		return validAccount;
 	}
 
-	public void setValidAccount(boolean validAccount) {
+	public void setValidAccount(Boolean validAccount) {
 		this.validAccount = validAccount;
 	}
 
-	public boolean isPrivateAccount() {
+	public Boolean isPrivateAccount() {
 		return privateAccount;
 	}
 
-	public void setPrivateAccount(boolean privateAccount) {
+	public void setPrivateAccount(Boolean privateAccount) {
 		this.privateAccount = privateAccount;
 	}
 
@@ -169,4 +180,11 @@ public class User implements Serializable{
 		this.groupName = groupName;
 	}
 
+	public SectionEconomicHELHaMons getGraduationSection() {
+		return graduationSection;
+	}
+
+	public void setGraduationSection(SectionEconomicHELHaMons graduationSection) {
+		this.graduationSection = graduationSection;
+	}
 }
