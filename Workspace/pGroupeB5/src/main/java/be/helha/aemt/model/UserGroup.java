@@ -1,4 +1,4 @@
-package be.helha.aemt.util;
+package be.helha.aemt.model;
 
 public enum UserGroup {
 	GRADUATE("graduate"),

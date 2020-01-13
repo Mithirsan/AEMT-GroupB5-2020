@@ -9,7 +9,7 @@ import be.helha.aemt.dao.UserDAO;
 import be.helha.aemt.entities.User;
 
 @Stateless
-public class ManageUser implements IManageUserEJB{
+public class ManageUserEJB implements IManageUserEJB{
 
 	@EJB
 	private UserDAO dao;
