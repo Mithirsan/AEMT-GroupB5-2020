@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import be.helha.aemt.util.UserGroup;
+import be.helha.aemt.model.UserGroup;
 
 @Entity
 public class User implements Serializable{
@@ -16,15 +16,16 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String email, password, lastName, firstName, career, describtion, picture;
-	private Date birtDate, graduateDate;
+	private String email, password, lastName, firstName, career, describtion, picture, birtDate, graduateDate;
+	
 	private boolean validAccount, privateAccount;
 	private UserGroup groupName;
 
 	public User() { }
 	
+	
 	public User(Integer id, String email, String password, String lastName, String firstName, String career,
-			String describtion, String picture, Date birtDate, Date graduateDate, boolean privateAccount) {
+			String describtion, String picture, String birtDate, String graduateDate, boolean privateAccount) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -130,19 +131,19 @@ public class User implements Serializable{
 		this.picture = picture;
 	}
 
-	public Date getBirtDate() {
+	public String getBirtDate() {
 		return birtDate;
 	}
 
-	public void setBirtDate(Date birtDate) {
+	public void setBirtDate(String birtDate) {
 		this.birtDate = birtDate;
 	}
 
-	public Date getGraduateDate() {
+	public String getGraduateDate() {
 		return graduateDate;
 	}
 
-	public void setGraduateDate(Date graduateDate) {
+	public void setGraduateDate(String graduateDate) {
 		this.graduateDate = graduateDate;
 	}
 
@@ -169,5 +170,5 @@ public class User implements Serializable{
 	public void setGroupName(UserGroup groupName) {
 		this.groupName = groupName;
 	}
-	
+
 }
