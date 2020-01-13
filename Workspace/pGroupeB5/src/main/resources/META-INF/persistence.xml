@@ -5,7 +5,7 @@
 	<persistence-unit name = "pGroupeB5JTA" transaction-type="JTA">
 		<jta-data-source>jdbc/groupeB5</jta-data-source>
 		
-		<!--<class>...</class>-->
+		<class>be.helha.aemt.entities.User</class>
 		
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
