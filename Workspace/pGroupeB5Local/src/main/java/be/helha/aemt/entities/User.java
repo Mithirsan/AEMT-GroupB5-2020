@@ -1,7 +1,5 @@
 package be.helha.aemt.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,22 +8,21 @@ import javax.persistence.Id;
 import be.helha.aemt.model.UserGroup;
 
 @Entity
-public class User implements Serializable{
+public class User{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String email="", password="", lastName="", firstName="", career="", describtion="", picture="", birtDate="", graduateDate="";	
-	private boolean validAccount=false, privateAccount=false;
-	private UserGroup groupName = null;
+	private String email, password, lastName, firstName, career, describtion, picture, birtDate, graduateDate;	
+	private boolean validAccount, privateAccount;
+	private UserGroup groupName;
 
 	public User() { }
 	
 	
-	public User(Integer id, String email, String password, String lastName, String firstName, String career,
+	public User(String email, String password, String lastName, String firstName, String career,
 			String describtion, String picture, String birtDate, String graduateDate, boolean privateAccount) {
 		super();
-		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.lastName = lastName;

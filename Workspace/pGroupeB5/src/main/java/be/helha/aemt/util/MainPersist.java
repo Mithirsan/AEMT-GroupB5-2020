@@ -9,7 +9,7 @@ public class MainPersist {
 		// TODO Auto-generated method stub
 		
 		UserController user = new UserController();
-		user.doAddUser(new User());
+		user.doSelectAllUserAsList();
 	}
 
 }
