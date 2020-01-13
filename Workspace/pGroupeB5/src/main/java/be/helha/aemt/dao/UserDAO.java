@@ -19,4 +19,8 @@ public class UserDAO {
 	public List<User> findAll() {
 		return em.createQuery("SELECT u form User u").getResultList();
 	}
+	
+	public void add(User user) {
+		em.persist(user);
+	}
 }
