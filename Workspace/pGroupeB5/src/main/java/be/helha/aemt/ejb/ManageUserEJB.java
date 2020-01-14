@@ -4,7 +4,6 @@ package be.helha.aemt.ejb;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import be.helha.aemt.dao.UserDAO;
@@ -13,8 +12,7 @@ import be.helha.aemt.exception.AddDuplicateException;
 
 
 @Stateless
-@LocalBean
-public class ManageUserEJB{
+public class ManageUserEJB implements IManageUserEJB{
 	@EJB
 	private UserDAO dao;
 	
