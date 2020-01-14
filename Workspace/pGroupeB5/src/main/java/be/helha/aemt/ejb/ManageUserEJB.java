@@ -38,7 +38,10 @@ public class ManageUserEJB implements IManageUserEJB{
 		return true;
 	}
 
+	@Override
 	public User login(String email, String password) {
-		return dao.login(email, password);
+		// TODO Auto-generated method stub
+		return null;
 	}
+
 }

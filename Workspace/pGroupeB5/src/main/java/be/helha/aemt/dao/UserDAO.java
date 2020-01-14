@@ -15,6 +15,9 @@ import javax.persistence.TypedQuery;
 
 import be.helha.aemt.entities.User;
 import be.helha.aemt.exception.AddDuplicateException;
+import be.helha.aemt.exception.AdminDeleteException;
+import be.helha.aemt.exception.IDNotFoundException;
+import be.helha.aemt.model.UserGroup;
 
 @Stateless
 @LocalBean
@@ -28,7 +31,7 @@ public class UserDAO {
 	}
 	
 	public void add(User user) throws AddDuplicateException {
-		if(selectUser(user)!=null)throw new AddDuplicateException();
+		if(targetSelect(user)!=null)throw new AddDuplicateException();
 		try {
 			user.setPassword(toHexString(getSHA(user.getPassword())));
 			em.persist(user);
@@ -39,30 +42,25 @@ public class UserDAO {
 		
 	}
 	
-	public User selectUser(User user) {
+	public User targetSelect(User user) {
 	Query qGet = em.createQuery("SELECT u FROM User u WHERE u.email = :userEmail");
 	qGet.setParameter("userEmail", user.getEmail());
 	List<User> tmp = qGet.getResultList();
 	return tmp.size()== 0 ? null : tmp.get(0);
 	}
 	
+	public void delete(User user) throws IDNotFoundException, AdminDeleteException {
+		if(targetSelect(user)==null) 
+			throw new IDNotFoundException();
+		if(user.getGroupName()==UserGroup.ADMIN) 
+			throw new AdminDeleteException();
+		em.remove(user);
+	}
+	
 	public void update(User newUser) {
 		em.merge(newUser);
 	} 
 	
-	public User login(String email, String password) {
-		String hashWord = "";
-		try {
-			hashWord = toHexString(getSHA(password));
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		Query qGet = em.createQuery("SELECT u FROM User u WHERE u.email = :userEmail AND u.password = :userPwd");
-		qGet.setParameter("userEmail", email);
-		qGet.setParameter("userPwd", hashWord);
-		List<User> tmp = qGet.getResultList();
-		return tmp.size()== 0 ? null : tmp.get(0);
-	}
 	
 	public byte[] getSHA(String input) throws NoSuchAlgorithmException{  
         MessageDigest md = MessageDigest.getInstance("SHA-256");  
