@@ -10,4 +10,8 @@ import be.helha.aemt.entities.Picture;
 public interface IManagePictureEJB {
 
 	public List<Picture> findAll();
+	
+	public void add(Picture picture);
+	
+	public void delete(Picture picture);
 }

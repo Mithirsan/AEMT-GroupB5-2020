@@ -42,7 +42,7 @@ public class PictureDAO {
 	return tmp.size()== 0 ? null : tmp.get(0);
 	}
 	
-	public void delete(Picture picture) throws IDNotFoundException, AdminDeleteException {
+	public void delete(Picture picture) throws IDNotFoundException {
 		if(targetSelect(picture)==null) 
 			throw new IDNotFoundException();
 		em.remove(picture);
