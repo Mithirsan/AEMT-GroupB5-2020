@@ -17,7 +17,7 @@ public class UserDAO {
 	private EntityManager em;
 	
 	public List<User> findAll() {
-		return em.createQuery("SELECT u form User u").getResultList();
+		return em.createQuery("SELECT u FROM User u").getResultList();
 	}
 	
 	public void add(User user) {

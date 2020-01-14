@@ -23,7 +23,7 @@ public class OverView implements Serializable{
 	@OneToOne
 	private Picture picture;
 	
-	private String describe;
+	private String description;
 	
 	public OverView() {
 	}
@@ -35,7 +35,7 @@ public class OverView implements Serializable{
 		this.name = name;
 		this.surname = surname;
 		this.picture = picture;
-		this.describe = describe;
+		this.description = describe;
 	}
 
 
@@ -65,11 +65,11 @@ public class OverView implements Serializable{
 	}
 
 	public String getDescribe() {
-		return describe;
+		return description;
 	}
 
 	public void setDescribe(String describe) {
-		this.describe = describe;
+		this.description = describe;
 	}
 
 
@@ -77,7 +77,7 @@ public class OverView implements Serializable{
 	@Override
 	public String toString() {
 		return "OverView [id=" + id + ", name=" + name + ", surname=" + surname + ", picture=" + picture + ", describe="
-				+ describe + "]";
+				+ description + "]";
 	}
 
 
@@ -86,7 +86,7 @@ public class OverView implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((describe == null) ? 0 : describe.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((picture == null) ? 0 : picture.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
@@ -104,10 +104,10 @@ public class OverView implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		OverView other = (OverView) obj;
-		if (describe == null) {
-			if (other.describe != null)
+		if (description == null) {
+			if (other.description != null)
 				return false;
-		} else if (!describe.equals(other.describe))
+		} else if (!description.equals(other.description))
 			return false;
 		if (name == null) {
 			if (other.name != null)

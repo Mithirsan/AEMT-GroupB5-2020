@@ -14,14 +14,16 @@ import be.helha.aemt.ejb.IManageUserEJB;
 import be.helha.aemt.ejb.ManageUserEJB;
 import be.helha.aemt.entities.User;
 
-
+@SessionScoped
+@Named
 public class UserController implements Serializable{
 	
 	private IManageUserEJB bean;
 	
 	public List<User> doSelectAllUserAsList() {
 		try {
-			bean = (IManageUserEJB) new InitialContext().lookup("java:global/pGroupeB5/ManageUserEJB");
+			Context ctx = new InitialContext();
+			bean = (IManageUserEJB) ctx.lookup("java:global/pGroupeB5/ManageUserEJB");
 			return bean.findAll();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
@@ -32,7 +34,8 @@ public class UserController implements Serializable{
 	
 	public void doAddUser(User user) {
 		try {
-			bean = (IManageUserEJB) new InitialContext().lookup("java:global/pGroupeB5/ManageUserEJB");
+			Context ctx = new InitialContext();
+			bean = (IManageUserEJB) ctx.lookup("java:global/pGroupeB5/ManageUserEJB");
 			bean.add(user);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
