@@ -11,4 +11,9 @@ public interface IManageJobOfferEJB {
 	
 	public List<JobOffer> findAll();
 
+	public void add(JobOffer toAdd);
+	
+	public void update(JobOffer toUpdate);
+	
+	public void delete(JobOffer toDel);
 }
