@@ -13,7 +13,7 @@
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>indexx.xhtml</welcome-file>
 		-->
-		<welcome-file>login.xhtml</welcome-file>
+		<welcome-file>signin.xhtml</welcome-file>
 
 	</welcome-file-list>
 
@@ -22,7 +22,9 @@
 		<web-resource-collection>
 			<web-resource-name>Protected Admin Area</web-resource-name>
 			<description></description>
+			
 			<url-pattern>/admin.xhtml</url-pattern>
+			
 		</web-resource-collection>
 		<auth-constraint>
 			<description></description>
