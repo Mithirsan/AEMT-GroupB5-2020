@@ -10,4 +10,10 @@ import be.helha.aemt.entities.Address;
 public interface IManageAddressEJB {
 
 	public List<Address> findAll();
+	
+	public void add(Address address);
+	
+	public void update(Address newAddress);
+	
+	public void delete(Address toDel);
 }
