@@ -13,7 +13,8 @@ import be.helha.aemt.exception.AddDuplicateException;
 
 
 @Stateless
-public class ManageUserEJB implements IManageUserEJB{
+@LocalBean
+public class ManageUserEJB{
 	@EJB
 	private UserDAO dao;
 	
@@ -30,7 +31,6 @@ public class ManageUserEJB implements IManageUserEJB{
 		}
 	}
 	
-	@Override
 	public boolean update(User oldUser, User newUser) {
 		if(oldUser.equals(newUser))
 			return false;
@@ -40,7 +40,6 @@ public class ManageUserEJB implements IManageUserEJB{
 		return true;
 	}
 
-	@Override
 	public User login(String email, String password) {
 		return dao.login(email, password);
 	}
