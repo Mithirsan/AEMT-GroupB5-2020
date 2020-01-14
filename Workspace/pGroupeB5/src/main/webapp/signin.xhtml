@@ -34,6 +34,7 @@
 		</div>
 	</nav>
 
+	<h1>#{userController.doSelectAllUserAsList()}</h1>
 
 
 	<div class="container">
@@ -45,42 +46,41 @@
 		</div>
 
 
-		<form>
-			<!-- 
+		<h:form>
+		
 			<div class="form-group mb-3">
 				<input type="text" class="form-control" id="surname"
 					placeholder="Nom" required="required"
-					jsf:value="#{userController.name}"/>
+					jsf:value="#{userController.user.lastName}"/>
 					
 			</div>
 
 			<div class="form-group mb-3">
 				<input type="text" class="form-control" id="firstname"
 					placeholder="Prénom" required="required"
-					jsf:value="#{userController.surname}"/>
+					jsf:value="#{userController.user.firstName}"/>
 			</div>
 
 		
 			<div class="form-group mb-3">
 				<input type="email" class="form-control" id="email"
 					placeholder="Adresse e-mail" required="required"
-					jsf:value="#{userController.email}"/>
+					jsf:value="#{userController.user.email}"/>
 			</div>
 
 		
 			<div class="form-group mb-3">
 				<input type="password" class="form-control" id="password"
 					placeholder="Mot de passe" required="required"
-					jsf:value="#{userController.mdp}"/>
+					jsf:value="#{userController.user.password}"/>
 			</div>
 
 		
 			<div class="form-group mb-3">
 				<h:selectOneMenu class="form-control" id="year" required="required"
-				value="#{userController.anneeDiplome}">
-					<option value="" disabled="disabled" selected="selected" hidden="hidden">Année de
-						diplomation</option>
-					<f:selectItem itemValue="" disabled="disabled" selected="selected" hidden="hidden" itemLabel="Année de diploma"></f:selectItem>
+				value="#{userController.user.graduateDate}">
+	
+					<f:selectItem itemValue="" disabled="disabled" selected="selected" hidden="hidden" itemLabel="Année de diplomation"></f:selectItem>
 					<f:selectItem itemValue="2000" itemLabel="2000"></f:selectItem>
 					<f:selectItem itemValue="2000" itemLabel="2001"></f:selectItem>
 					<f:selectItem itemValue="2000" itemLabel="2002"></f:selectItem>
@@ -97,6 +97,11 @@
 					<f:selectItem itemValue="2000" itemLabel="2013"></f:selectItem>
 					<f:selectItem itemValue="2000" itemLabel="2014"></f:selectItem>
 					<f:selectItem itemValue="2000" itemLabel="2015"></f:selectItem>
+					<f:selectItem itemValue="2000" itemLabel="2016"></f:selectItem>
+					<f:selectItem itemValue="2000" itemLabel="2017"></f:selectItem>
+					<f:selectItem itemValue="2000" itemLabel="2018"></f:selectItem>
+					<f:selectItem itemValue="2000" itemLabel="2019"></f:selectItem>
+					<f:selectItem itemValue="2000" itemLabel="2020"></f:selectItem>
 					
 					
 				</h:selectOneMenu>
@@ -104,7 +109,7 @@
 
 			<div class="form-group mb-3">
 				<h:selectOneMenu class="form-control" id="section" required="required"
-				value="userController.section">
+				value="#{userController.user.graduationSection}">
 					<f:selectItem itemValue="" disabled="disabled" selected="selected" hidden="hidden" itemLabel="Section"></f:selectItem>
 					<f:selectItem itemValue="AD" itemLabel="Assistant(e) de Direction"></f:selectItem>
 					<f:selectItem itemValue="CG" itemLabel="Compatibilité de gestion"></f:selectItem>
@@ -112,10 +117,11 @@
 				</h:selectOneMenu>
 			</div> -->
 
-			<button type="submit" jsf:action="#{userController.doAddUser}" class="btn btn-primary">Valider</button>
+			<button type="submit" jsf:action="#{userController.doAddUser()}" class="btn btn-primary">Valider</button>
 			<button type="reset" class="btn btn-outline-secondary">Effacer</button>
 			
-		</form>
+		</h:form>
+		
 		
 	</div>
 

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -20,23 +22,19 @@ import be.helha.aemt.model.SectionEconomicHELHaMons;
 @Named
 public class UserController implements Serializable{
 	
-	private String name ="";
-	private String surname ="";
-	private String email ="";
-	private String mdp ="";
-	private String anneeDiplome ="";
-	private SectionEconomicHELHaMons section = SectionEconomicHELHaMons.ALL;
+	private User user;
 	
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public String getSurname() {
-		return surname;
+	public UserController() {
+		// TODO Auto-generated constructor stub
+		user = new User();
 	}
 
 	public void setSurname(String surname) {

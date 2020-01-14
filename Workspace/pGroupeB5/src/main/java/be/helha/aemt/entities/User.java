@@ -48,7 +48,7 @@ public class User implements Serializable{
 		this.birtDate = birtDate;
 		this.graduateDate = graduateDate;
 		this.validAccount = false;
-		this.privateAccount = privateAccount;
+		this.privateAccount = privateAccountBoolean;
 		this.graduationSection = sectionEconomicHELHaMons;
 		this.groupName = UserGroup.GRADUATE;
 	}
@@ -208,4 +208,15 @@ public class User implements Serializable{
 	public void setGraduationSection(SectionEconomicHELHaMons graduationSection) {
 		this.graduationSection = graduationSection;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", lastName=" + lastName
+				+ ", firstName=" + firstName + ", career=" + career + ", describtion=" + describtion + ", birtDate="
+				+ birtDate + ", graduateDate=" + graduateDate + ", validAccount=" + validAccount + ", privateAccount="
+				+ privateAccount + ", adress=" + adress + ", picture=" + picture + ", groupName=" + groupName
+				+ ", graduationSection=" + graduationSection + "]";
+	}
+	
+	
 }
