@@ -13,8 +13,6 @@ import be.helha.aemt.entities.User;
 
 @Stateless
 public class ManageUserEJB implements IManageUserEJB{
-
-
 	@EJB
 	private UserDAO dao;
 	
@@ -30,7 +28,4 @@ public class ManageUserEJB implements IManageUserEJB{
 	public User login(String email, String password) {
 		return dao.login(email, password);
 	}
-	
-	
-	
 }
