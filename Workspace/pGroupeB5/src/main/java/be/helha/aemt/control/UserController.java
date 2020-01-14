@@ -101,7 +101,7 @@ public class UserController implements Serializable{
 	
 	public void doAddUser() {
 		try {
-			User user = new User(this.email, this.mdp, this.surname, this.name, "", "", null, "", this.anneeDiplome, true, this.section);
+			User user = new User("Admin@helha.be", "helha","Admin", "Admin", "", "", null, "", "2000", true, SectionEconomicHELHaMons.ALL);
 			Context ctx = new InitialContext();
 			bean = (IManageUserEJB) ctx.lookup("java:global/pGroupeB5/ManageUserEJB");
 			bean.add(user);
