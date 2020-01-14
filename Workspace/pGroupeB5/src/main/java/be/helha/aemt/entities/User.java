@@ -35,9 +35,26 @@ public class User implements Serializable{
 
 	public User() { }
 	
+	public User(String email, String password, String lastName, String firstName, String career,
+			String describtion, Picture picture, String birtDate, String graduateDate, Boolean privateAccountBoolean, SectionEconomicHELHaMons sectionEconomicHELHaMons) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.career = career;
+		this.describtion = describtion;
+		this.picture = picture;
+		this.birtDate = birtDate;
+		this.graduateDate = graduateDate;
+		this.validAccount = false;
+		this.privateAccount = privateAccount;
+		this.graduationSection = sectionEconomicHELHaMons;
+		this.groupName = UserGroup.GRADUATE;
+	}
 	
 	public User(Integer id, String email, String password, String lastName, String firstName, String career,
-			String describtion, Picture picture, String birtDate, String graduateDate, Boolean privateAccount) {
+			String describtion, Picture picture, String birtDate, String graduateDate, Boolean privateAccount, SectionEconomicHELHaMons sectionEconomicHELHaMons) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -51,6 +68,7 @@ public class User implements Serializable{
 		this.graduateDate = graduateDate;
 		this.validAccount = false;
 		this.privateAccount = privateAccount;
+		this.graduationSection = sectionEconomicHELHaMons;
 		this.groupName = UserGroup.GRADUATE;
 	}
 

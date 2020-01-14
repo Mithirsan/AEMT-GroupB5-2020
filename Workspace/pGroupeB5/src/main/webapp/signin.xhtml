@@ -1,34 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+<html 
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"/>
 <title>Alumni HELHa | Inscription</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+	crossorigin="anonymous"/>
 </head>
 <body>
 
-	<!--  -->
-
-	<h1>#{userController.doSelectAllUserAsList()}</h1>>
-	
-	<!-- NAVBAR ------------------------------------------------------------------------>
 	<nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark">
 
-		<!-- Logo -->
+		
 		<a class="navbar-brand" href="#">ALUMNI</a>
 
-		<!-- Hamburger button -->
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<!-- Hamburger content -->
+
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto"></ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -37,49 +33,54 @@
 			</ul>
 		</div>
 	</nav>
-	<!-- END NAVBAR -------------------------------------------------------------------->
+
 
 
 	<div class="container">
 
-		<!-- Title -->
+	
 		<br />
 		<div class="jumbotron">
 			<h1>Inscription</h1>
 		</div>
 
-		<!-- FORM ---------------------------------------------------------------------->
+
 		<form>
-			<!-- Surname -->
+		
 			<div class="form-group mb-3">
 				<input type="text" class="form-control" id="surname"
-					placeholder="Nom" required>
+					placeholder="Nom" required="required"
+					value="#{userController.name}"/>
+					
 			</div>
 
-			<!-- Firstname -->
 			<div class="form-group mb-3">
 				<input type="text" class="form-control" id="firstname"
-					placeholder="Prénom" required>
+					placeholder="Prénom" required="required"
+					value="#{userController.surname}"/>
 			</div>
 
-			<!-- Email -->
+		
 			<div class="form-group mb-3">
 				<input type="email" class="form-control" id="email"
-					placeholder="Adresse e-mail" required>
+					placeholder="Adresse e-mail" required="required"
+					value="#{userController.email}"/>
 			</div>
 
-			<!-- Password -->
+		
 			<div class="form-group mb-3">
 				<input type="password" class="form-control" id="password"
-					placeholder="Mot de passe" required>
+					placeholder="Mot de passe" required="required"
+					value="#{userController.mdp}"/>
 			</div>
 
-			<!-- Year -->
+		
 			<div class="form-group mb-3">
-				<select class="form-control" id="year" required>
-					<option value="" disabled selected hidden>Année de
+				<select class="form-control" id="year" required="required"
+				value="#{userController.anneeDiplome}">
+					<option value="" disabled="disabled" selected="selected" hidden="hidden">Année de
 						diplomation</option>
-					<!-- (donées provisoires !) -->
+				
 					<option value="2000">2000</option>
 					<option value="2001">2001</option>
 					<option value="2002">2002</option>
@@ -103,25 +104,23 @@
 				</select>
 			</div>
 
-			<!-- Section -->
 			<div class="form-group mb-3">
-				<select class="form-control" id="section" required>
-					<option value="" disabled selected hidden>Section</option>
+				<select class="form-control" id="section" required="required"
+				value="#{userController.section}">
+					<option value=""  disabled="disabled" selected="selected" hidden="hidden">Section</option>
 					<option value="AD">Assitant(e) de direction</option>
 					<option value="CG">Comptabilité de gestion</option>
 					<option value="IG">Informatique de gestion</option>
 				</select>
 			</div>
 
-			<!-- Buttons -->
-			<button type="submit" class="btn btn-primary">Valider</button>
+			<button type="submit" jsf:action="#{userController.doAddUser()}" class="btn btn-primary">Valider</button>
 			<button type="reset" class="btn btn-outline-secondary">Effacer</button>
 		</form>
-		<!-- END FORM ------------------------------------------------------------------>
 		
 	</div>
 
-	<!-- Bootstrap -->
+
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>

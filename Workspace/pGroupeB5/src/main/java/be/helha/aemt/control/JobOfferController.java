@@ -11,7 +11,7 @@ import javax.naming.NamingException;
 import be.helha.aemt.ejb.IManageJobOfferEJB;
 import be.helha.aemt.entities.JobOffer;
 
-@SessionScoped
+
 @Named
 public class JobOfferController {
 	
