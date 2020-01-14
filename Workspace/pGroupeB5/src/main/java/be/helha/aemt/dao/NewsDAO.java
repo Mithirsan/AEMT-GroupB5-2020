@@ -17,7 +17,7 @@ import be.helha.aemt.exception.IDNotFoundException;
 @LocalBean
 @Stateless
 public class NewsDAO {
-	// ATTENTION MISE A JOUR EN COUR
+
 	@PersistenceContext(unitName = "pGroupeB5JTA")
 	private EntityManager em;
 	
@@ -25,22 +25,23 @@ public class NewsDAO {
 		return em.createQuery("SELECT n FROM News n").getResultList();
 	}
 
-	public void add(Picture picture) throws AddDuplicateException {
-		if(targetSelect(picture)!=null)throw new AddDuplicateException();
-		em.persist(picture);
+	public void add(News news) throws AddDuplicateException {
+		if(targetSelect(news)!=null)throw new AddDuplicateException();
+		em.persist(news);
 	
 	}
 	
-	public Picture targetSelect(Picture picture) {
-	Query qGet = em.createQuery("SELECT p FROM Picture p WHERE p.base64 = :pictureBase64");
-	qGet.setParameter("pictureBase64", picture.getBase64());
-	List<Picture> tmp = qGet.getResultList();
+	public News targetSelect(News news) {
+	Query qGet = em.createQuery("SELECT n FROM News n WHERE n.content = :nContent AND n.author = :nAuthor");
+	qGet.setParameter("nContent",news.getContent());
+	qGet.setParameter("nAuthor", news.getAuthor());
+	List<News> tmp = qGet.getResultList();
 	return tmp.size()== 0 ? null : tmp.get(0);
 	}
 	
-	public void delete(Picture picture) throws IDNotFoundException, AdminDeleteException {
-		if(targetSelect(picture)==null) 
+	public void delete(News news) throws IDNotFoundException{
+		if(targetSelect(news)==null) 
 			throw new IDNotFoundException();
-		em.remove(picture);
+		em.remove(news);
 	}
 }

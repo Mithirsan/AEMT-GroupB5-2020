@@ -30,11 +30,11 @@ public class Message implements Serializable{
 		this.messageType = messageType;
 	}
 
-	public String getEmailEnvoyeur() {
+	public String getSendEmail() {
 		return sendEmail;
 	}
 
-	public void setEmailEnvoyeur(String emailEnvoyeur) {
+	public void setSendEmail(String emailEnvoyeur) {
 		this.sendEmail = emailEnvoyeur;
 	}
 

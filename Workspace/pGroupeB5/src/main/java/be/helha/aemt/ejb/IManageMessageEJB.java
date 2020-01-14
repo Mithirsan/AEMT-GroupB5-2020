@@ -10,4 +10,8 @@ import be.helha.aemt.entities.Message;
 public interface IManageMessageEJB {
 
 	public List<Message> findAll();
+	
+	public void add(Message message);
+	
+	public void delete(Message message);
 }

@@ -39,7 +39,7 @@ public class OverViewDAO {
 	return tmp.size()== 0 ? null : tmp.get(0);
 	}
 	
-	public void delete(OverView overView) throws IDNotFoundException, AdminDeleteException {
+	public void delete(OverView overView) throws IDNotFoundException{
 		if(targetSelect(overView)==null) 
 			throw new IDNotFoundException();
 		em.remove(overView);

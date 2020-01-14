@@ -15,5 +15,7 @@ public interface IManageUserEJB {
 	
 	public boolean update(User oldUser, User newUser);
 	
-	public User login(String email, String password);
+	public void delete(User user);
+	
+	
 }

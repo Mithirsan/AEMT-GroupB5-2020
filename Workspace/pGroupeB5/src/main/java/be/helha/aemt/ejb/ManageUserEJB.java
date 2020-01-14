@@ -9,6 +9,8 @@ import javax.ejb.Stateless;
 import be.helha.aemt.dao.UserDAO;
 import be.helha.aemt.entities.User;
 import be.helha.aemt.exception.AddDuplicateException;
+import be.helha.aemt.exception.AdminDeleteException;
+import be.helha.aemt.exception.IDNotFoundException;
 
 
 @Stateless
@@ -34,14 +36,22 @@ public class ManageUserEJB implements IManageUserEJB{
 			return false;
 		if(oldUser.getId() != newUser.getId())
 			return false;
-//		dao.update(newUser);
+		dao.update(newUser);
 		return true;
 	}
 
-	@Override
-	public User login(String email, String password) {
+
+	public void delete(User user) {
 		// TODO Auto-generated method stub
-		return null;
+		try {
+			dao.delete(user);
+		} catch (IDNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (AdminDeleteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

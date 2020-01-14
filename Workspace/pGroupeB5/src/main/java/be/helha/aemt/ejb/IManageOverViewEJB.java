@@ -10,4 +10,8 @@ import be.helha.aemt.entities.OverView;
 public interface IManageOverViewEJB {
 
 	public List<OverView> findAll();
+	
+	public void add(OverView overView);
+	
+	public void delete(OverView overView);
 }
