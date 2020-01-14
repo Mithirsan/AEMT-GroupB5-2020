@@ -25,7 +25,7 @@ public class Event{
 	private String planner;
 	@OneToMany
 	private List<Picture> pictures;
-	private String describe;
+	private String description;
 	private SectionEconomicHELHaMons sectionVise;
 	private String date;
 	
@@ -38,7 +38,7 @@ public class Event{
 		super();
 		this.eventName = eventName;
 		this.planner = planner;
-		this.describe = describe;
+		this.description = describe;
 		this.sectionVise = sectionVise;
 		this.date = date;
 		pictures = new ArrayList<Picture>();
@@ -73,11 +73,11 @@ public class Event{
 	}
 
 	public String getDescribe() {
-		return describe;
+		return description;
 	}
 
 	public void setDescribe(String describe) {
-		this.describe = describe;
+		this.description = describe;
 	}
 
 	public SectionEconomicHELHaMons getSectionVise() {
@@ -105,7 +105,7 @@ public class Event{
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", eventName=" + eventName + ", planner=" + planner + ", pictures=" + pictures
-				+ ", describe=" + describe + ", sectionVise=" + sectionVise + "]";
+				+ ", describe=" + description + ", sectionVise=" + sectionVise + "]";
 	}
 
 	@Override
@@ -113,7 +113,7 @@ public class Event{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
-		result = prime * result + ((describe == null) ? 0 : describe.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((eventName == null) ? 0 : eventName.hashCode());
 		result = prime * result + ((planner == null) ? 0 : planner.hashCode());
 		result = prime * result + ((sectionVise == null) ? 0 : sectionVise.hashCode());
@@ -134,10 +134,10 @@ public class Event{
 				return false;
 		} else if (!date.equals(other.date))
 			return false;
-		if (describe == null) {
-			if (other.describe != null)
+		if (description == null) {
+			if (other.description != null)
 				return false;
-		} else if (!describe.equals(other.describe))
+		} else if (!description.equals(other.description))
 			return false;
 		if (eventName == null) {
 			if (other.eventName != null)
