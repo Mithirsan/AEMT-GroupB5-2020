@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -19,62 +21,21 @@ import be.helha.aemt.model.SectionEconomicHELHaMons;
 @Named
 public class UserController implements Serializable{
 	
-	private String name ="";
-	private String surname ="";
-	private String email ="";
-	private String mdp ="";
-	private String anneeDiplome ="";
-	private SectionEconomicHELHaMons section = SectionEconomicHELHaMons.ALL;
+	private User user;
 	
 	
 	
-	
-	public String getName() {
-		return name;
+	public User getUser() {
+		return user;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getMdp() {
-		return mdp;
-	}
-
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
-	}
-
-	public String getAnneeDiplome() {
-		return anneeDiplome;
-	}
-
-	public void setAnneeDiplome(String anneeDiplome) {
-		this.anneeDiplome = anneeDiplome;
-	}
-
-	public SectionEconomicHELHaMons getSection() {
-		return section;
-	}
-
-	public void setSection(SectionEconomicHELHaMons section) {
-		this.section = section;
+	public UserController() {
+		// TODO Auto-generated constructor stub
+		user = new User();
 	}
 
 	public IManageUserEJB getBean() {
@@ -101,10 +62,9 @@ public class UserController implements Serializable{
 	
 	public void doAddUser() {
 		try {
-			User user = new User("Admin@helha.be", "helha","Admin", "Admin", "", "", null, "", "2000", true, SectionEconomicHELHaMons.ALL);
 			Context ctx = new InitialContext();
 			bean = (IManageUserEJB) ctx.lookup("java:global/pGroupeB5/ManageUserEJB");
-			bean.add(user);
+			bean.add(this.user);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

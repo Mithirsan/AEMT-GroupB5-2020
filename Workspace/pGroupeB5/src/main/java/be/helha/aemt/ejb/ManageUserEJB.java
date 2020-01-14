@@ -30,7 +30,7 @@ public class ManageUserEJB implements IManageUserEJB{
 			return false;
 		if(oldUser.getId() != newUser.getId())
 			return false;
-		dao.update(newUser);
+//		dao.update(newUser);
 		return true;
 	}
 
