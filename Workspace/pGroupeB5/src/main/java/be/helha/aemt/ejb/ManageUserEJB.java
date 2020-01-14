@@ -23,6 +23,16 @@ public class ManageUserEJB implements IManageUserEJB{
 	public void add(User user) {
 		dao.add(user);
 	}
+	
+	@Override
+	public boolean update(User oldUser, User newUser) {
+		if(oldUser.equals(newUser))
+			return false;
+		if(oldUser.getId() != newUser.getId())
+			return false;
+		dao.update(newUser);
+		return true;
+	}
 
 	@Override
 	public User login(String email, String password) {

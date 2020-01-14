@@ -109,7 +109,17 @@ public class UserController implements Serializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+	}
+	
+	public void doUpdateUSer(User newUser) {
+		Context ctx;
+		try {
+			ctx = new InitialContext();
+			bean = (IManageUserEJB) ctx.lookup("java:global/pGroupeB5/ManageUserEJB");
+			bean.update(newUser, newUser);
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
