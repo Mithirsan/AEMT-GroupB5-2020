@@ -19,12 +19,15 @@ public class User implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private String email, password, lastName, firstName, career, describtion, picture, birtDate, graduateDate;
+	private String email, password, lastName, firstName, career, describtion, birtDate, graduateDate;
 	
 	private Boolean validAccount, privateAccount;
 	
 	@ManyToOne
 	private Address adress;
+	
+	@OneToOne
+	private Picture picture;
 
 	private UserGroup groupName;
 	
@@ -34,7 +37,7 @@ public class User implements Serializable{
 	
 	
 	public User(Integer id, String email, String password, String lastName, String firstName, String career,
-			String describtion, String picture, String birtDate, String graduateDate, Boolean privateAccount) {
+			String describtion, Picture picture, String birtDate, String graduateDate, Boolean privateAccount) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -132,11 +135,11 @@ public class User implements Serializable{
 		this.describtion = describtion;
 	}
 
-	public String getPicture() {
+	public Picture getPicture() {
 		return picture;
 	}
 
-	public void setPicture(String picture) {
+	public void setPicture(Picture picture) {
 		this.picture = picture;
 	}
 

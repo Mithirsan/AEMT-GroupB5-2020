@@ -12,8 +12,7 @@ import be.helha.aemt.model.OfferType;
 import be.helha.aemt.model.SectionEconomicHELHaMons;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED) 
-public class Offer {
+public abstract class Offer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

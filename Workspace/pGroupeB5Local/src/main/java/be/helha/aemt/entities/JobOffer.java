@@ -2,16 +2,21 @@ package be.helha.aemt.entities;
 
 import javax.persistence.Entity;
 
+import be.helha.aemt.model.OfferType;
+import be.helha.aemt.model.SectionEconomicHELHaMons;
+
 @Entity
 public class JobOffer extends Offer {
+	
 	private Double salary;
 	
 	private String contractType;
 	
 	public JobOffer() { }
 
-	public JobOffer(Double salary, String contractType) {
-		super();
+	public JobOffer(String company, String title, String contact, String email, String offerDescription,
+			String publishingDate, Address adress, OfferType offerType, SectionEconomicHELHaMons targetSection, Double salary, String contractType) {
+		super(company,title,contact,email,offerDescription,publishingDate,adress,offerType,targetSection);
 		this.salary = salary;
 		this.contractType = contractType;
 	}

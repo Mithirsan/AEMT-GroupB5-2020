@@ -1,6 +1,12 @@
 package be.helha.aemt.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import be.helha.aemt.model.OfferType;
+import be.helha.aemt.model.SectionEconomicHELHaMons;
 
 @Entity
 public class InternshipOffer extends Offer {
@@ -11,8 +17,9 @@ public class InternshipOffer extends Offer {
 	
 	public InternshipOffer() { }
 
-	public InternshipOffer(String lenghtPeriode, Boolean pay) {
-		super();
+	public InternshipOffer(String company, String title, String contact, String email, String offerDescription,
+			String publishingDate, Address adress, OfferType offerType, SectionEconomicHELHaMons targetSection,String lenghtPeriode, Boolean pay) {
+		super(company,title,contact,email,offerDescription,publishingDate,adress,offerType,targetSection);
 		this.lenghtPeriode = lenghtPeriode;
 		this.pay = pay;
 	}

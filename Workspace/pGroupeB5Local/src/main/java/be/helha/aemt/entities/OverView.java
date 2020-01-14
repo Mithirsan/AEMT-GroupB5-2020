@@ -1,25 +1,31 @@
 package be.helha.aemt.entities;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
-public class OverView {
+public class OverView implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String name;
 	private String surname;
+	
 	@OneToOne
 	private Picture picture;
+	
 	private String describe;
 	
 	public OverView() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	
