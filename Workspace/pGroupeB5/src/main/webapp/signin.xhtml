@@ -46,7 +46,7 @@
 
 
 		<form>
-		
+			<!-- 
 			<div class="form-group mb-3">
 				<input type="text" class="form-control" id="surname"
 					placeholder="Nom" required="required"
@@ -110,9 +110,9 @@
 					<f:selectItem itemValue="CG" itemLabel="Compatibilité de gestion"></f:selectItem>
 					<f:selectItem itemValue="IG" itemLabel="Informatique de gestion"></f:selectItem>
 				</h:selectOneMenu>
-			</div>
+			</div> -->
 
-			<button type="submit" jsf:action="#{userController.doAddUser()}" class="btn btn-primary">Valider</button>
+			<button type="submit" jsf:action="#{userController.doAddUser}" class="btn btn-primary">Valider</button>
 			<button type="reset" class="btn btn-outline-secondary">Effacer</button>
 			
 		</form>
