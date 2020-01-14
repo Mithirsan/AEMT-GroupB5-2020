@@ -7,9 +7,11 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import be.helha.aemt.entities.InternshipOffer;
+
 @LocalBean
 @Stateless
-public class InternshipOffer {
+public class InternshipOfferDAO {
 
 	@PersistenceContext(unitName = "pGroupeB5JTA")
 	private EntityManager em;
