@@ -13,5 +13,7 @@ public interface IManageUserEJB {
 	
 	public void add(User user);
 	
+	public boolean update(User oldUser, User newUser);
+	
 	public User login(String email, String password);
 }

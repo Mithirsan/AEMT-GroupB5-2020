@@ -29,6 +29,10 @@ public class UserDAO {
 		em.persist(user);
 	}
 	
+	public void update(User newUser) {
+		em.merge(newUser);
+	} 
+	
 	public User login(String email, String password) {
 		String hashWord = "";
 		try {
@@ -56,5 +60,5 @@ public class UserDAO {
             hexString.insert(0, '0');  
         }  
         return hexString.toString();  
-    } 
+    }
 }
