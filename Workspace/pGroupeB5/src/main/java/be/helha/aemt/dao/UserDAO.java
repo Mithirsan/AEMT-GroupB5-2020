@@ -11,8 +11,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import be.helha.aemt.entities.User;
+import be.helha.aemt.exception.AddDuplicateException;
 
 @Stateless
 @LocalBean
@@ -25,8 +27,23 @@ public class UserDAO {
 		return em.createQuery("SELECT u FROM User u").getResultList();
 	}
 	
-	public void add(User user) {
-		em.persist(user);
+	public void add(User user) throws AddDuplicateException {
+		if(selectUser(user)!=null)throw new AddDuplicateException();
+		try {
+			user.setPassword(toHexString(getSHA(user.getPassword())));
+			em.persist(user);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public User selectUser(User user) {
+	Query qGet = em.createQuery("SELECT u FROM User u WHERE u.email = :userEmail");
+	qGet.setParameter("userEmail", user.getEmail());
+	List<User> tmp = qGet.getResultList();
+	return tmp.size()== 0 ? null : tmp.get(0);
 	}
 	
 	public void update(User newUser) {

@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 
 import be.helha.aemt.dao.UserDAO;
 import be.helha.aemt.entities.User;
+import be.helha.aemt.exception.AddDuplicateException;
 
 
 @Stateless
@@ -21,7 +22,12 @@ public class ManageUserEJB implements IManageUserEJB{
 	}
 	
 	public void add(User user) {
-		dao.add(user);
+		try {
+			dao.add(user);
+		} catch (AddDuplicateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override

@@ -65,6 +65,7 @@ public class UserController implements Serializable{
 			Context ctx = new InitialContext();
 			bean = (IManageUserEJB) ctx.lookup("java:global/pGroupeB5/ManageUserEJB");
 			bean.add(this.user);
+			user = new User();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

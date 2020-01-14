@@ -34,8 +34,6 @@
 		</div>
 	</nav>
 
-	<h1>#{userController.doSelectAllUserAsList()}</h1>
-
 
 	<div class="container">
 
@@ -117,7 +115,7 @@
 				</h:selectOneMenu>
 			</div>
 
-			<h:commandButton value="Valid" action="#{userController.doAddUser()}" class="btn btn-primary"/>
+			<h:commandButton type="submit" value="Valid" action="#{userController.doAddUser()}" class="btn btn-primary"/>
 			<button type="reset" class="btn btn-outline-secondary">Effacer</button>
 			
 		</h:form>
