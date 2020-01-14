@@ -25,6 +25,11 @@ public class ManageUserEJB implements IManageUserEJB{
 	public void add(User user) {
 		dao.add(user);
 	}
+
+	@Override
+	public User login(String email, String password) {
+		return dao.login(email, password);
+	}
 	
 	
 	

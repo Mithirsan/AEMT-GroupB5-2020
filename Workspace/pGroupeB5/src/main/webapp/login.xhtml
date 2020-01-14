@@ -1,0 +1,52 @@
+
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<h:head>
+		<title>Alumni HELHa | Connexion</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+			crossorigin="anonymous">
+	</h:head>
+	<h:body>
+		<h1>JSF Login</h1>
+		<h:form id="myform">
+		    <h:messages globalOnly="true" style="color:red;margin:8px;" />
+		  
+		    <h:outputText value="E-mail: "/>
+		    <h:inputText label="E-mail" value="#{loginController.username}" required/><br/><br/>
+		    <h:outputText value="Password: "/>
+		    <h:inputSecret value="#{loginController.password}" required/><br/><br/>
+		    <h:commandButton value="login" action="#{loginController.doCheckLoginForm}" />
+		</h:form>
+	</h:body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<head>
+	<title>Start Page</title>
+		<meta http-equiv="Content-Type" content="text/html" charset=UTF-8" />
+		<title>Alumni HELHa | Connexion</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+			crossorigin="anonymous">
+	</head>
+	<body>	
+		<form method="POST" action="j_security_check">
+			USERNAME: <input type="text" name="j_username"/>
+			PASSWORD: <input type="password" name="j_password"/>
+			<br/>
+			<input type="submit" class="btn btn-submit" value="Login"/>
+			<input type="reset" value="Reset"/>
+		</form>
+	</body>
+</html> -->
