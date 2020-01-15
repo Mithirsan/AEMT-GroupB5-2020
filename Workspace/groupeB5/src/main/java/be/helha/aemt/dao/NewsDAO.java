@@ -12,7 +12,6 @@ import be.helha.aemt.entities.News;
 import be.helha.aemt.entities.Picture;
 import be.helha.aemt.exception.AddDuplicateException;
 import be.helha.aemt.exception.AdminDeleteException;
-import be.helha.aemt.exception.IDNotFoundException;
 
 @LocalBean
 @Stateless
@@ -39,9 +38,7 @@ public class NewsDAO {
 	return tmp.size()== 0 ? null : tmp.get(0);
 	}
 	
-	public void delete(News news) throws IDNotFoundException{
-		if(targetSelect(news)==null) 
-			throw new IDNotFoundException();
-		em.remove(news);
+	public void delete(News news) {
+		em.createQuery("DELETE FROM News n WHERE n.id = " + news.getId()).executeUpdate();
 	}
 }

@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <head>
 <meta charset="utf-8" />
 <title>Alumni HELHa | Administration</title>
@@ -46,9 +50,8 @@
   
   <div class="col-10">
     <div class="tab-content" id="tabContent">
-      <div class="tab-pane fade show active" id="messages">Work in progress ...</div>
       <div class="tab-pane fade" id="users">
-      	<h:dataTable value = "#{userController.doSelectAllUserAsList}" var = "user"
+      	<h:dataTable value = "#{userController.doSelectUnvalidUser()}" var = "user"
 		   styleClass = "userTable"
 		   headerClass = "userTableHeader"
 		   rowClasses = "userTableOddRow,userTableEvenRow">
@@ -75,15 +78,25 @@
 		   
 		   <h:column>    				
 		      <f:facet name = "header">Section</f:facet>    				
-		      #{user.graduationSection.toString}
+		      #{user.graduationSection.toString()}
 		   </h:column>
 		   
 		   <h:column>    				
 		      <f:facet name = "header">Annee de Diplomation</f:facet>    				
 		      #{user.graduateDate}
 		   </h:column>
+		   <h:column>    				
+		      <f:facet name = "header">Action</f:facet>    				
+				<h:form>
+					<h:commandButton value="Valider" action="#{userController.doValidateUser(user)}"></h:commandButton>
+				</h:form>
+				<h:form>
+					<h:commandButton value="Supprimer" action="#{userController.doDeletUser(user)}"></h:commandButton>
+				</h:form>
+		   </h:column>
 		</h:dataTable>
       </div>
+       <div class="tab-pane fade show active" id="messages">Work in progress ...</div>
       <div class="tab-pane fade" id="signin">inscriptions...</div>
       <div class="tab-pane fade" id="events">événements...</div>
       <div class="tab-pane fade" id="news">news...</div>

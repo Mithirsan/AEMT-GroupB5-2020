@@ -1,4 +1,9 @@
-<ui:composition template="/WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="/WEB-INF/template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://xmlns.jcp.org/jsf/core" 
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
 
 
   <ui:define name="template-title">Alumni HELHa | Inscription</ui:define>
@@ -14,19 +19,19 @@
 
       <h:form><!-- jsf:value enlevé = templating OK -->
         <div class="form-group mb-3">
-          <input type="text" class="form-control" id="surname" placeholder="Nom" required="required" value="#{userController.user.lastName}" />
+          <input type="text" class="form-control" id="surname" placeholder="Nom" required="required" jsf:value="#{userController.user.lastName}" />
         </div>
 
         <div class="form-group mb-3">
-          <input type="text" class="form-control" id="firstname" placeholder="Prénom" required="required" value="#{userController.user.firstName}" />
+          <input type="text" class="form-control" id="firstname" placeholder="Prénom" required="required" jsf:value="#{userController.user.firstName}" />
         </div>
 
         <div class="form-group mb-3">
-          <input type="email" class="form-control" id="email" placeholder="Adresse e-mail" required="required" value="#{userController.user.email}" />
+          <input type="email" class="form-control" id="email" placeholder="Adresse e-mail" required="required" jsf:value="#{userController.user.email}" />
         </div>
 
         <div class="form-group mb-3">
-          <input type="password" class="form-control" id="password" placeholder="Mot de passe" required="required" value="#{userController.user.password}" />
+          <input type="password" class="form-control" id="password" placeholder="Mot de passe" required="required" jsf:value="#{userController.user.password}" />
         </div>
 
         <div class="form-group mb-3">

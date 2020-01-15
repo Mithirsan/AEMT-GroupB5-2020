@@ -8,7 +8,7 @@ import javax.ejb.Stateless;
 
 import be.helha.aemt.dao.JobOfferDAO;
 import be.helha.aemt.entities.JobOffer;
-import be.helha.aemt.exception.IDNotFoundException;
+import be.helha.aemt.exception.AddDuplicateException;
 
 @Stateless
 @LocalBean
@@ -22,7 +22,12 @@ public class ManageJobOfferEJB{
 	}
 
 	public void add(JobOffer toAdd) {
-		dao.add(toAdd);
+		try {
+			dao.add(toAdd);
+		} catch (AddDuplicateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void update(JobOffer toUpdate) {
@@ -30,10 +35,6 @@ public class ManageJobOfferEJB{
 	}
 
 	public void delete(JobOffer toDel) {
-		try {
-			dao.delete(toDel);
-		} catch (IDNotFoundException e) {
-			e.printStackTrace();
-		}		
+		dao.delete(toDel);	
 	}
 }

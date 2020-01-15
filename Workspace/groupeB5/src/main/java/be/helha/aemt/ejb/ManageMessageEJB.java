@@ -31,13 +31,6 @@ public class ManageMessageEJB{
 	}
 
 	public void delete(Message message) {
-		// TODO Auto-generated method stub
-		try {
-			dao.add(message);
-		} catch (AddDuplicateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		dao.delete(message);
 	}
 }

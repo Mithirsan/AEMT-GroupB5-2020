@@ -11,7 +11,6 @@ import javax.persistence.Query;
 import be.helha.aemt.entities.Message;
 import be.helha.aemt.entities.Picture;
 import be.helha.aemt.exception.AddDuplicateException;
-import be.helha.aemt.exception.IDNotFoundException;
 
 @LocalBean
 @Stateless
@@ -39,10 +38,8 @@ public class MessageDAO {
 	return tmp.size()== 0 ? null : tmp.get(0);
 	}
 	
-	public void delete(Message message) throws IDNotFoundException {
-		if(targetSelect(message)==null) 
-			throw new IDNotFoundException();
-		em.remove(message);
+	public void delete(Message message)  {
+		em.createQuery("DELETE FROM MEssage m WHERE m.id = " + message.getId()).executeUpdate();
 	}
 	
 }

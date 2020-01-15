@@ -12,7 +12,6 @@ import be.helha.aemt.entities.OverView;
 import be.helha.aemt.entities.Picture;
 import be.helha.aemt.exception.AddDuplicateException;
 import be.helha.aemt.exception.AdminDeleteException;
-import be.helha.aemt.exception.IDNotFoundException;
 
 @LocalBean
 @Stateless
@@ -39,10 +38,8 @@ public class OverViewDAO {
 	return tmp.size()== 0 ? null : tmp.get(0);
 	}
 	
-	public void delete(OverView overView) throws IDNotFoundException{
-		if(targetSelect(overView)==null) 
-			throw new IDNotFoundException();
-		em.remove(overView);
+	public void delete(OverView overView) {
+		em.createQuery("DELETE FROM OVerView o WHERE o.id = " + overView.getId()).executeUpdate();
 	}
 	
 }

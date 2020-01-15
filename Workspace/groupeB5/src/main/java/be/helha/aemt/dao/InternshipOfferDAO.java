@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entities.InternshipOffer;
-import be.helha.aemt.exception.IDNotFoundException;
+import be.helha.aemt.exception.AddDuplicateException;
 
 @LocalBean
 @Stateless
@@ -19,10 +19,11 @@ public class InternshipOfferDAO {
 	private EntityManager em;
 	
 	public List<InternshipOffer> findAll(){
-		return em.createQuery("SELECT jo FROM InternshipOffer jo").getResultList();
+		return em.createQuery("SELECT io FROM offer io").getResultList();
 	}
 
-	public void add(InternshipOffer toAdd) {
+	public void add(InternshipOffer toAdd) throws AddDuplicateException{
+		if(targetSelect(toAdd)!=null)throw new AddDuplicateException();
 		em.persist(toAdd);
 	}
 
@@ -30,15 +31,13 @@ public class InternshipOfferDAO {
 		em.merge(toUpdate);
 	}
 
-	public void delete(InternshipOffer toDel) throws IDNotFoundException {
-		if(targetSelect(toDel)==null) 
-			throw new IDNotFoundException();
-		em.remove(toDel);
+	public void delete(InternshipOffer toDel)  {
+		em.createQuery("DELETE FROM Offer io WHERE io.id = " + toDel.getId()).executeUpdate();
 	}
 	
 	public InternshipOffer targetSelect(InternshipOffer entity) {
 		//company, title, contact, email, offerDescription, publishingDate, adress, offerType, targetSection, lenghtPeriode, pay
-		Query qGet = em.createQuery("SELECT o FROM Event o WHERE "
+		Query qGet = em.createQuery("SELECT o FROM Offer o WHERE "
 				+ "o.company = :oCompany AND "
 				+ "o.title = :oTitle AND "
 				+ "o.contact = :oContact AND "

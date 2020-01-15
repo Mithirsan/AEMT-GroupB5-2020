@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 import be.helha.aemt.dao.EventDAO;
 import be.helha.aemt.dao.InternshipOfferDAO;
 import be.helha.aemt.entities.InternshipOffer;
-import be.helha.aemt.exception.IDNotFoundException;
+import be.helha.aemt.exception.AddDuplicateException;
 
 @Stateless
 @LocalBean
@@ -23,7 +23,12 @@ public class ManageInternshipOfferEJB {
 	}
 
 	public void add(InternshipOffer toAdd) {
-		dao.add(toAdd);
+		try {
+			dao.add(toAdd);
+		} catch (AddDuplicateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void update(InternshipOffer toUpdate) {
@@ -31,10 +36,6 @@ public class ManageInternshipOfferEJB {
 	}
 
 	public void delete(InternshipOffer toDel) {
-		try {
-			dao.delete(toDel);
-		} catch (IDNotFoundException e) {
-			e.printStackTrace();
-		}
+		dao.delete(toDel);
 	}
 }
