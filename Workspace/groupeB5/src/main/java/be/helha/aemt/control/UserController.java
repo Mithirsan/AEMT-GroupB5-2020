@@ -76,9 +76,7 @@ public class UserController implements Serializable{
 	}
 	
 	public void doAddUser() {
-
 		bean.add(this.user);
-
 		user = new User();
 	}
 	

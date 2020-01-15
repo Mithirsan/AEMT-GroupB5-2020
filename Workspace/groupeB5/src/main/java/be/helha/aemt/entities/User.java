@@ -42,6 +42,7 @@ public class User implements Serializable{
 		this.career = " ";
 		this.describtion = " ";
 		this.birtDate = " ";
+		this.adress = new Address();
 	}
 	
 	public User(String email, String password, String lastName, String firstName, String career,
