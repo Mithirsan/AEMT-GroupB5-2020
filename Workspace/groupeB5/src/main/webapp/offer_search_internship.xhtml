@@ -13,6 +13,100 @@
       </div>
 
 
+      <h:form>
+        <div class="alert alert-info">Options de filtre</div>
+
+        <div class="form-group">
+          <label for="targetSection">Section concernée :</label>
+          <h:selectOneMenu class="form-control" id="targetSection" required="required" value="#{userController.targetSection}">
+            <f:selectItem itemValue="AD" itemLabel="Assistant(e) de Direction"></f:selectItem>
+            <f:selectItem itemValue="CG" itemLabel="Compatibilité de gestion"></f:selectItem>
+            <f:selectItem itemValue="IG" itemLabel="Informatique de gestion"></f:selectItem>
+          </h:selectOneMenu>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Rechercher</button>
+        <hr />
+      </h:form>
+
+
+      <div class="alert alert-info">Résultats</div>
+
+
+
+
+
+      [ JSF DATATABLE ICI (à adapter) ]
+<!--
+      <h:dataTable value="#{userController.filterUser()}" var="user" styleClass="userTable" headerClass="userTableHeader" rowClasses="userTableOddRow,userTableEvenRow">
+
+        <h:column>
+          <f:facet name="header">Nom</f:facet>            
+            #{user.lastName}
+         </h:column>
+
+        <h:column>
+          <f:facet name="header">Prenom</f:facet>           
+            #{user.firstName}
+         </h:column>
+
+        <h:column>
+          <f:facet name="header">Section</f:facet>            
+            #{user.graduationSection.toString()}
+         </h:column>
+
+        <h:column>
+          <f:facet name="header">Annee de Diplomation</f:facet>           
+            #{user.graduateDate}
+         </h:column>
+        <h:column>
+          <f:facet name="header">Action</f:facet>
+          <h:form>
+            <h:commandButton value="View" action="#{userController.doSelectUser(user)}"></h:commandButton>
+          </h:form>
+
+        </h:column>
+      </h:dataTable>
+-->
+
+
+
+
+
+      <div class="alert alert-info">Détails de l'annonce</div>
+
+
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-subtitle mb-2 text-muted">Stage d'apprentissage IT</h3>
+
+          <table class="table table-sm table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">Entreprise</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Personne de contact</th>
+                <th scope="col">Adresse e-mail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Smals</td>
+                <td>52, avenue des Déportés, 1000 - Bruxelles</td>
+                <td>Alix DENEEKER</td>
+                <td>denalix@test.be</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p class="card-text">Vous êtes à la recherche d'un stage de minimum 3 mois dans le cadre de votre formation de Bachelor ou de Master en informatique.
+Créatif et responsable, vous êtes capable de prendre des initiatives afin de proposer des solutions de qualité.
+Vous faites preuve d'autonomie et avez soif d'apprendre.
+Bon team player, vous travaillez volontiers en équipe.</p>
+
+        </div>
+      </div>
+
     </div>
 
 
