@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entities.Event;
-import be.helha.aemt.exception.IDNotFoundException;
+import be.helha.aemt.exception.AddDuplicateException;
 
 @LocalBean
 @Stateless
@@ -22,7 +22,8 @@ public class EventDAO {
 		return em.createQuery("SELECT e FROM Event e").getResultList();
 	}
 
-	public void add(Event toAdd) {
+	public void add(Event toAdd) throws AddDuplicateException{
+		if(targetSelect(toAdd)!=null)throw new AddDuplicateException();
 		em.persist(toAdd);
 	}
 	
@@ -44,10 +45,8 @@ public class EventDAO {
 		return tmp.size()== 0 ? null : tmp.get(0);
 	}
 		
-	public void delete(Event toDel) throws IDNotFoundException {
-		if(targetSelect(toDel)==null) 
-			throw new IDNotFoundException();
-		em.remove(toDel);
+	public void delete(Event toDel) {
+		em.createQuery("DELETE FROM Event e WHERE e.id = " + toDel.getId()).executeUpdate();
 	}
 		
 	public void update(Event toUpdate) {

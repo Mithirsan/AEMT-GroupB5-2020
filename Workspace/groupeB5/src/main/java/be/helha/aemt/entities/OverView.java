@@ -23,8 +23,6 @@ public class OverView implements Serializable{
 	public OverView() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
 	public OverView(String name, String surname, Picture picture, String describe) {
 		super();
@@ -34,7 +32,9 @@ public class OverView implements Serializable{
 		this.description = describe;
 	}
 
-
+	public Integer getId() {
+		return id;
+	}
 
 	public String getName() {
 		return name;

@@ -8,7 +8,7 @@ import javax.ejb.Stateless;
 
 import be.helha.aemt.dao.AddressDAO;
 import be.helha.aemt.entities.Address;
-import be.helha.aemt.exception.IDNotFoundException;
+import be.helha.aemt.exception.AddDuplicateException;
 
 @Stateless
 @LocalBean
@@ -22,7 +22,17 @@ public class ManageAddressEJB{
 	}
 
 	public void add(Address address) {
-		dao.add(address);
+		try {
+			dao.add(address);
+		} catch (AddDuplicateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private Object targetSelect(Address address) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public void update(Address newAddress) {
@@ -30,10 +40,6 @@ public class ManageAddressEJB{
 	}
 
 	public void delete(Address toDel) {
-		try {
-			dao.delete(toDel);
-		} catch (IDNotFoundException e) {
-			e.printStackTrace();
-		}
+		dao.delete(toDel);
 	}
 }

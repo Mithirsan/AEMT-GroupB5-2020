@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entities.JobOffer;
-import be.helha.aemt.exception.IDNotFoundException;
+import be.helha.aemt.exception.AddDuplicateException;
 
 @LocalBean
 @Stateless
@@ -19,11 +19,12 @@ public class JobOfferDAO {
 	private EntityManager em;
 	
 	public List<JobOffer> findAll(){
-		return em.createQuery("SELECT jo FROM JobOffert jo").getResultList();
+		return em.createQuery("SELECT jo FROM Offer jo").getResultList();
 	}
 	
 
-	public void add(JobOffer toAdd) {
+	public void add(JobOffer toAdd) throws AddDuplicateException{
+		if(targetSelect(toAdd)!=null)throw new AddDuplicateException();
 		em.persist(toAdd);
 	}
 
@@ -31,15 +32,13 @@ public class JobOfferDAO {
 		em.merge(toUpdate);
 	}
 
-	public void delete(JobOffer toDel) throws IDNotFoundException {
-		if(targetSelect(toDel)==null) 
-			throw new IDNotFoundException();
-		em.remove(toDel);
+	public void delete(JobOffer toDel){
+		em.createQuery("DELETE FROM Offer jo WHERE jo.id = " + toDel.getId()).executeUpdate();
 	}
 	
 	public JobOffer targetSelect(JobOffer entity) {
 		//company, title, contact, email, offerDescription, publishingDate, adress, offerType, targetSection, salary, contractType
-		Query qGet = em.createQuery("SELECT o FROM Event o WHERE "
+		Query qGet = em.createQuery("SELECT o FROM Offer o WHERE "
 				+ "o.company = :oCompany AND "
 				+ "o.title = :oTitle AND "
 				+ "o.contact = :oContact AND "

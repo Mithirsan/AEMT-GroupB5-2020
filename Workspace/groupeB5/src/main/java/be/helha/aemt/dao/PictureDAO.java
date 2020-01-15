@@ -13,7 +13,6 @@ import be.helha.aemt.entities.Picture;
 import be.helha.aemt.entities.User;
 import be.helha.aemt.exception.AddDuplicateException;
 import be.helha.aemt.exception.AdminDeleteException;
-import be.helha.aemt.exception.IDNotFoundException;
 import be.helha.aemt.model.UserGroup;
 
 
@@ -42,9 +41,7 @@ public class PictureDAO {
 	return tmp.size()== 0 ? null : tmp.get(0);
 	}
 	
-	public void delete(Picture picture) throws IDNotFoundException {
-		if(targetSelect(picture)==null) 
-			throw new IDNotFoundException();
-		em.remove(picture);
+	public void delete(Picture picture) {
+		em.createQuery("DELETE FROM Picture p WHERE p.id = " + picture.getId()).executeUpdate();
 	}
 }

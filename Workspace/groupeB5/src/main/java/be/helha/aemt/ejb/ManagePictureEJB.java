@@ -9,7 +9,6 @@ import javax.ejb.Stateless;
 import be.helha.aemt.dao.PictureDAO;
 import be.helha.aemt.entities.Picture;
 import be.helha.aemt.exception.AddDuplicateException;
-import be.helha.aemt.exception.IDNotFoundException;
 
 @Stateless
 @LocalBean
@@ -34,14 +33,7 @@ public class ManagePictureEJB{
 	}
 
 	public void delete(Picture picture) {
-		// TODO Auto-generated method stub
-		try {
-			dao.delete(picture);
-		} catch (IDNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		dao.delete(picture);
 	}
 
 	
