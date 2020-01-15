@@ -1,0 +1,90 @@
+<ui:composition template="/WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+  <ui:define name="template-title">Alumni HELHa | Annuaire</ui:define>
+
+
+  <ui:define name="template-content">
+
+    <div class="container">
+      <br />
+      <div class="jumbotron">
+        <h1 class="display-4">Annuaire</h1>
+      </div>
+
+
+      <h:form>
+        <div class="alert alert-info">Options de filtre</div>
+
+        <div class="form-group">
+          <label for="targetSection">Section concernée :</label>
+          <h:selectOneMenu class="form-control" id="targetSection" required="required">
+            <f:selectItem itemValue="AD" itemLabel="Assistant(e) de Direction"></f:selectItem>
+            <f:selectItem itemValue="CG" itemLabel="Compatibilité de gestion"></f:selectItem>
+            <f:selectItem itemValue="IG" itemLabel="Informatique de gestion"></f:selectItem>
+          </h:selectOneMenu>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Nom :</label> <input type="text" class="form-control" id="lastName" />
+        </div>
+
+        <div class="form-group">
+          <label for="firstName">Prénom :</label> <input type="text" class="form-control" id="firstName" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Rechercher</button>
+        <hr />
+      </h:form>
+
+
+      <div class="alert alert-info">Résultats</div>
+
+
+
+      <div class="form-group">
+        <div class="list-group">
+          <button type="button" class="list-group-item list-group-item-action">Jean DUPONT</button>
+          <button type="button" class="list-group-item list-group-item-action">Marcel DEREE</button>
+          <button type="button" class="list-group-item list-group-item-action">Alexandra POTIER</button>
+        </div>
+      </div>
+
+
+      <div class="alert alert-info">Détails du contact</div>
+
+
+      <div class="card">
+        <br />
+        <img src="..." class="img-thumbnail rounded mx-auto d-block" alt="Photo du contact" />
+
+        <div class="card-body">
+          <h3 class="card-subtitle mb-2 text-muted">Jean DUPONT</h3>
+
+          <table class="table table-sm table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">Profession</th>
+                <th scope="col">Diplôme</th>
+                <th scope="col">Adresse e-mail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Informaticien</td>
+                <td>Bachelier</td>
+                <td>jdupont@test.be</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <a href="mailto:jdupont@test.be" class="btn btn-primary btn-sm">Contacter</a>
+        </div>
+      </div>
+
+    </div>
+
+  </ui:define>
+
+
+</ui:composition>

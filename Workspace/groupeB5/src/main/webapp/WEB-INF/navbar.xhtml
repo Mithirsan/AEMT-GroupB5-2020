@@ -1,25 +1,8 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:jsf="http://xmlns.jcp.org/jsf">
 
-  <!--   <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark">
-  
-    <a class="navbar-brand" href="#">ALUMNI</a>
-    
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto"></ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item"><a class="nav-link" href="login.html">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="admin.html">Support</a></li>
-      </ul>
-    </div>
-    
-  </nav> -->
 
   <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">ALUMNI</a>
+    <a class="navbar-brand" href="index.xhtml">ALUMNI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,18 +10,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
 
+        <li class="nav-item"><a class="nav-link" href="profile.xhtml">Profil</a></li>
 
-        <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="community.xhtml">Annuaire</a></li>
 
-        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-
-        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown"> Dropdown </a>
-
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown"> Offres </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a>
-          </div></li>
+            <a class="dropdown-item" href="#">Rechercher</a>
+            <a class="dropdown-item" href="offer_post_router.xhtml">Poster</a>
+          </div>
+        </li>
+        
+        <li class="nav-item"><a class="nav-link" href="admin.xhtml">Administration</a></li>
       </ul>
-
 
 
       <ul class="nav navbar-nav navbar-right">
