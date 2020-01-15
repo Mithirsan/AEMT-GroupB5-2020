@@ -238,6 +238,16 @@ public class User implements Serializable{
 	public void setGraduationSection(SectionEconomicHELHaMons graduationSection) {
 		this.graduationSection = graduationSection;
 	}
+	
+	
+
+	public Address getAdress() {
+		return adress;
+	}
+
+	public void setAdress(Address adress) {
+		this.adress = adress;
+	}
 
 	@Override
 	public String toString() {

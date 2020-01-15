@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import be.helha.aemt.entities.Address;
 import be.helha.aemt.entities.User;
 import be.helha.aemt.exception.AddDuplicateException;
 import be.helha.aemt.exception.AdminDeleteException;
@@ -39,6 +40,7 @@ public class UserDAO {
 	
 	public void add(User user) throws AddDuplicateException {
 		if(targetSelect(user)!=null)throw new AddDuplicateException();
+		if(targetSelect(user.getAdress())!=null)throw new AddDuplicateException();
 		try {
 			user.setPassword(toHexString(getSHA(user.getPassword())));
 			em.persist(user);
@@ -47,6 +49,26 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public Address targetSelect(Address address) {
+		Query qGet = em.createQuery("SELECT a FROM Address a WHERE "
+				+ "a.road = :aRoad AND "
+				+ "a.number = :aNum AND "
+				+ "a.box = :aBox AND "
+				+ "a.postCode = :aPCode AND "
+				+ "a.city = :aCity AND "
+				+ "a.country = :aCountry");
+		qGet.setParameter("aRoad", address.getRoad());
+		qGet.setParameter("aNum", address.getNumber());
+		qGet.setParameter("aBox", address.getBox());
+		qGet.setParameter("aPCode", address.getPostCode());
+		qGet.setParameter("aCity", address.getCity());
+		qGet.setParameter("aCountry", address.getCountry());
+		
+		List<Address> tmp = qGet.getResultList();
+		
+		return tmp.size()== 0 ? null : tmp.get(0);
 	}
 	
 	public User targetSelect(User user) {

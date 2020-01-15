@@ -18,15 +18,6 @@ public class AddressDAO {
 	@PersistenceContext(unitName = "pGroupeB5JTA")
 	private EntityManager em;
 	
-	public List<Address> findAll() {
-		return em.createQuery("SELECT a FROM Adress a").getResultList();
-	}
-	
-	public void add(Address address) throws AddDuplicateException{
-		if(targetSelect(address)!=null)throw new AddDuplicateException();
-		em.persist(address);
-	}
-	
 	public Address targetSelect(Address address) {
 		Query qGet = em.createQuery("SELECT a FROM Address a WHERE "
 				+ "a.road = :aRoad AND "
@@ -46,12 +37,4 @@ public class AddressDAO {
 		
 		return tmp.size()== 0 ? null : tmp.get(0);
 	}
-		
-	public void delete(Address address) {
-		em.createQuery("DELETE FROM Address a WHERE a.id = " + address.getId()).executeUpdate();
-	}
-		
-	public void update(Address newAddress) {
-		em.merge(newAddress);
-	} 
 }
