@@ -2,6 +2,7 @@ package be.helha.aemt.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,7 @@ public class OverView implements Serializable{
 	private Integer id;
 	private String name;
 	private String surname;
-	@OneToOne
+	@OneToOne (cascade = CascadeType.PERSIST)
 	private Picture picture;
 	private String description;
 	

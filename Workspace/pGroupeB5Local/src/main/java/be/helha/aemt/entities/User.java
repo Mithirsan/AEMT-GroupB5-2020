@@ -2,6 +2,7 @@ package be.helha.aemt.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,21 +24,45 @@ public class User implements Serializable{
 	
 	private Boolean validAccount, privateAccount;
 	
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.PERSIST)
 	private Address adress;
 	
-	@OneToOne
+	@OneToOne (cascade = CascadeType.PERSIST)
 	private Picture picture;
 
 	private UserGroup groupName;
 	
 	private SectionEconomicHELHaMons graduationSection;
 
-	public User() { }
+	public User() { 
+		this.validAccount = false;
+		this.groupName = UserGroup.GRADUATE;
+		this.privateAccount = false;
+		this.career = " ";
+		this.describtion = " ";
+		this.birtDate = " ";
+	}
 	
+	public User(String email, String password, String lastName, String firstName, String career,
+			String describtion, Picture picture, String birtDate, String graduateDate, Boolean privateAccountBoolean, SectionEconomicHELHaMons sectionEconomicHELHaMons) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.career = career;
+		this.describtion = describtion;
+		this.picture = picture;
+		this.birtDate = birtDate;
+		this.graduateDate = graduateDate;
+		this.validAccount = false;
+		this.privateAccount = privateAccountBoolean;
+		this.graduationSection = sectionEconomicHELHaMons;
+		this.groupName = UserGroup.GRADUATE;
+	}
 	
 	public User(Integer id, String email, String password, String lastName, String firstName, String career,
-			String describtion, Picture picture, String birtDate, String graduateDate, Boolean privateAccount) {
+			String describtion, Picture picture, String birtDate, String graduateDate, Boolean privateAccount, SectionEconomicHELHaMons sectionEconomicHELHaMons) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -51,7 +76,29 @@ public class User implements Serializable{
 		this.graduateDate = graduateDate;
 		this.validAccount = false;
 		this.privateAccount = privateAccount;
+		this.graduationSection = sectionEconomicHELHaMons;
 		this.groupName = UserGroup.GRADUATE;
+	}
+	
+	public User(Integer id, String email, String password, String lastName, String firstName, String career,
+			String describtion, String birtDate, String graduateDate, Boolean validAccount, Boolean privateAccount,
+			Address adress, Picture picture, UserGroup groupName, SectionEconomicHELHaMons graduationSection) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.career = career;
+		this.describtion = describtion;
+		this.birtDate = birtDate;
+		this.graduateDate = graduateDate;
+		this.validAccount = validAccount;
+		this.privateAccount = privateAccount;
+		this.adress = adress;
+		this.picture = picture;
+		this.groupName = groupName;
+		this.graduationSection = graduationSection;
 	}
 
 	@Override
@@ -190,4 +237,15 @@ public class User implements Serializable{
 	public void setGraduationSection(SectionEconomicHELHaMons graduationSection) {
 		this.graduationSection = graduationSection;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", lastName=" + lastName
+				+ ", firstName=" + firstName + ", career=" + career + ", describtion=" + describtion + ", birtDate="
+				+ birtDate + ", graduateDate=" + graduateDate + ", validAccount=" + validAccount + ", privateAccount="
+				+ privateAccount + ", adress=" + adress + ", picture=" + picture + ", groupName=" + groupName
+				+ ", graduationSection=" + graduationSection + "]";
+	}
+	
+	
 }

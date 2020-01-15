@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import be.helha.aemt.model.MessageType;
 
 @Entity
-public class Message{
+public class Message implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +30,11 @@ public class Message{
 		this.messageType = messageType;
 	}
 
-	public String getEmailEnvoyeur() {
+	public String getSendEmail() {
 		return sendEmail;
 	}
 
-	public void setEmailEnvoyeur(String emailEnvoyeur) {
+	public void setSendEmail(String emailEnvoyeur) {
 		this.sendEmail = emailEnvoyeur;
 	}
 

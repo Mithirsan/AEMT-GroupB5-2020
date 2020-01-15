@@ -3,6 +3,7 @@ package be.helha.aemt.entities;
 import java.io.Serializable;
 
 import javax.enterprise.inject.New;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,10 +25,10 @@ public class User implements Serializable{
 	
 	private Boolean validAccount, privateAccount;
 	
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.PERSIST)
 	private Address adress;
 	
-	@OneToOne
+	@OneToOne (cascade = CascadeType.PERSIST)
 	private Picture picture;
 
 	private UserGroup groupName;

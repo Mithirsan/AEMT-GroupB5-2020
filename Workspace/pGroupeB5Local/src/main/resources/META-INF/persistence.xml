@@ -3,19 +3,18 @@
 	
 	
 	<persistence-unit name="pGroupeB5Local" transaction-type="RESOURCE_LOCAL">
-		
-		<class>be.helha.aemt.entities.Address</class>
-		<class>be.helha.aemt.entities.Event</class>
-		<class>be.helha.aemt.entities.Message</class>
-		<class>be.helha.aemt.entities.News</class>
-		<class>be.helha.aemt.entities.OverView</class>
-		<class>be.helha.aemt.entities.Picture</class>
-		
-		<class>be.helha.aemt.entities.InternshipOffer</class>
-		<class>be.helha.aemt.entities.JobOffer</class>
-		<class>be.helha.aemt.entities.Offer</class>
-		<class>be.helha.aemt.entities.User</class>
-				
+	
+	<class>be.helha.aemt.entities.Address</class>
+	<class>be.helha.aemt.entities.Event</class>
+	<class>be.helha.aemt.entities.InternshipOffer</class>
+	<class>be.helha.aemt.entities.JobOffer</class>
+	<class>be.helha.aemt.entities.Offer</class>
+	<class>be.helha.aemt.entities.Message</class>
+	<class>be.helha.aemt.entities.News</class>
+	<class>be.helha.aemt.entities.OverView</class>
+	<class>be.helha.aemt.entities.Picture</class>
+	<class>be.helha.aemt.entities.User</class>
+	
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	
 		<properties>

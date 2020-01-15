@@ -19,7 +19,7 @@ public class InternshipOfferDAO {
 	private EntityManager em;
 	
 	public List<InternshipOffer> findAll(){
-		return em.createQuery("SELECT io FROM offer io").getResultList();
+		return em.createQuery("SELECT jo FROM Offer jo").getResultList();
 	}
 
 	public void add(InternshipOffer toAdd) throws AddDuplicateException{
@@ -46,20 +46,16 @@ public class InternshipOfferDAO {
 				+ "o.publishingDate = :oPubDate AND "
 				+ "o.adress = :oAddress AND "
 				+ "o.offerType = :oOType AND "
-				+ "o.targetSection = :oTSection AND "
-				+ "o.lengthPeriode = :oLenPer AND "
-				+ "o.pay = :oPay");
+				+ "o.targetSection = :oTSection");
 		qGet.setParameter("oCompany", entity.getCompany());
-		qGet.setParameter("oTittle", entity.getTitle());
+		qGet.setParameter("oTitle", entity.getTitle());
 		qGet.setParameter("oContact", entity.getContact());
 		qGet.setParameter("oEmail", entity.getEmail());
 		qGet.setParameter("oODescription", entity.getOfferDescription());
 		qGet.setParameter("oPubDate", entity.getPublishingDate());
 		qGet.setParameter("oAddress", entity.getAdress());
 		qGet.setParameter("oOType", entity.getOfferType());
-		qGet.setParameter("oTsection", entity.getTargetSection());
-		qGet.setParameter("oLenPer", entity.getLenghtPeriode());
-		qGet.setParameter("oPay", entity.getPay());
+		qGet.setParameter("oTSection", entity.getTargetSection());
 	
 		List<InternshipOffer> tmp = qGet.getResultList();
 		

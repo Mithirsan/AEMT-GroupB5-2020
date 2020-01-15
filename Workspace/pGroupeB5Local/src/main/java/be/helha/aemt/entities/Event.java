@@ -4,26 +4,24 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import be.helha.aemt.model.SectionEconomicHELHaMons;
 
 @Entity
-public class Event{
+public class Event implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String eventName;
 	private String planner;
-	@OneToMany
+	@OneToMany (cascade = CascadeType.PERSIST)
 	private List<Picture> pictures;
 	private String description;
 	private SectionEconomicHELHaMons sectionVise;
@@ -31,7 +29,6 @@ public class Event{
 	
 	public Event() {
 		// TODO Auto-generated constructor stub
-		pictures = new ArrayList<Picture>();
 	}
 
 	public Event(String eventName, String planner, String describe, SectionEconomicHELHaMons sectionVise,String date) {
@@ -41,11 +38,8 @@ public class Event{
 		this.description = describe;
 		this.sectionVise = sectionVise;
 		this.date = date;
-		pictures = new ArrayList<Picture>();
-	}
-	
-	public void add(Picture picture) {
-		this.pictures.add(picture);
+		
+		this.pictures = new ArrayList<Picture>();
 	}
 
 	public String getEventName() {
