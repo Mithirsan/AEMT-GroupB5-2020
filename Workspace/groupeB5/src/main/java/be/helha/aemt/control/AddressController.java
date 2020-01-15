@@ -17,8 +17,6 @@ public class AddressController implements Serializable{
 	@EJB
 	private ManageAddressEJB bean;
 	
-	public List<Address> doSelectAllAddressAsList(){
-		return bean.findAll();
-	}
+
 
 }

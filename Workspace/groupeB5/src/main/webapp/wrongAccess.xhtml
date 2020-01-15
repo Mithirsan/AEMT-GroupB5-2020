@@ -1,15 +1,21 @@
-<!DOCTYPE html>
-	<html 	xmlns:jsf="http://xmlns.jcp.org/jsf"
-			xmlns:h="http://xmlns.jcp.org/jsf/html"
-			xmlns:p="http://primefaces.org/ui">
-	<head>
-	<title>AccessDenied</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	</head>
-	<body>
-		<h1>Access Denied: you cannot access this page with your account</h1>
-		<h:form>
-			<h:commandButton value="retourner à l'acceuil" action="index.xhtml"></h:commandButton>
-		</h:form>
-	</body>
-</html>
+<ui:composition template="/WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+  <ui:define name="template-title">Alumni HELHa | Erreur</ui:define>
+
+
+  <ui:define name="template-content">
+
+    <div class="container">
+      <br />
+      <div class="alert alert-danger">
+        <h1 class="alert-heading display-1">Oups !</h1>
+        <p class="mb-0">Accès refusé. Vous n'avez pas les droits requis pour accéder à cette page.</p>
+        <hr />
+        <a class="btn btn-danger" href="index.xhtml">Retour à l'Accueil</a>
+      </div>
+    </div>
+
+  </ui:define>
+
+</ui:composition>
