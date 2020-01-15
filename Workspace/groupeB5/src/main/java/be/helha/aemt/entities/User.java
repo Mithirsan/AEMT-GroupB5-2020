@@ -2,6 +2,7 @@ package be.helha.aemt.entities;
 
 import java.io.Serializable;
 
+import javax.enterprise.inject.New;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,8 +36,11 @@ public class User implements Serializable{
 
 	public User() { 
 		this.validAccount = false;
-		this.privateAccount = false;
 		this.groupName = UserGroup.GRADUATE;
+		this.privateAccount = false;
+		this.career = " ";
+		this.describtion = " ";
+		this.birtDate = " ";
 	}
 	
 	public User(String email, String password, String lastName, String firstName, String career,
@@ -74,6 +78,27 @@ public class User implements Serializable{
 		this.privateAccount = privateAccount;
 		this.graduationSection = sectionEconomicHELHaMons;
 		this.groupName = UserGroup.GRADUATE;
+	}
+	
+	public User(Integer id, String email, String password, String lastName, String firstName, String career,
+			String describtion, String birtDate, String graduateDate, Boolean validAccount, Boolean privateAccount,
+			Address adress, Picture picture, UserGroup groupName, SectionEconomicHELHaMons graduationSection) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.career = career;
+		this.describtion = describtion;
+		this.birtDate = birtDate;
+		this.graduateDate = graduateDate;
+		this.validAccount = validAccount;
+		this.privateAccount = privateAccount;
+		this.adress = adress;
+		this.picture = picture;
+		this.groupName = groupName;
+		this.graduationSection = graduationSection;
 	}
 
 	@Override

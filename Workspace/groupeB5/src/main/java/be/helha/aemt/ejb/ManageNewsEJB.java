@@ -9,7 +9,6 @@ import javax.ejb.Stateless;
 import be.helha.aemt.dao.NewsDAO;
 import be.helha.aemt.entities.News;
 import be.helha.aemt.exception.AddDuplicateException;
-import be.helha.aemt.exception.IDNotFoundException;
 
 @Stateless
 @LocalBean
@@ -35,13 +34,6 @@ public class ManageNewsEJB {
 	}
 
 	public void delete(News news) {
-		// TODO Auto-generated method stub
-		try {
-			dao.delete(news);
-		} catch (IDNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		dao.delete(news);
 	}
 }

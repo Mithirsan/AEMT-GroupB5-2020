@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entities.Address;
-import be.helha.aemt.exception.IDNotFoundException;
+import be.helha.aemt.exception.AddDuplicateException;
 
 @Stateless
 @LocalBean
@@ -22,7 +22,8 @@ public class AddressDAO {
 		return em.createQuery("SELECT a FROM Adress a").getResultList();
 	}
 	
-	public void add(Address address) {
+	public void add(Address address) throws AddDuplicateException{
+		if(targetSelect(address)!=null)throw new AddDuplicateException();
 		em.persist(address);
 	}
 	
@@ -46,10 +47,8 @@ public class AddressDAO {
 		return tmp.size()== 0 ? null : tmp.get(0);
 	}
 		
-	public void delete(Address address) throws IDNotFoundException {
-		if(targetSelect(address)==null) 
-			throw new IDNotFoundException();
-		em.remove(address);
+	public void delete(Address address) {
+		em.createQuery("DELETE FROM Address a WHERE a.id = " + address.getId()).executeUpdate();
 	}
 		
 	public void update(Address newAddress) {

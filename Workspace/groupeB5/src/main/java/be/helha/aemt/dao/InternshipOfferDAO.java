@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entities.InternshipOffer;
-import be.helha.aemt.exception.IDNotFoundException;
+import be.helha.aemt.exception.AddDuplicateException;
 
 @LocalBean
 @Stateless
@@ -22,7 +22,8 @@ public class InternshipOfferDAO {
 		return em.createQuery("SELECT jo FROM Offer jo").getResultList();
 	}
 
-	public void add(InternshipOffer toAdd) {
+	public void add(InternshipOffer toAdd) throws AddDuplicateException{
+		if(targetSelect(toAdd)!=null)throw new AddDuplicateException();
 		em.persist(toAdd);
 	}
 
@@ -30,10 +31,8 @@ public class InternshipOfferDAO {
 		em.merge(toUpdate);
 	}
 
-	public void delete(InternshipOffer toDel) throws IDNotFoundException {
-		if(targetSelect(toDel)==null) 
-			throw new IDNotFoundException();
-		em.remove(toDel);
+	public void delete(InternshipOffer toDel)  {
+		em.createQuery("DELETE FROM Offer io WHERE io.id = " + toDel.getId()).executeUpdate();
 	}
 	
 	public InternshipOffer targetSelect(InternshipOffer entity) {

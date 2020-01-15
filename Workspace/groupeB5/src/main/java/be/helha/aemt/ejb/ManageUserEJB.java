@@ -10,7 +10,6 @@ import be.helha.aemt.dao.UserDAO;
 import be.helha.aemt.entities.User;
 import be.helha.aemt.exception.AddDuplicateException;
 import be.helha.aemt.exception.AdminDeleteException;
-import be.helha.aemt.exception.IDNotFoundException;
 
 @Stateless
 @LocalBean
@@ -35,9 +34,6 @@ public class ManageUserEJB{
 		// TODO Auto-generated method stub
 		try {
 			dao.delete(user);
-		} catch (IDNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (AdminDeleteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,5 +42,13 @@ public class ManageUserEJB{
 
 	public void update(User newUser) {
 		dao.update(newUser);
+	}
+
+	public List<User> findUnvalid() {
+		return dao.findInvalid();
+	}
+
+	public List<User> findValidNoAdmin() {
+		return dao.findUsualUsers();
 	}
 }

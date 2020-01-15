@@ -16,7 +16,6 @@ import javax.persistence.TypedQuery;
 import be.helha.aemt.entities.User;
 import be.helha.aemt.exception.AddDuplicateException;
 import be.helha.aemt.exception.AdminDeleteException;
-import be.helha.aemt.exception.IDNotFoundException;
 import be.helha.aemt.model.UserGroup;
 
 @Stateless
@@ -28,6 +27,14 @@ public class UserDAO {
 	
 	public List<User> findAll() {
 		return em.createQuery("SELECT u FROM User u").getResultList();
+	}
+	
+	public List<User> findInvalid() {
+		return em.createQuery("SELECT u FROM User u WHERE u.validAccount = 0").getResultList();
+	}
+	
+	public List<User> findUsualUsers() {
+		return em.createQuery("SELECT u FROM User u WHERE u.validAccount = 1").getResultList();
 	}
 	
 	public void add(User user) throws AddDuplicateException {
@@ -49,12 +56,10 @@ public class UserDAO {
 	return tmp.size()== 0 ? null : tmp.get(0);
 	}
 	
-	public void delete(User user) throws IDNotFoundException, AdminDeleteException {
-		if(targetSelect(user)==null) 
-			throw new IDNotFoundException();
+	public void delete(User user) throws AdminDeleteException {
 		if(user.getGroupName()==UserGroup.ADMIN) 
 			throw new AdminDeleteException();
-		em.remove(user);
+		em.createQuery("DELETE FROM User u WHERE u.id = " + user.getId()).executeUpdate();
 	}
 	
 	public void update(User newUser) {

@@ -8,7 +8,7 @@ import javax.ejb.Stateless;
 
 import be.helha.aemt.dao.EventDAO;
 import be.helha.aemt.entities.Event;
-import be.helha.aemt.exception.IDNotFoundException;
+import be.helha.aemt.exception.AddDuplicateException;
 
 @Stateless
 @LocalBean
@@ -22,7 +22,12 @@ public class ManageEventEJB{
 	}
 
 	public void add(Event toAdd) {
-		dao.add(toAdd);
+		try {
+			dao.add(toAdd);
+		} catch (AddDuplicateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void update(Event toUpdate) {
@@ -30,10 +35,6 @@ public class ManageEventEJB{
 	}
 
 	public void delete(Event toDel) {
-		try {
-			dao.delete(toDel);
-		} catch (IDNotFoundException e) {
-			e.printStackTrace();
-		}
+		dao.delete(toDel);
 	}
 }
