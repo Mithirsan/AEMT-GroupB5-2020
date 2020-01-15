@@ -9,7 +9,6 @@ import javax.inject.Named;
 import be.helha.aemt.ejb.ManageJobOfferEJB;
 import be.helha.aemt.entities.JobOffer;
 
-@SessionScoped
 @Named
 public class JobOfferController {
 	
