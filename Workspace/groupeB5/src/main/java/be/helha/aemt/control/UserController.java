@@ -30,6 +30,10 @@ public class UserController implements Serializable{
 		return bean.findUnvalid();
 	}
 	
+	public List<User> doSelectValidNonAdminUser(){
+		return bean.findValidNoAdmin();
+	}
+	
 	public void doAddUser() {
 		bean.add(this.user);
 		user = new User();

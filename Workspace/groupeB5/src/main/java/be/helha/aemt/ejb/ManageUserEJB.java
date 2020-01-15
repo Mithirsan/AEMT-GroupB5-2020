@@ -47,4 +47,8 @@ public class ManageUserEJB{
 	public List<User> findUnvalid() {
 		return dao.findInvalid();
 	}
+
+	public List<User> findValidNoAdmin() {
+		return dao.findUsualUsers();
+	}
 }

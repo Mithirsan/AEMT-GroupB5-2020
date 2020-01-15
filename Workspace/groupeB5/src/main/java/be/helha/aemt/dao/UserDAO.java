@@ -33,6 +33,10 @@ public class UserDAO {
 		return em.createQuery("SELECT u FROM User u WHERE u.validAccount = 0").getResultList();
 	}
 	
+	public List<User> findUsualUsers() {
+		return em.createQuery("SELECT u FROM User u WHERE u.validAccount = 1").getResultList();
+	}
+	
 	public void add(User user) throws AddDuplicateException {
 		if(targetSelect(user)!=null)throw new AddDuplicateException();
 		try {
