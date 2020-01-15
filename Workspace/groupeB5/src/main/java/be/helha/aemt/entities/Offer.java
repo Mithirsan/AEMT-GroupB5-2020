@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import be.helha.aemt.model.OfferType;
 import be.helha.aemt.model.SectionEconomicHELHaMons;
 
+
 @Entity
 public abstract class Offer {
 	
@@ -27,7 +28,9 @@ public abstract class Offer {
 	
 	private SectionEconomicHELHaMons targetSection;
 	
-	public Offer() { }
+	public Offer() {
+		this.targetSection = SectionEconomicHELHaMons.ALL;
+	}
 
 	public Offer(String company, String title, String contact, String email, String offerDescription,
 			String publishingDate, Address adress, OfferType offerType, SectionEconomicHELHaMons targetSection) {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import be.helha.aemt.ejb.ManageAddressEJB;
@@ -11,6 +12,7 @@ import be.helha.aemt.ejb.ManageInternshipOfferEJB;
 import be.helha.aemt.entities.Address;
 import be.helha.aemt.entities.InternshipOffer;
 
+@SessionScoped
 @Named
 public class InternshipOfferController implements Serializable {
 
