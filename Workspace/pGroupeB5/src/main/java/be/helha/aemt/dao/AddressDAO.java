@@ -9,10 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entities.Address;
-import be.helha.aemt.entities.User;
-import be.helha.aemt.exception.AdminDeleteException;
 import be.helha.aemt.exception.IDNotFoundException;
-import be.helha.aemt.model.UserGroup;
 
 @Stateless
 @LocalBean
@@ -29,7 +26,7 @@ public class AddressDAO {
 		em.persist(address);
 	}
 	
-	public User targetSelect(Address address) {
+	public Address targetSelect(Address address) {
 		Query qGet = em.createQuery("SELECT a FROM Address a WHERE "
 				+ "a.road = :aRoad AND "
 				+ "a.number = :aNum AND "
@@ -44,7 +41,7 @@ public class AddressDAO {
 		qGet.setParameter("aCity", address.getCity());
 		qGet.setParameter("aCountry", address.getCountry());
 		
-		List<User> tmp = qGet.getResultList();
+		List<Address> tmp = qGet.getResultList();
 		
 		return tmp.size()== 0 ? null : tmp.get(0);
 	}
@@ -58,5 +55,4 @@ public class AddressDAO {
 	public void update(Address newAddress) {
 		em.merge(newAddress);
 	} 
-	
 }

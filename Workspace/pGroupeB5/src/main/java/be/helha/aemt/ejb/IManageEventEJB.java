@@ -10,5 +10,11 @@ import be.helha.aemt.entities.Event;
 public interface IManageEventEJB {
 
 		public List<Event> findAll();
+		
+		public void add(Event toAdd);
+		
+		public void update(Event toUpdate);
+		
+		public void delete(Event toDel);
 
 }
