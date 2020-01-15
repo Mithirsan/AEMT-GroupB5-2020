@@ -23,6 +23,7 @@ public class JobOfferController implements Serializable {
 	
 	@EJB
 	private ManageJobOfferEJB beanJO;
+
 	
 	private SectionEconomicHELHaMons targetSection;
 	
@@ -76,6 +77,7 @@ public class JobOfferController implements Serializable {
 	public void doAddJobOffer() {
 		jobOffer.setOfferType(OfferType.JOB);
 		beanJO.add(jobOffer);
+		jobOffer = new JobOffer();
 	}
 
 }

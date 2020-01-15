@@ -19,6 +19,7 @@ public class InternshipOfferController implements Serializable {
 
 	@EJB
 	private ManageInternshipOfferEJB beanIO;
+
 	
 	private InternshipOffer internshipOffer;
 	
@@ -43,6 +44,9 @@ public class InternshipOfferController implements Serializable {
 	
 	public void doAddInterShipOffer() {
 		internshipOffer.setOfferType(OfferType.TRAINEE);
+
 		beanIO.add(internshipOffer);
+
+		internshipOffer = new InternshipOffer();
 	}
 }
