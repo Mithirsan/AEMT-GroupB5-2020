@@ -13,9 +13,6 @@
       </div>
 
 
-
-
-
       <h:form>
         <div class="alert alert-info">Options de filtre</div>
 
@@ -33,56 +30,79 @@
       </h:form>
 
 
-
-
-
-
       <div class="alert alert-info">Résultats</div>
 
 
-<!-- 
-      <h:dataTable value = "#{userController.filterUser()}" var = "user"
-         styleClass = "userTable"
-         headerClass = "userTableHeader"
-         rowClasses = "userTableOddRow,userTableEvenRow">
-         
-         <h:column>           
-            <f:facet name = "header">Nom</f:facet>            
+
+
+
+      [ JSF DATATABLE ICI (à adapter) ]
+<!--
+      <h:dataTable value="#{userController.filterUser()}" var="user" styleClass="userTable" headerClass="userTableHeader" rowClasses="userTableOddRow,userTableEvenRow">
+
+        <h:column>
+          <f:facet name="header">Nom</f:facet>            
             #{user.lastName}
          </h:column>
-         
-         <h:column>           
-            <f:facet name = "header">Prenom</f:facet>           
+
+        <h:column>
+          <f:facet name="header">Prenom</f:facet>           
             #{user.firstName}
          </h:column>
-         
-         <h:column>           
-            <f:facet name = "header">Section</f:facet>            
+
+        <h:column>
+          <f:facet name="header">Section</f:facet>            
             #{user.graduationSection.toString()}
          </h:column>
-         
-         <h:column>           
-            <f:facet name = "header">Annee de Diplomation</f:facet>           
+
+        <h:column>
+          <f:facet name="header">Annee de Diplomation</f:facet>           
             #{user.graduateDate}
          </h:column>
-         <h:column>           
-            <f:facet name = "header">Action</f:facet>           
+        <h:column>
+          <f:facet name="header">Action</f:facet>
           <h:form>
             <h:commandButton value="View" action="#{userController.doSelectUser(user)}"></h:commandButton>
           </h:form>
 
-         </h:column>
-      </h:dataTable> -->
+        </h:column>
+      </h:dataTable>
+-->
 
 
 
 
 
+      <div class="alert alert-info">Détails de l'annonce</div>
 
 
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-subtitle mb-2 text-muted">Développeur Web (H/F)</h3>
 
+          <table class="table table-sm table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">Entreprise</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Personne de contact</th>
+                <th scope="col">Adresse e-mail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Microsoft Belgium</td>
+                <td>103, rue Gates, 1000 - Bruxelles</td>
+                <td>Jean PETIT</td>
+                <td>jean.petit@test.be</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p class="card-text">Venez compléter notre équipe et participer au développement de solutions d'assurance innovantes pour le département NON LIFE et nos écosystèmes Mobility, Home et Family. Vous êtes responsable de plusieurs projets de développement end-to-end et vous délivrez des solutions inédites et prêtes à être lancées sur le marché. Ce sont des modifications de produits d'assurance existants et des développements de produits et services totalement nouveaux ou inconnus du marché.</p>
 
-
+        </div>
+      </div>
 
     </div>
 
