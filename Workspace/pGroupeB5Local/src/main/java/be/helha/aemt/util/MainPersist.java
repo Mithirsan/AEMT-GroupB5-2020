@@ -31,7 +31,8 @@ public class MainPersist {
 		
 		tx.begin();
 		
-		em.persist(new OverView());
+		em.persist(new JobOffer());
+		em.persist(new InternshipOffer());
 		
 		tx.commit();
 		

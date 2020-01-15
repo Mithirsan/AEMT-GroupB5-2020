@@ -33,7 +33,11 @@ public class User implements Serializable{
 	
 	private SectionEconomicHELHaMons graduationSection;
 
-	public User() { }
+	public User() { 
+		this.validAccount = false;
+		this.privateAccount = false;
+		this.groupName = UserGroup.GRADUATE;
+	}
 	
 	public User(String email, String password, String lastName, String firstName, String career,
 			String describtion, Picture picture, String birtDate, String graduateDate, Boolean privateAccountBoolean, SectionEconomicHELHaMons sectionEconomicHELHaMons) {

@@ -19,7 +19,7 @@ public class InternshipOfferDAO {
 	private EntityManager em;
 	
 	public List<InternshipOffer> findAll(){
-		return em.createQuery("SELECT jo FROM InternshipOffer jo").getResultList();
+		return em.createQuery("SELECT jo FROM Offer jo").getResultList();
 	}
 
 	public void add(InternshipOffer toAdd) {
@@ -38,7 +38,7 @@ public class InternshipOfferDAO {
 	
 	public InternshipOffer targetSelect(InternshipOffer entity) {
 		//company, title, contact, email, offerDescription, publishingDate, adress, offerType, targetSection, lenghtPeriode, pay
-		Query qGet = em.createQuery("SELECT o FROM Event o WHERE "
+		Query qGet = em.createQuery("SELECT o FROM Offer o WHERE "
 				+ "o.company = :oCompany AND "
 				+ "o.title = :oTitle AND "
 				+ "o.contact = :oContact AND "
@@ -48,7 +48,7 @@ public class InternshipOfferDAO {
 				+ "o.adress = :oAddress AND "
 				+ "o.offerType = :oOType AND "
 				+ "o.targetSection = :oTSection AND "
-				+ "o.lengthPeriode = :oLenPer AND "
+				+ "o.lenghtPeriode = :oLenPer AND "
 				+ "o.pay = :oPay");
 		qGet.setParameter("oCompany", entity.getCompany());
 		qGet.setParameter("oTittle", entity.getTitle());

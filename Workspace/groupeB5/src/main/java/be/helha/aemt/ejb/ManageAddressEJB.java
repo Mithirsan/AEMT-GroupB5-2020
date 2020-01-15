@@ -36,4 +36,9 @@ public class ManageAddressEJB{
 			e.printStackTrace();
 		}
 	}
+	
+	public Address targetSelect(Address address)
+	{
+		return dao.targetSelect(address);
+	}
 }

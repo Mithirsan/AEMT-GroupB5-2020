@@ -19,7 +19,7 @@ public class JobOfferDAO {
 	private EntityManager em;
 	
 	public List<JobOffer> findAll(){
-		return em.createQuery("SELECT jo FROM JobOffert jo").getResultList();
+		return em.createQuery("SELECT jo FROM Offert jo").getResultList();
 	}
 	
 
@@ -39,7 +39,7 @@ public class JobOfferDAO {
 	
 	public JobOffer targetSelect(JobOffer entity) {
 		//company, title, contact, email, offerDescription, publishingDate, adress, offerType, targetSection, salary, contractType
-		Query qGet = em.createQuery("SELECT o FROM Event o WHERE "
+		Query qGet = em.createQuery("SELECT o FROM Offer o WHERE "
 				+ "o.company = :oCompany AND "
 				+ "o.title = :oTitle AND "
 				+ "o.contact = :oContact AND "
