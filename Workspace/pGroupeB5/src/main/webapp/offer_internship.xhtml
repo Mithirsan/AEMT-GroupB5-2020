@@ -1,0 +1,101 @@
+<ui:composition template="/WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+  <ui:define name="template-title">Alumni HELHa | Poster offre</ui:define>
+
+
+  <ui:define name="template-content">
+    <div class="container">
+
+      <br />
+      <div class="jumbotron">
+        <h1 class="display-4">Poster une offre de stage</h1>
+      </div>
+
+      <h:form>
+        <div class="alert alert-info">Coordonnées de l'entreprise</div>
+
+        <div class="form-group">
+          <label for="company">Nom :</label> <input type="text" class="form-control" id="company" required="required" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="road">Rue :</label> <input type="text" class="form-control" id="road" required="required" />
+          </div>
+          <div class="form-group col-md-3">
+            <label for="number">Numéro :</label> <input type="text" class="form-control" id="number" maxlength="6" required="required" />
+          </div>
+          <div class="form-group col-md-3">
+            <label for="box">Boîte :</label> <input type="text" class="form-control" id="box" maxlength="6" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="postCode">Code postal :</label> <input type="text" class="form-control" id="postCode" maxlength="6" required="required" />
+          </div>
+          <div class="form-group col-md-5">
+            <label for="city">Localité :</label> <input type="text" class="form-control" id="city" required="required" />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="country">Pays :</label> <input type="text" class="form-control" id="country" required="required" />
+          </div>
+        </div>
+
+        <br />
+        <div class="alert alert-info">Description de l'offre</div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="targetSection">Section concernée :</label>
+            <h:selectOneMenu class="form-control" id="targetSection" required="required">
+              <f:selectItem itemValue="AD" itemLabel="Assistant(e) de Direction"></f:selectItem>
+              <f:selectItem itemValue="CG" itemLabel="Compatibilité de gestion"></f:selectItem>
+              <f:selectItem itemValue="IG" itemLabel="Informatique de gestion"></f:selectItem>
+            </h:selectOneMenu>
+          </div>
+          <div class="form-group col-md-8">
+            <label for="title">Profil recherché :</label> <input type="email" class="form-control" id="title" required="required" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="contact">Nom de la personne à contacter :</label> <input type="text" class="form-control" id="contact" required="required" />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="email">Adresse e-mail de contact :</label> <input type="email" class="form-control" id="email" placeholder="nom@exemple.com" required="required" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="lengthPeriod">Durée :</label> <input type="text" class="form-control" id="lengthPeriod" required="required" />
+          </div>
+          <div class="form-group col-md-2">
+            <label for="pay">Rémunération :</label>
+            <h:selectOneMenu class="form-control" id="pay" required="required">
+              <f:selectItem itemValue="false" itemLabel="Non"></f:selectItem>
+              <f:selectItem itemValue="true" itemLabel="Oui"></f:selectItem>
+            </h:selectOneMenu>
+          </div>
+          <div class="form-group col-md-5">
+            <label for="publishingDate">Date de publication :</label> <input type="text" class="form-control" id="publishingDate" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="offerDescription">Informations et renseignements utiles :</label>
+          <textarea class="form-control" id="offerDescription" placeholder="..."></textarea>
+        </div>
+
+        <hr />
+        <button type="submit" class="btn btn-primary btn-block">Poster cette offre</button>
+      </h:form>
+
+    </div>
+  </ui:define>
+
+
+</ui:composition>
