@@ -23,19 +23,11 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 
         <div class="form-group">
           <label for="targetSection">Section concernée :</label>
-          <h:selectOneMenu class="form-control" id="targetSection" required="required">
+          <h:selectOneMenu class="form-control" id="targetSection" required="required" value="#{userController.targetSection}">
             <f:selectItem itemValue="AD" itemLabel="Assistant(e) de Direction"></f:selectItem>
             <f:selectItem itemValue="CG" itemLabel="Compatibilité de gestion"></f:selectItem>
             <f:selectItem itemValue="IG" itemLabel="Informatique de gestion"></f:selectItem>
           </h:selectOneMenu>
-        </div>
-
-        <div class="form-group">
-          <label for="lastName">Nom :</label> <input type="text" class="form-control" id="lastName" />
-        </div>
-
-        <div class="form-group">
-          <label for="firstName">Prénom :</label> <input type="text" class="form-control" id="firstName" />
         </div>
 
         <button type="submit" class="btn btn-primary">Rechercher</button>
@@ -47,13 +39,38 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 
 
 
-      <div class="form-group">
-        <div class="list-group">
-          <button type="button" class="list-group-item list-group-item-action">Jean DUPONT</button>
-          <button type="button" class="list-group-item list-group-item-action">Marcel DEREE</button>
-          <button type="button" class="list-group-item list-group-item-action">Alexandra POTIER</button>
-        </div>
-      </div>
+      <h:dataTable value = "#{userController.filterUser()}" var = "user"
+			   styleClass = "userTable"
+			   headerClass = "userTableHeader"
+			   rowClasses = "userTableOddRow,userTableEvenRow">
+			   
+			   <h:column>    				
+			      <f:facet name = "header">Nom</f:facet>    				
+			      #{user.lastName}
+			   </h:column>
+			   
+			   <h:column>    				
+			      <f:facet name = "header">Prenom</f:facet>    				
+			      #{user.firstName}
+			   </h:column>
+			   
+			   <h:column>    				
+			      <f:facet name = "header">Section</f:facet>    				
+			      #{user.graduationSection.toString()}
+			   </h:column>
+			   
+			   <h:column>    				
+			      <f:facet name = "header">Annee de Diplomation</f:facet>    				
+			      #{user.graduateDate}
+			   </h:column>
+			   <h:column>    				
+			      <f:facet name = "header">Action</f:facet>    				
+					<h:form>
+						<h:commandButton value="View" action="#{userController.doSelectUser(user)}"></h:commandButton>
+					</h:form>
+
+			   </h:column>
+			</h:dataTable>
 
 
       <div class="alert alert-info">Détails du contact</div>
@@ -64,7 +81,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
         <img src="..." class="img-thumbnail rounded mx-auto d-block" alt="Photo du contact" />
 
         <div class="card-body">
-          <h3 class="card-subtitle mb-2 text-muted">Jean DUPONT</h3>
+          <h3 class="card-subtitle mb-2 text-muted">#{userController.user.lastName} #{userController.user.firstName}</h3>
 
           <table class="table table-sm table-borderless">
             <thead>
@@ -76,9 +93,9 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
             </thead>
             <tbody>
               <tr>
-                <td>Informaticien</td>
-                <td>Bachelier</td>
-                <td>jdupont@test.be</td>
+                <td>#{userController.user.career}</td>
+                <td>#{userController.user.graduationSection.toString()}</td>
+                <td>#{userController.user.email}</td>
               </tr>
             </tbody>
           </table>

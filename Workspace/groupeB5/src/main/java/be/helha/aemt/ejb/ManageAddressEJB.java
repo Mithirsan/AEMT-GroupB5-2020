@@ -30,16 +30,16 @@ public class ManageAddressEJB{
 		}
 	}
 
-	private Object targetSelect(Address address) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void update(Address newAddress) {
 		dao.update(newAddress);
 	}
 
 	public void delete(Address toDel) {
 		dao.delete(toDel);
+	}
+	
+	public Address targetSelect(Address address)
+	{
+		return dao.targetSelect(address);
 	}
 }

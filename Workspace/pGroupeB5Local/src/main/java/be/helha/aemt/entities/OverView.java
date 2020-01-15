@@ -2,13 +2,12 @@ package be.helha.aemt.entities;
 
 import java.io.Serializable;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
 
 @Entity
 public class OverView implements Serializable{
@@ -16,19 +15,15 @@ public class OverView implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
 	private String name;
 	private String surname;
-	
-	@OneToOne
+	@OneToOne (cascade = CascadeType.PERSIST)
 	private Picture picture;
-	
 	private String description;
 	
 	public OverView() {
+		// TODO Auto-generated constructor stub
 	}
-	
-	
 
 	public OverView(String name, String surname, Picture picture, String describe) {
 		super();
@@ -38,7 +33,9 @@ public class OverView implements Serializable{
 		this.description = describe;
 	}
 
-
+	public Integer getId() {
+		return id;
+	}
 
 	public String getName() {
 		return name;
