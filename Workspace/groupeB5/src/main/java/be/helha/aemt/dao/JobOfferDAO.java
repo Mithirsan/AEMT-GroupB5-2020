@@ -47,20 +47,16 @@ public class JobOfferDAO {
 				+ "o.publishingDate = :oPubDate AND "
 				+ "o.adress = :oAddress AND "
 				+ "o.offerType = :oOType AND "
-				+ "o.targetSection = :oTSection AND "
-				+ "o.salary = :oSalary AND "
-				+ "o.contractType = :oCType");
+				+ "o.targetSection = :oTSection");
 		qGet.setParameter("oCompany", entity.getCompany());
-		qGet.setParameter("oTittle", entity.getTitle());
+		qGet.setParameter("oTitle", entity.getTitle());
 		qGet.setParameter("oContact", entity.getContact());
 		qGet.setParameter("oEmail", entity.getEmail());
 		qGet.setParameter("oODescription", entity.getOfferDescription());
 		qGet.setParameter("oPubDate", entity.getPublishingDate());
 		qGet.setParameter("oAddress", entity.getAdress());
 		qGet.setParameter("oOType", entity.getOfferType());
-		qGet.setParameter("oTsection", entity.getTargetSection());
-		qGet.setParameter("oSalary", entity.getSalary());
-		qGet.setParameter("oCType", entity.getContractType());
+		qGet.setParameter("oTSection", entity.getTargetSection());
 	
 		List<JobOffer> tmp = qGet.getResultList();
 		

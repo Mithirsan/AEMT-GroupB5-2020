@@ -1,7 +1,6 @@
 package be.helha.aemt.entities;
 
-import java.io.Serializable;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +12,9 @@ import javax.persistence.ManyToOne;
 import be.helha.aemt.model.OfferType;
 import be.helha.aemt.model.SectionEconomicHELHaMons;
 
+
 @Entity
-public abstract class Offer implements Serializable{
+public abstract class Offer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,14 +22,16 @@ public abstract class Offer implements Serializable{
 	
 	private String company, title, contact, email, offerDescription, publishingDate;
 	
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.PERSIST)
 	private Address adress;
 	
 	private OfferType offerType;
 	
 	private SectionEconomicHELHaMons targetSection;
 	
-	public Offer() { }
+	public Offer() {
+		this.targetSection = SectionEconomicHELHaMons.ALL;
+	}
 
 	public Offer(String company, String title, String contact, String email, String offerDescription,
 			String publishingDate, Address adress, OfferType offerType, SectionEconomicHELHaMons targetSection) {

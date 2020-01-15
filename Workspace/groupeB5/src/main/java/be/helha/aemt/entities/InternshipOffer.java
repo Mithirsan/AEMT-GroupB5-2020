@@ -15,7 +15,9 @@ public class InternshipOffer extends Offer {
 	
 	private Boolean pay;
 	
-	public InternshipOffer() { }
+	public InternshipOffer() {
+		this.pay = false;
+	}
 
 	public InternshipOffer(String company, String title, String contact, String email, String offerDescription,
 			String publishingDate, Address adress, OfferType offerType, SectionEconomicHELHaMons targetSection,String lenghtPeriode, Boolean pay) {

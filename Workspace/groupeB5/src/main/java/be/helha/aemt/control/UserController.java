@@ -1,25 +1,61 @@
 package be.helha.aemt.control;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+
 import be.helha.aemt.ejb.ManageUserEJB;
 import be.helha.aemt.entities.User;
+import be.helha.aemt.model.SectionEconomicHELHaMons;
 
 @SessionScoped
 @Named
 public class UserController implements Serializable{
 	
 	private User user;
+	
+	private SectionEconomicHELHaMons targetSection;
+	
 	@EJB
 	private ManageUserEJB bean;
 
 	public UserController() {
 		user = new User();
+	}
+	
+	
+	
+	public SectionEconomicHELHaMons getTargetSection() {
+		return targetSection;
+	}
+
+
+
+	public void setTargetSection(SectionEconomicHELHaMons targetSection) {
+		this.targetSection = targetSection;
+	}
+
+
+
+	public List<User> filterUser()
+	{
+		List<User> tmp = new ArrayList<User>();
+		for (User user : doSelectValidNonAdminUser()) {
+			if(user.getGraduationSection()==targetSection)
+			{
+				tmp.add(user);
+			}
+		}
+		return tmp;
+	}
+	
+	public void doSelectUser(User user) {
+		this.user = user;
 	}
 	
 	public List<User> doSelectAllUserAsList() {

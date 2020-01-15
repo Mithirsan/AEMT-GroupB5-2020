@@ -1,5 +1,6 @@
 package be.helha.aemt.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public abstract class Offer {
 	
 	private String company, title, contact, email, offerDescription, publishingDate;
 	
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.PERSIST)
 	private Address adress;
 	
 	private OfferType offerType;
@@ -30,6 +31,7 @@ public abstract class Offer {
 	
 	public Offer() {
 		this.targetSection = SectionEconomicHELHaMons.ALL;
+		this.adress = new Address();
 	}
 
 	public Offer(String company, String title, String contact, String email, String offerDescription,

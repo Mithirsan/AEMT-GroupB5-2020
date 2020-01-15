@@ -7,7 +7,6 @@ import be.helha.aemt.model.SectionEconomicHELHaMons;
 
 @Entity
 public class JobOffer extends Offer {
-	
 	private Double salary;
 	
 	private String contractType;

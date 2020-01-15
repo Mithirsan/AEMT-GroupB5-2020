@@ -33,7 +33,12 @@ public class MainPersist {
 		
 		em.persist(new JobOffer());
 		em.persist(new InternshipOffer());
-		
+		em.persist(new User());
+		em.persist(new Event());
+		em.persist(new Message());
+		em.persist(new News());
+		em.persist(new OverView());
+				
 		tx.commit();
 		
 		em.close();
