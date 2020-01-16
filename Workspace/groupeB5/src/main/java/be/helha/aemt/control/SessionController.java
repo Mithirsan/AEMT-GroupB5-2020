@@ -7,6 +7,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
+import be.helha.aemt.model.SectionEconomicHELHaMons;
+import be.helha.aemt.model.UserGroup;
+
 @SessionScoped
 @Named
 public class SessionController implements Serializable {
@@ -44,6 +47,17 @@ public class SessionController implements Serializable {
 	public String doLogout() {
 		((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).invalidate();
 	    return "index.xhtml";
+	}
+	
+	public boolean doIsLogin() {
+		if(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser() != null) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean doIsRoleAdmin() {
+		return FacesContext.getCurrentInstance().getExternalContext().getRemoteUser().equals("admin");
 	}
 	
 }

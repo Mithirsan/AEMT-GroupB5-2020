@@ -55,10 +55,13 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 									#{user.graduateDate}
 								</h:column>
 								<h:column>    				
-									<f:facet name = "header">Action</f:facet>    				
-									<h:commandButton class="btn btn-success btn-sm" value="Valider" action="#{userController.doValidateUser(user)}"></h:commandButton>
-									<span> </span>
-									<h:commandButton class="btn btn-danger btn-sm" value="Supprimer" action="#{userController.doDeletUser(user)}"></h:commandButton>
+									<f:facet name = "header">Action</f:facet>   
+									<h:form>		
+										<h:commandButton class="btn btn-success btn-sm" value="Valider" action="#{userController.doValidateUser(user)}"></h:commandButton>
+									</h:form>
+									<h:form>
+										<h:commandButton class="btn btn-danger btn-sm" value="Supprimer" action="#{userController.doDeletUser(user)}"></h:commandButton>
+									</h:form>
 								</h:column>
 							</h:dataTable>
 						</div>
