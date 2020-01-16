@@ -21,7 +21,8 @@ public class SessionController implements Serializable {
 	private User user;
 	
 	public void doDeletUser() {
-		bean.delete(user);
+		bean.delete(bean.targetUser(user.getEmail()));
+		this.doLogout();
 	}
 
 	public User getUser() {
@@ -56,5 +57,6 @@ public class SessionController implements Serializable {
 	public boolean doIsRoleAdmin() {
 		return FacesContext.getCurrentInstance().getExternalContext().getRemoteUser().equals("admin");
 	}
+	
 	
 }

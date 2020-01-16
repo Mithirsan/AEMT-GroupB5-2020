@@ -44,7 +44,7 @@
         </div>
 
         <div class="form-group">
-          <label for="privateAccount">Compte privé :</label> <select class="form-control" id="privateAccount" required="required" disabled="disabled" jsf:value="#{sessionController.user.privateAccount}">
+          <label for="privateAccount">Compte privé :</label> <select class="form-control" id="privateAccount" required="required" disabled="disabled" jsf:value="#{sessionController.user.isPrivateAccount()}">
             <option>Oui</option>
             <option>Non</option>
           </select>
@@ -69,7 +69,7 @@
             </div>
             <div class="modal-body">Voulez-vous vraiment supprimer votre compte ?</div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" data-dismiss="modal" jsf:action="#{sessionController.doDeletUser()}">Oui</button>
+              <button type="submit" class="btn btn-info" data-dismiss="modal" onclick="delete()">Oui</button>
               <button type="button" class="btn btn-info" data-dismiss="modal">Non</button>
             </div>
           </div>
@@ -77,6 +77,13 @@
       </div>
 
     </div>
+    
+    <script>
+    	function delete(){
+    		#{sessionController.doDeletUser()};
+    		location.reload();
+    	}
+    </script>
 
   </ui:define>
 
