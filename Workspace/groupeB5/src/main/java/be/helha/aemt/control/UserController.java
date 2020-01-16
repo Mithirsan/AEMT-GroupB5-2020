@@ -102,4 +102,6 @@ public class UserController implements Serializable{
 	public User getUser() {
 		return this.user;
 	}
+	
+	
 }
