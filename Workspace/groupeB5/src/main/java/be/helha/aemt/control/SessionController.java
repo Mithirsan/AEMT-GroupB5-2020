@@ -20,25 +20,24 @@ public class SessionController implements Serializable {
 	private ManageUserEJB bean;
 	private User user;
 	
-	/*
-	public void doDeletUser() {
-		bean.delete(bean.targetUser(user.getEmail()));
-		this.doLogout();
+	public SessionController() {
+		// TODO Auto-generated constructor stub
+		this.user = new User();
 	}
-*/
+	
 	public User getUser() {
 		return user;
 	}
-
+	
+	public String doUpdate() {
+		user.setId(bean.targetUser(user.getEmail()).getId());
+		bean.update(user);
+		return "profile.xhtml";
+	}
 
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-	
-	public SessionController() {
-		// TODO Auto-generated constructor stub
-		this.user = new User();
 	}
 	
 	public String doLogout() {

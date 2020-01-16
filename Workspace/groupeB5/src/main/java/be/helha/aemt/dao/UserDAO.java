@@ -75,11 +75,7 @@ public class UserDAO {
 	public void update(User user) {
 		Address a = AddressDAO.targetSelect(user.getAdress(),em);
 		if(a!=null)user.setAdress(a);;
-		try {
-			user.setPassword(toHexString(getSHA(user.getPassword())));
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
+		User tmp = targetSelect(user);
 		em.merge(user);
 	} 
 	

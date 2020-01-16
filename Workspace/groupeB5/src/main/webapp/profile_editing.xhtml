@@ -22,39 +22,21 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="email">Mon adresse e-mail :</label> <input type="email" class="form-control" id="email" value="benoit.leroy@gmail.com" />
-        </div>
 
         <div class="form-group">
-          <label for="password">Mon mot de passe :</label> <input type="text" class="form-control" id="password" value="123456mdp" />
-        </div>
-
-        <div class="form-group">
-          <label for="career">Mon diplôme :</label> <input type="text" class="form-control" id="career" value="Master en sciences informatiques" />
-        </div>
-
-        <div class="form-group">
-          <label for="address">Mon adresse :</label> <input type="text" class="form-control" id="address" value="Rue de l'étang, 77 - 7000 Mons" />
+          <label for="password">Mon mot de passe :</label> <input type="password" class="form-control" id="password" jsf:value="#{sessionController.user.password}" />
         </div>
 
         <div class="form-group">
           <label for="description">Mon commentaire :</label>
-          <textarea class="form-control" id="description" placeholder="Je suis bla bla bla..."></textarea>
+          <textarea class="form-control" id="description" jsf:value="#{sessionController.user.describtion}"></textarea>
         </div>
-
-        <div class="form-group">
-          <label for="privateAccount">Compte privé :</label> <select class="form-control" id="privateAccount" required="required">
-            <option>Oui</option>
-            <option>Non</option>
-          </select>
-        </div>
+         <button type="submit" class="btn btn-success" jsf:action="#{sessionController.doUpdate()}">Enregistrer mes modifications</button>
+		<a href="profile.xhtml" class="btn btn-danger">Annuler</a>
       </h:form>
 
       <hr />
-      <button type="button" class="btn btn-success">Enregistrer mes modifications</button>
 
-      <a href="profile.xhtml" class="btn btn-danger">Annuler</a>
 
     </div>
 
