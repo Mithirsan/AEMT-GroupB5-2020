@@ -28,6 +28,11 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="nav-item"><a class="nav-link" href="login.xhtml">Connexion</a></li>
         <li class="nav-item"><a class="nav-link" href="signin.xhtml">Inscription</a></li>
+        <li class="nav-item">
+     		<h:form>
+				<h:commandButton class="nav-link" value="Déconnexion" action="#{sessionController.doLogout()}"></h:commandButton>
+			</h:form>
+        </li>
       </ul>
     </div>
   </nav>
