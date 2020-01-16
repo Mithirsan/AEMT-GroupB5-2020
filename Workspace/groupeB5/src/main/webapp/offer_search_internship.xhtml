@@ -32,12 +32,11 @@
 
       <div class="alert alert-info">Résultats</div>
 
-
-
-
-
-     <h:dataTable value="#{internshipOfferController.filterOffer()}" var="offer" styleClass="userTable" headerClass="userTableHeader" rowClasses="userTableOddRow,userTableEvenRow">
-
+     <h:dataTable value="#{internshipOfferController.filterOffer()}" var="offer"
+        styleClass = "table table-striped table-hover"
+        headerClass = "text-center font-weight-bold"
+        rowClasses = "text-center">
+        
         <h:column>
           <f:facet name="header">Entreprise</f:facet>            
             #{offer.company}
