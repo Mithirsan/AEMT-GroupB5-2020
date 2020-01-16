@@ -40,9 +40,9 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 
 
       <h:dataTable value = "#{userController.filterUser()}" var = "user"
-			   styleClass = "userTable"
-			   headerClass = "userTableHeader"
-			   rowClasses = "userTableOddRow,userTableEvenRow">
+        styleClass = "table table-striped table-hover"
+        headerClass = "text-center font-weight-bold"
+        rowClasses = "text-center">
 			   
 			   <h:column>    				
 			      <f:facet name = "header">Nom</f:facet>    				
@@ -50,7 +50,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 			   </h:column>
 			   
 			   <h:column>    				
-			      <f:facet name = "header">Prenom</f:facet>    				
+			      <f:facet name = "header">Prénom</f:facet>    				
 			      #{user.firstName}
 			   </h:column>
 			   
@@ -60,7 +60,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 			   </h:column>
 			   
 			   <h:column>    				
-			      <f:facet name = "header">Annee de Diplomation</f:facet>    				
+			      <f:facet name = "header">Année de diplomation</f:facet>    				
 			      #{user.graduateDate}
 			   </h:column>
 			   <h:column>    				
