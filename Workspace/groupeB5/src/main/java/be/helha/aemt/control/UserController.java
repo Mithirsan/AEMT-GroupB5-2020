@@ -8,7 +8,6 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import be.helha.aemt.ejb.ManageAddressEJB;
 import be.helha.aemt.ejb.ManageUserEJB;
 import be.helha.aemt.entities.User;
 import be.helha.aemt.model.SectionEconomicHELHaMons;
@@ -76,9 +75,7 @@ public class UserController implements Serializable{
 	}
 	
 	public void doAddUser() {
-
 		bean.add(this.user);
-
 		user = new User();
 	}
 	

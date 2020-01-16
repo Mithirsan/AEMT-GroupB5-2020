@@ -18,14 +18,14 @@
 
         <div class="form-group">
           <label for="targetSection">Section concernée :</label>
-          <h:selectOneMenu class="form-control" id="targetSection" required="required" value="#{userController.targetSection}">
+          <h:selectOneMenu class="form-control" id="targetSection" required="required" value="#{jobOfferController.targetSection}">
             <f:selectItem itemValue="AD" itemLabel="Assistant(e) de Direction"></f:selectItem>
             <f:selectItem itemValue="CG" itemLabel="Compatibilité de gestion"></f:selectItem>
             <f:selectItem itemValue="IG" itemLabel="Informatique de gestion"></f:selectItem>
           </h:selectOneMenu>
         </div>
 
-        <button type="submit" class="btn btn-primary">Rechercher</button>
+        <button type="submit" class="btn btn-primary" jsf:action="#{jobOfferController.doResetOffer()}">Rechercher</button>
         <hr />
       </h:form>
 
@@ -36,38 +36,37 @@
 
 
 
-      [ JSF DATATABLE ICI (à adapter) ]
-<!--
-      <h:dataTable value="#{userController.filterUser()}" var="user" styleClass="userTable" headerClass="userTableHeader" rowClasses="userTableOddRow,userTableEvenRow">
+
+      <h:dataTable value="#{jobOfferController.filterOffer()}" var="offer" styleClass="userTable" headerClass="userTableHeader" rowClasses="userTableOddRow,userTableEvenRow">
 
         <h:column>
-          <f:facet name="header">Nom</f:facet>            
-            #{user.lastName}
+          <f:facet name="header">Entreprise</f:facet>            
+            #{offer.company}
          </h:column>
 
         <h:column>
-          <f:facet name="header">Prenom</f:facet>           
-            #{user.firstName}
+          <f:facet name="header">Domaine d'activité</f:facet>           
+            #{offer.targetSection}
          </h:column>
 
         <h:column>
-          <f:facet name="header">Section</f:facet>            
-            #{user.graduationSection.toString()}
+          <f:facet name="header">Date de publication</f:facet>            
+            #{offer.publishingDate}
          </h:column>
 
         <h:column>
-          <f:facet name="header">Annee de Diplomation</f:facet>           
-            #{user.graduateDate}
+          <f:facet name="header">Lieu</f:facet>           
+            #{offer.adress.city}
          </h:column>
         <h:column>
           <f:facet name="header">Action</f:facet>
           <h:form>
-            <h:commandButton value="View" action="#{userController.doSelectUser(user)}"></h:commandButton>
+            <h:commandButton value="View" action="#{jobOfferController.doSelectJobOffer(offer)}"></h:commandButton>
           </h:form>
 
         </h:column>
       </h:dataTable>
--->
+
 
 
 
@@ -78,7 +77,7 @@
 
       <div class="card">
         <div class="card-body">
-          <h3 class="card-subtitle mb-2 text-muted">Développeur Web (H/F)</h3>
+          <h3 class="card-subtitle mb-2 text-muted">#{jobOfferController.jobOffer.title}</h3>
 
           <table class="table table-sm table-borderless">
             <thead>
@@ -91,15 +90,15 @@
             </thead>
             <tbody>
               <tr>
-                <td>Microsoft Belgium</td>
-                <td>103, rue Gates, 1000 - Bruxelles</td>
-                <td>Jean PETIT</td>
-                <td>jean.petit@test.be</td>
+                <td>#{jobOfferController.jobOffer.company}</td>
+                <td>#{jobOfferController.jobOffer.adress.toString()}</td>
+                <td>#{jobOfferController.jobOffer.contact}</td>
+                <td>#{jobOfferController.jobOffer.email}</td>
               </tr>
             </tbody>
           </table>
           
-          <p class="card-text">Venez compléter notre équipe et participer au développement de solutions d'assurance innovantes pour le département NON LIFE et nos écosystèmes Mobility, Home et Family. Vous êtes responsable de plusieurs projets de développement end-to-end et vous délivrez des solutions inédites et prêtes à être lancées sur le marché. Ce sont des modifications de produits d'assurance existants et des développements de produits et services totalement nouveaux ou inconnus du marché.</p>
+          <p class="card-text">#{jobOfferController.jobOffer.offerDescription}</p>
 
         </div>
       </div>

@@ -1,17 +1,18 @@
 package be.helha.aemt.control;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import be.helha.aemt.ejb.ManageAddressEJB;
 import be.helha.aemt.ejb.ManageInternshipOfferEJB;
-import be.helha.aemt.entities.Address;
 import be.helha.aemt.entities.InternshipOffer;
+import be.helha.aemt.entities.Offer;
 import be.helha.aemt.model.OfferType;
+import be.helha.aemt.model.SectionEconomicHELHaMons;
 
 @SessionScoped
 @Named
@@ -19,8 +20,9 @@ public class InternshipOfferController implements Serializable {
 
 	@EJB
 	private ManageInternshipOfferEJB beanIO;
-
 	
+	private SectionEconomicHELHaMons targetSection;
+
 	private InternshipOffer internshipOffer;
 	
 	public InternshipOfferController() {
@@ -28,6 +30,20 @@ public class InternshipOfferController implements Serializable {
 		internshipOffer = new InternshipOffer();
 	}
 	
+	
+	
+	public SectionEconomicHELHaMons getTargetSection() {
+		return targetSection;
+	}
+
+
+
+	public void setTargetSection(SectionEconomicHELHaMons targetSection) {
+		this.targetSection = targetSection;
+	}
+
+
+
 	public InternshipOffer getInternshipOffer() {
 		return internshipOffer;
 	}
@@ -35,6 +51,29 @@ public class InternshipOfferController implements Serializable {
 
 	public void setInternshipOffer(InternshipOffer internshipOffer) {
 		this.internshipOffer = internshipOffer;
+	}
+	
+	public void doResetOffer() {
+		this.internshipOffer = new InternshipOffer();
+	}
+	
+	public List<Offer> filterOffer(){
+		List<Offer> tmp = new ArrayList<Offer>();
+		for(InternshipOffer i : doSelectAllInternShipOfferAsList())
+		{
+			if(i instanceof InternshipOffer)
+			{
+				if(i.getTargetSection() == targetSection)
+				{
+					tmp.add(i);
+				}
+			}
+		}
+		return tmp;
+	}
+	
+	public void doSelectIntershipOffer(InternshipOffer offer) {
+		this.internshipOffer = offer;
 	}
 
 

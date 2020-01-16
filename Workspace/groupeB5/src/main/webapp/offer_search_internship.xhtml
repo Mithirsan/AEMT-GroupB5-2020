@@ -36,38 +36,35 @@
 
 
 
-      [ JSF DATATABLE ICI (à adapter) ]
-<!--
-      <h:dataTable value="#{userController.filterUser()}" var="user" styleClass="userTable" headerClass="userTableHeader" rowClasses="userTableOddRow,userTableEvenRow">
+     <h:dataTable value="#{internshipOfferController.filterOffer()}" var="offer" styleClass="userTable" headerClass="userTableHeader" rowClasses="userTableOddRow,userTableEvenRow">
 
         <h:column>
-          <f:facet name="header">Nom</f:facet>            
-            #{user.lastName}
+          <f:facet name="header">Entreprise</f:facet>            
+            #{offer.company}
          </h:column>
 
         <h:column>
-          <f:facet name="header">Prenom</f:facet>           
-            #{user.firstName}
+          <f:facet name="header">Domaine d'activité</f:facet>           
+            #{offer.targetSection}
          </h:column>
 
         <h:column>
-          <f:facet name="header">Section</f:facet>            
-            #{user.graduationSection.toString()}
+          <f:facet name="header">Date de publication</f:facet>            
+            #{offer.publishingDate}
          </h:column>
 
         <h:column>
-          <f:facet name="header">Annee de Diplomation</f:facet>           
-            #{user.graduateDate}
+          <f:facet name="header">Lieu</f:facet>           
+            #{offer.adress.city}
          </h:column>
         <h:column>
           <f:facet name="header">Action</f:facet>
           <h:form>
-            <h:commandButton value="View" action="#{userController.doSelectUser(user)}"></h:commandButton>
+            <h:commandButton value="View" action="#{internshipOfferOfferController.doSelectInternOffer(offer)}"></h:commandButton>
           </h:form>
 
         </h:column>
       </h:dataTable>
--->
 
 
 
@@ -78,7 +75,7 @@
 
       <div class="card">
         <div class="card-body">
-          <h3 class="card-subtitle mb-2 text-muted">Stage d'apprentissage IT</h3>
+          <h3 class="card-subtitle mb-2 text-muted">#{internshipController.internshipOffer.title}</h3>
 
           <table class="table table-sm table-borderless">
             <thead>
@@ -91,23 +88,21 @@
             </thead>
             <tbody>
               <tr>
-                <td>Smals</td>
-                <td>52, avenue des Déportés, 1000 - Bruxelles</td>
-                <td>Alix DENEEKER</td>
-                <td>denalix@test.be</td>
+                <td>#{internshipController.internshipOffer.company}</td>
+                <td>#{internshipController.internshipOffer.adress.toString()}</td>
+                <td>#{internshipController.internshipOffer.contact}</td>
+                <td>#{internshipController.internshipOffer.email}</td>
               </tr>
             </tbody>
           </table>
           
-          <p class="card-text">Vous êtes à la recherche d'un stage de minimum 3 mois dans le cadre de votre formation de Bachelor ou de Master en informatique.
-Créatif et responsable, vous êtes capable de prendre des initiatives afin de proposer des solutions de qualité.
-Vous faites preuve d'autonomie et avez soif d'apprendre.
-Bon team player, vous travaillez volontiers en équipe.</p>
+          <p class="card-text">#{internshipController.offerDescription}</p>
 
         </div>
       </div>
 
     </div>
+
 
 
   </ui:define>
