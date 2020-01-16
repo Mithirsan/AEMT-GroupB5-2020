@@ -11,14 +11,11 @@ import javax.persistence.Query;
 import be.helha.aemt.entities.Address;
 import be.helha.aemt.exception.AddDuplicateException;
 
-@Stateless
-@LocalBean
+
 public class AddressDAO {
 	
-	@PersistenceContext(unitName = "pGroupeB5JTA")
-	private EntityManager em;
 	
-	public Address targetSelect(Address address) {
+	public static Address targetSelect(Address address, EntityManager em) {
 		Query qGet = em.createQuery("SELECT a FROM Address a WHERE "
 				+ "a.road = :aRoad AND "
 				+ "a.number = :aNum AND "

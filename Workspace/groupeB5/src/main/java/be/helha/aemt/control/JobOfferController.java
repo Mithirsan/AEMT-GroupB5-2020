@@ -8,12 +8,10 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import be.helha.aemt.ejb.ManageAddressEJB;
 import be.helha.aemt.ejb.ManageJobOfferEJB;
-import be.helha.aemt.entities.Address;
+import be.helha.aemt.entities.InternshipOffer;
 import be.helha.aemt.entities.JobOffer;
 import be.helha.aemt.entities.Offer;
-import be.helha.aemt.entities.User;
 import be.helha.aemt.model.OfferType;
 import be.helha.aemt.model.SectionEconomicHELHaMons;
 
@@ -23,7 +21,6 @@ public class JobOfferController implements Serializable {
 	
 	@EJB
 	private ManageJobOfferEJB beanJO;
-
 	
 	private SectionEconomicHELHaMons targetSection;
 	
@@ -35,36 +32,45 @@ public class JobOfferController implements Serializable {
 	}
 	
 	
+	public SectionEconomicHELHaMons getTargetSection() {
+		return targetSection;
+	}
+
+
+
+
+	public void setTargetSection(SectionEconomicHELHaMons targetSection) {
+		this.targetSection = targetSection;
+	}
+
+
+
+
 	public void setJobOffer(JobOffer jobOffer) {
 		this.jobOffer = jobOffer;
 	}
-
 	
-	/* MODELE VENANT DE "UserController", A SUPPRIMER SI "filterOffer()" FONCTIONNE
-	public List<User> filterUser()
-	{
-		List<User> tmp = new ArrayList<User>();
-		for (User user : doSelectValidNonAdminUser()) {
-			if(user.getGraduationSection()==targetSection)
+	public void doResetOffer() {
+		this.jobOffer = new JobOffer();
+	}
+	
+	public List<Offer> filterOffer() {
+		List<Offer> tmp = new ArrayList<>();
+		for (JobOffer j : doSelectAllJobOfferAsList()) {
+			if(j instanceof JobOffer)
 			{
-				tmp.add(user);
-			}
-		}
-		return tmp;
-	}*/
-	
-	public List<JobOffer> filterOffer() {
-		List<JobOffer> tmp = new ArrayList<>();
-		for (JobOffer offer : doSelectAllJobOfferAsList()) {
-			if (offer.getTargetSection()==targetSection) {
-				tmp.add(offer);
+				if (j.getTargetSection()==targetSection) {
+					tmp.add(j);
+				}
 			}
 		}
 		return tmp;
 	}
 	
-	
-	
+	public void doSelectJobOffer(JobOffer offer)
+	{
+		this.jobOffer = offer;
+	}
 
 	public JobOffer getJobOffer() {
 		return jobOffer;

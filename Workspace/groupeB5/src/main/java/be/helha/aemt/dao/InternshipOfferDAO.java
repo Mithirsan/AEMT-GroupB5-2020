@@ -20,33 +20,13 @@ public class InternshipOfferDAO {
 	private EntityManager em;
 	
 	public List<InternshipOffer> findAll(){
-		return em.createQuery("SELECT jo FROM Offer jo").getResultList();
+		return em.createQuery("SELECT jo FROM InternshipOffer jo").getResultList();
 	}
 
 	public void add(InternshipOffer toAdd) throws AddDuplicateException{
 		if(targetSelect(toAdd)!=null)throw new AddDuplicateException();
-		if(targetSelect(toAdd.getAdress())!=null)throw new AddDuplicateException();
+		if(AddressDAO.targetSelect(toAdd.getAdress(),em)!=null)throw new AddDuplicateException();
 		em.persist(toAdd);
-	}
-	
-	public Address targetSelect(Address address) {
-		Query qGet = em.createQuery("SELECT a FROM Address a WHERE "
-				+ "a.road = :aRoad AND "
-				+ "a.number = :aNum AND "
-				+ "a.box = :aBox AND "
-				+ "a.postCode = :aPCode AND "
-				+ "a.city = :aCity AND "
-				+ "a.country = :aCountry");
-		qGet.setParameter("aRoad", address.getRoad());
-		qGet.setParameter("aNum", address.getNumber());
-		qGet.setParameter("aBox", address.getBox());
-		qGet.setParameter("aPCode", address.getPostCode());
-		qGet.setParameter("aCity", address.getCity());
-		qGet.setParameter("aCountry", address.getCountry());
-		
-		List<Address> tmp = qGet.getResultList();
-		
-		return tmp.size()== 0 ? null : tmp.get(0);
 	}
 
 	public void update(InternshipOffer toUpdate) {
@@ -59,7 +39,7 @@ public class InternshipOfferDAO {
 	
 	public InternshipOffer targetSelect(InternshipOffer entity) {
 		//company, title, contact, email, offerDescription, publishingDate, adress, offerType, targetSection, lenghtPeriode, pay
-		Query qGet = em.createQuery("SELECT o FROM Offer o WHERE "
+		Query qGet = em.createQuery("SELECT o FROM InternshipOffer o WHERE "
 				+ "o.company = :oCompany AND "
 				+ "o.title = :oTitle AND "
 				+ "o.contact = :oContact AND "
