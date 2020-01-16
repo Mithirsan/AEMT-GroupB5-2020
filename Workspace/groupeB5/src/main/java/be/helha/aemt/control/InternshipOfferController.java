@@ -57,16 +57,13 @@ public class InternshipOfferController implements Serializable {
 		this.internshipOffer = new InternshipOffer();
 	}
 	
-	public List<Offer> filterOffer(){
-		List<Offer> tmp = new ArrayList<Offer>();
+	public List<InternshipOffer> filterOffer(){
+		List<InternshipOffer> tmp = new ArrayList<>();
 		for(InternshipOffer i : doSelectAllInternShipOfferAsList())
 		{
-			if(i instanceof InternshipOffer)
+			if(i.getTargetSection() == targetSection)
 			{
-				if(i.getTargetSection() == targetSection)
-				{
-					tmp.add(i);
-				}
+				tmp.add(i);
 			}
 		}
 		return tmp;
@@ -81,11 +78,13 @@ public class InternshipOfferController implements Serializable {
 		return beanIO.findAll();
 	}
 	
-	public void doAddInterShipOffer() {
+	public boolean doAddInterShipOffer() {
 		internshipOffer.setOfferType(OfferType.TRAINEE);
 
-		beanIO.add(internshipOffer);
+		boolean tmp = beanIO.add(internshipOffer);
 
 		internshipOffer = new InternshipOffer();
+		
+		return tmp;
 	}
 }

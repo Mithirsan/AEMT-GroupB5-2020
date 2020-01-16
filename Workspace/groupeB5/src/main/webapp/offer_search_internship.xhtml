@@ -25,7 +25,7 @@
           </h:selectOneMenu>
         </div>
 
-        <button type="submit" class="btn btn-primary">Rechercher</button>
+        <button type="submit" class="btn btn-primary" jsf:action="#{internshipOfferController.doResetOffer()}">Rechercher</button>
         <hr />
       </h:form>
 
@@ -60,7 +60,7 @@
         <h:column>
           <f:facet name="header">Action</f:facet>
           <h:form>
-            <h:commandButton value="View" action="#{internshipOfferOfferController.doSelectInternOffer(offer)}"></h:commandButton>
+            <h:commandButton value="View" action="#{internshipOfferController.doSelectInternOffer(offer)}"></h:commandButton>
           </h:form>
 
         </h:column>

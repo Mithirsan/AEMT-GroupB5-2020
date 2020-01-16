@@ -23,11 +23,11 @@
         </div>
 
         <div class="form-group">
-          <label for="email">Mon adresse e-mail :</label> <input type="email" class="form-control" id="email" value="benoit.leroy@gmail.com" disabled="disabled" />
+          <label for="email">Mon adresse e-mail :</label> <input type="email" class="form-control" id="email" value="benoit.leroy@gmail.com" disabled="disabled" value="#{userController.user.email}"/>
         </div>
 
         <div class="form-group">
-          <label for="password">Mon mot de passe :</label> <input type="text" class="form-control" id="password" value="123456mdp" disabled="disabled" />
+          <label for="password">Mon mot de passe :</label> <input type="text" class="form-control" id="password" value="123456mdp" disabled="disabled" value="#{userController.user.}"/>
         </div>
 
         <div class="form-group">
@@ -69,7 +69,7 @@
             </div>
             <div class="modal-body">Voulez-vous vraiment supprimer votre compte ?</div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" data-dismiss="modal">Oui</button>
+              <button type="button" class="btn btn-info" data-dismiss="modal" jsf:action="#{sessionController.doDeletUser()}">Oui</button>
               <button type="button" class="btn btn-info" data-dismiss="modal">Non</button>
             </div>
           </div>

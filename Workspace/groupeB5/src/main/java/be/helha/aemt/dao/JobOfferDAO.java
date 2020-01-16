@@ -26,21 +26,25 @@ public class JobOfferDAO {
 
 	public void add(JobOffer toAdd) throws AddDuplicateException{
 		if(targetSelect(toAdd)!=null)throw new AddDuplicateException();
-		if(AddressDAO.targetSelect(toAdd.getAdress(),em)!=null)throw new AddDuplicateException();
+		Address a = AddressDAO.targetSelect(toAdd.getAdress(),em);
+		if(a!=null)toAdd.setAdress(a);;
 		em.persist(toAdd);
 	}
 
-	public void update(JobOffer toUpdate) {
+	public void update(JobOffer toUpdate) throws AddDuplicateException {
+		if(targetSelect(toUpdate)!=null)throw new AddDuplicateException();
+		Address a = AddressDAO.targetSelect(toUpdate.getAdress(),em);
+		if(a!=null)toUpdate.setAdress(a);;
 		em.merge(toUpdate);
 	}
 
 	public void delete(JobOffer toDel){
-		em.createQuery("DELETE FROM Offer jo WHERE jo.id = " + toDel.getId()).executeUpdate();
+		em.createQuery("DELETE FROM JobOffer jo WHERE jo.id = " + toDel.getId()).executeUpdate();
 	}
 	
 	public JobOffer targetSelect(JobOffer entity) {
 		//company, title, contact, email, offerDescription, publishingDate, adress, offerType, targetSection, salary, contractType
-		Query qGet = em.createQuery("SELECT o FROM InternshipOffer o WHERE "
+		Query qGet = em.createQuery("SELECT o FROM JobOffer o WHERE "
 				+ "o.company = :oCompany AND "
 				+ "o.title = :oTitle AND "
 				+ "o.contact = :oContact AND "

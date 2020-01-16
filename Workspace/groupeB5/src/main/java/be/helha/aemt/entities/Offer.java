@@ -29,9 +29,12 @@ public abstract class Offer {
 	
 	private SectionEconomicHELHaMons targetSection;
 	
+	private Boolean validOffer;
+	
 	public Offer() {
 		this.targetSection = SectionEconomicHELHaMons.ALL;
 		this.adress = new Address();
+		this.validOffer = false;
 	}
 
 	public Offer(String company, String title, String contact, String email, String offerDescription,
@@ -46,6 +49,7 @@ public abstract class Offer {
 		this.adress = adress;
 		this.offerType = offerType;
 		this.targetSection = targetSection;
+		this.validOffer = false;
 	}
 
 	public Offer(Integer id, String company, String title, String contact, String email, String offerDescription,
@@ -61,6 +65,7 @@ public abstract class Offer {
 		this.adress = adress;
 		this.offerType = offerType;
 		this.targetSection = targetSection;
+		this.validOffer = false;
 	}
 
 	@Override

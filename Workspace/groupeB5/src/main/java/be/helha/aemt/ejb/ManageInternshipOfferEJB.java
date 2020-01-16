@@ -22,17 +22,26 @@ public class ManageInternshipOfferEJB {
 		return dao.findAll();
 	}
 
-	public void add(InternshipOffer toAdd) {
+	public boolean add(InternshipOffer toAdd) {
 		try {
 			dao.add(toAdd);
+			return true;
 		} catch (AddDuplicateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void update(InternshipOffer toUpdate) {
-		dao.update(toUpdate);
+	public boolean update(InternshipOffer toUpdate) {
+		try {
+			dao.update(toUpdate);
+			return true;
+		} catch (AddDuplicateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public void delete(InternshipOffer toDel) {
