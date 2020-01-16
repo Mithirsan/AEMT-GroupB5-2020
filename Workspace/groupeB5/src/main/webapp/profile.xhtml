@@ -31,26 +31,18 @@
         </div>
 
         <div class="form-group">
-          <label for="address">Mon adresse :</label> <input type="text" class="form-control" id="address"  disabled="disabled" jsf:value="#{sessionController.user.adress.toString()}"/>
-        </div>
-
-        <div class="form-group">
           <label for="description">Mon commentaire :</label>
           <textarea class="form-control" id="description"  disabled="disabled" jsf:value="#{sessionController.user.describtion}"></textarea>
         </div>
 
-        <div class="form-group">
-          <label for="privateAccount">Compte privé :</label> <select class="form-control" id="privateAccount" required="required" disabled="disabled" jsf:value="#{sessionController.user.isPrivateAccount()}">
-            <option>Oui</option>
-            <option>Non</option>
-          </select>
-        </div>
       </h:form>
 
       <hr />
       <a href="profile_editing.xhtml" class="btn btn-primary">Editer mon profil</a>
 
       <button type="button" class="btn btn-primary">Télécharger le PDF</button>
+      
+      </div>
 
 	</div>
   </ui:define>
