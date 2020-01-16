@@ -23,28 +23,28 @@
         </div>
 
         <div class="form-group">
-          <label for="email">Mon adresse e-mail :</label> <input type="email" class="form-control" id="email" value="benoit.leroy@gmail.com" disabled="disabled" value="#{userController.user.email}"/>
+          <label for="email">Mon adresse e-mail :</label> <input type="email" class="form-control" id="email" value="benoit.leroy@gmail.com" disabled="disabled" jsf:value="#{sessionController.user.email}"/>
         </div>
 
         <div class="form-group">
-          <label for="password">Mon mot de passe :</label> <input type="text" class="form-control" id="password" value="123456mdp" disabled="disabled" value="#{userController.user.}"/>
+          <label for="password">Mon mot de passe :</label> <input type="text" class="form-control" id="password" value="123456mdp" disabled="disabled" jsf:value="#{sessionController.user.password}"/>
         </div>
 
         <div class="form-group">
-          <label for="career">Mon diplôme :</label> <input type="text" class="form-control" id="career" value="Master en sciences informatiques" disabled="disabled" />
+          <label for="career">Mon diplôme :</label> <input type="text" class="form-control" id="career" value="Master en sciences informatiques" disabled="disabled" jsf:value="#{sessionController.user.graduationSection.toString()}"/>
         </div>
 
         <div class="form-group">
-          <label for="address">Mon adresse :</label> <input type="text" class="form-control" id="address" value="Rue de l'étang, 77 - 7000 Mons" disabled="disabled" />
+          <label for="address">Mon adresse :</label> <input type="text" class="form-control" id="address" value="Rue de l'étang, 77 - 7000 Mons" disabled="disabled" jsf:value="#{sessionController.user.adress.toString()}"/>
         </div>
 
         <div class="form-group">
           <label for="description">Mon commentaire :</label>
-          <textarea class="form-control" id="description" placeholder="Je suis bla bla bla..." disabled="disabled"></textarea>
+          <textarea class="form-control" id="description" placeholder="Je suis bla bla bla..." disabled="disabled" jsf:value="#{sessionController.user.describtion}"></textarea>
         </div>
 
         <div class="form-group">
-          <label for="privateAccount">Compte privé :</label> <select class="form-control" id="privateAccount" required="required" disabled="disabled">
+          <label for="privateAccount">Compte privé :</label> <select class="form-control" id="privateAccount" required="required" disabled="disabled" jsf:value="#{sessionController.user.privateAccount}">
             <option>Oui</option>
             <option>Non</option>
           </select>
