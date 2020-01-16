@@ -31,12 +31,17 @@ public class InternshipOfferDAO {
 		return em.createQuery("SELECT jo FROM InternshipOffer jo WHERE jo.validOffer = 1").getResultList();
 	}
 	
+	//méthode permettant la persistence d'une offre de stage
 	public void add(InternshipOffer toAdd) throws AddDuplicateException{
+		//test permettant d'empêcher les doublons en db
 		if(targetSelect(toAdd)!=null)throw new AddDuplicateException();
+		//Instance temporaire de l'adresse récupérant l'id en plus des attributs de l'adresse de l'offre de stage
 		Address a = AddressDAO.targetSelect(toAdd.getAdress(),em);
-		if(a!=null)toAdd.setAdress(a);;
+		//Test empêchant les doublons en db mais la liaison des adresses existente au offre de stage par rapport à l'id de l'adresse
+		if(a!=null)toAdd.setAdress(a);
 		em.persist(toAdd);
 	}
+	
 
 	public void update(InternshipOffer toUpdate) throws AddDuplicateException {
 		if(targetSelect(toUpdate)!=null)throw new AddDuplicateException();

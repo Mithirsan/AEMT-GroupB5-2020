@@ -14,7 +14,7 @@ import be.helha.aemt.exception.AddDuplicateException;
 
 public class AddressDAO {
 	
-	
+	//Méthode static permettant de récupérer l'adresse appartenant à une entité
 	public static Address targetSelect(Address address, EntityManager em) {
 		Query qGet = em.createQuery("SELECT a FROM Address a WHERE "
 				+ "a.road = :aRoad AND "
