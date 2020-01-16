@@ -42,8 +42,6 @@ public class InternshipOfferController implements Serializable {
 		this.targetSection = targetSection;
 	}
 
-
-
 	public InternshipOffer getInternshipOffer() {
 		return internshipOffer;
 	}
@@ -62,7 +60,7 @@ public class InternshipOfferController implements Serializable {
 		for(InternshipOffer i : doSelectAllInternShipOfferAsList())
 		{
 			if(i.getTargetSection() == targetSection)
-			{
+			{	
 				tmp.add(i);
 			}
 		}

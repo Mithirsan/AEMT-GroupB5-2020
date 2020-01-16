@@ -18,6 +18,8 @@ public class UserController implements Serializable{
 	
 	private User user;
 	
+	private String year;
+	
 	private SectionEconomicHELHaMons targetSection;
 	
 	@EJB
@@ -30,6 +32,18 @@ public class UserController implements Serializable{
 	
 	
 	
+	public String getYear() {
+		return year;
+	}
+
+
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+
+
 	public SectionEconomicHELHaMons getTargetSection() {
 		return targetSection;
 	}
@@ -48,7 +62,15 @@ public class UserController implements Serializable{
 		for (User user : doSelectValidNonAdminUser()) {
 			if(user.getGraduationSection()==targetSection)
 			{
+				if(year != "ALL") {
+					if(user.getGraduateDate().equals(year))
+					{
+						tmp.add(user);
+					}
+				}
+				else {
 				tmp.add(user);
+				}
 			}
 		}
 		return tmp;
