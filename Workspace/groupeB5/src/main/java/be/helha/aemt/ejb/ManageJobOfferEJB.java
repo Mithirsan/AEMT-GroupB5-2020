@@ -21,17 +21,26 @@ public class ManageJobOfferEJB{
 		return dao.findAll();
 	}
 
-	public void add(JobOffer toAdd) {
+	public boolean add(JobOffer toAdd) {
 		try {
 			dao.add(toAdd);
+			return true;
 		} catch (AddDuplicateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void update(JobOffer toUpdate) {
-		dao.update(toUpdate);
+	public boolean update(JobOffer toUpdate) {
+		try {
+			dao.update(toUpdate);
+			return true;
+		} catch (AddDuplicateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return true;
+		}
 	}
 
 	public void delete(JobOffer toDel) {
