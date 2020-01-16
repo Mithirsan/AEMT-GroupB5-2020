@@ -2,55 +2,52 @@ package be.helha.aemt.control;
 
 import java.io.Serializable;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
-import be.helha.aemt.model.SectionEconomicHELHaMons;
-import be.helha.aemt.model.UserGroup;
+import be.helha.aemt.ejb.ManageUserEJB;
+import be.helha.aemt.entities.User;
+
 
 @SessionScoped
 @Named
 public class SessionController implements Serializable {
-/*	private String username;
-	private String password;
-
-	public String getUsername() {
-	  return this.username;
+	
+	@EJB
+	private ManageUserEJB bean;
+	private User user;
+	
+	public void doDeletUser() {
+		bean.delete(user);
 	}
 
-	public void setUserName(String username) {
-		this.username = username;
+	public User getUser() {
+		return user;
 	}
 
-	public String getPassword() {
-		return this.password;
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	
+	public SessionController() {
+		// TODO Auto-generated constructor stub
+		this.user = new User();
 	}
-
-	public String login () {
-	    FacesContext context = FacesContext.getCurrentInstance();
-	    HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-	    try {
-	    	request.login(this.username, this.password);
-	    } catch (ServletException e) {
-	    	context.addMessage(null, new FacesMessage("Login failed."));
-	    	return "error";
-	    }
-	    return "admin";
-	} */
-
+	
 	public String doLogout() {
 		((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).invalidate();
+		this.user = new User();
 	    return "index.xhtml";
 	}
 	
 	public boolean doIsLogin() {
 		if(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser() != null) {
+			this.user = bean.targetUser(FacesContext.getCurrentInstance().getExternalContext().getRemoteUser());
 			return true;
 		}
 		return false;

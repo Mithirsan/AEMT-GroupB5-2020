@@ -35,7 +35,7 @@
 		        <c:when test="#{sessionController.doIsLogin()}">
 					<li class="nav-item">
 			     		<h:form>
-							<h:commandButton class="nav-link" value="Déconnexion" action="#{sessionController.doLogout()}"></h:commandButton>
+							<h:commandButton class="nav-link" styleClass="btn btn-danger" value="Déconnexion" action="#{sessionController.doLogout()}"></h:commandButton>
 						</h:form>
 		        	</li>
 				</c:when>

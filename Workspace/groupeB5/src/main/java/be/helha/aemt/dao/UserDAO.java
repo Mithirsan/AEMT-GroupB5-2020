@@ -41,7 +41,7 @@ public class UserDAO {
 	public void add(User user) throws AddDuplicateException {
 		if(targetSelect(user)!=null)throw new AddDuplicateException();
 		Address a = AddressDAO.targetSelect(user.getAdress(),em);
-		if(a!=null)user.setAdress(a);;
+		if(a !=null)user.setAdress(a);
 		try {
 			user.setPassword(toHexString(getSHA(user.getPassword())));
 			em.persist(user);
@@ -58,6 +58,13 @@ public class UserDAO {
 	List<User> tmp = qGet.getResultList();
 	return tmp.size()== 0 ? null : tmp.get(0);
 	}
+	
+	public User targetSelect(String email) {
+		Query qGet = em.createQuery("SELECT u FROM User u WHERE u.email = :userEmail");
+		qGet.setParameter("userEmail", email);
+		List<User> tmp = qGet.getResultList();
+		return tmp.size()== 0 ? null : tmp.get(0);
+		}
 	
 	public void delete(User user) throws AdminDeleteException {
 		if(user.getGroupName()==UserGroup.ADMIN) 

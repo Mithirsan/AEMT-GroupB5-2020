@@ -46,6 +46,10 @@ public class ManageUserEJB{
 		dao.update(newUser);
 		return true;
 	}
+	
+	public User targetUser(String email) {
+		return dao.targetSelect(email);
+	}
 
 	public List<User> findUnvalid() {
 		return dao.findInvalid();
