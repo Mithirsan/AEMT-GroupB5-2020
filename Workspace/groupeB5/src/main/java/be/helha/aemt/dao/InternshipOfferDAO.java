@@ -23,6 +23,14 @@ public class InternshipOfferDAO {
 		return em.createQuery("SELECT jo FROM InternshipOffer jo").getResultList();
 	}
 
+	public List<InternshipOffer> findUnValid(){
+		return em.createQuery("SELECT jo FROM InternshipOffer jo WHERE jo.validOffer = 0").getResultList();
+	}
+	
+	public List<InternshipOffer> findValid(){
+		return em.createQuery("SELECT jo FROM InternshipOffer jo WHERE jo.validOffer = 1").getResultList();
+	}
+	
 	public void add(InternshipOffer toAdd) throws AddDuplicateException{
 		if(targetSelect(toAdd)!=null)throw new AddDuplicateException();
 		Address a = AddressDAO.targetSelect(toAdd.getAdress(),em);

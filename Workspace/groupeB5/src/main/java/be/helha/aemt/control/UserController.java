@@ -23,24 +23,17 @@ public class UserController implements Serializable{
 	@EJB
 	private ManageUserEJB bean;
 
-
 	public UserController() {
 		user = new User();
 	}
-	
-	
 	
 	public SectionEconomicHELHaMons getTargetSection() {
 		return targetSection;
 	}
 
-
-
 	public void setTargetSection(SectionEconomicHELHaMons targetSection) {
 		this.targetSection = targetSection;
 	}
-
-
 
 	public List<User> filterUser()
 	{
@@ -91,6 +84,7 @@ public class UserController implements Serializable{
 	public void doDeletUser(User toDel) {
 		bean.delete(toDel);
 	}
+	
 	public void doDeletUser() {
 		bean.delete(user);
 	}

@@ -209,6 +209,14 @@ public abstract class Offer {
 		this.targetSection = targetSection;
 	}
 
+	public Boolean getValidOffer() {
+		return validOffer;
+	}
+
+	public void setValidOffer(Boolean validOffer) {
+		this.validOffer = validOffer;
+	}
+
 	@Override
 	public String toString() {
 		return "Offer [id=" + id + ", company=" + company + ", title=" + title + ", contact=" + contact + ", email="

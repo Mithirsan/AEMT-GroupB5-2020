@@ -14,11 +14,12 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 			<div class="row">
 				<div class="col-2">
 					<div class="nav flex-column nav-pills" id="tabList">
-						<a class="nav-link active" id="users-tab" data-toggle="pill" href="#signin">Inscriptions à Valider</a>
+						<a class="nav-link active" id="users-tab" data-toggle="pill" href="#signin">Inscriptions à valider</a>
 						<a class="nav-link" id="signin-tab" data-toggle="pill" href="#users">Utilisateurs</a>
 						<a class="nav-link" id="messages-tab" data-toggle="pill" href="#messages">Messages</a>
 						<a class="nav-link" id="events-tab" data-toggle="pill" href="#events">Evénements</a>
-						<a class="nav-link" id="news-tab" data-toggle="pill" href="#news">News</a>
+						<a class="nav-link" id="news-tab" data-toggle="pill" href="#news">Annonces</a>
+						<a class="nav-link" id="offers-tab" data-toggle="pill" href="#offersVal">Offres à valider</a>
 						<a class="nav-link" id="offers-tab" data-toggle="pill" href="#offers">Offres</a>
 					</div>
 				</div>
@@ -66,46 +67,185 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 							</h:dataTable>
 						</div>
 						<div class="tab-pane fade" id="users">
-						<h:dataTable value = "#{userController.doSelectValidNonAdminUser()}" var = "user"
-						styleClass = "table table-striped table-hover"
-						headerClass = "text-center font-weight-bold"
-						rowClasses = "text-center">
-							<h:column>    				
-								<f:facet name = "header">Nom</f:facet>    				
-								#{user.lastName}
-							</h:column>
-							<h:column>    				
-								<f:facet name = "header">Prenom</f:facet>    				
-								#{user.firstName}
-							</h:column>
-							<h:column>    				
-								<f:facet name = "header">Date de naissance</f:facet>    				
-								#{user.birtDate}
-							</h:column>
-							<h:column>    				
-								<f:facet name = "header">Email</f:facet>    				
-								#{user.email}
-							</h:column>
-							<h:column>    				
-								<f:facet name = "header">Section</f:facet>    				
-								#{user.graduationSection.toString()}
-							</h:column>
-							<h:column>    				
-								<f:facet name = "header">Annee de Diplomation</f:facet>    				
-								#{user.graduateDate}
-							</h:column>
-							<h:column>    				
-								<f:facet name = "header">Action</f:facet>    				
-								<h:form>
-									<h:commandButton class="btn btn-danger btn-sm" value="Supprimer" action="#{userController.doDeletUser(user)}"></h:commandButton>
-								</h:form>
-							</h:column>
-						</h:dataTable>
+							<h:dataTable value = "#{userController.doSelectValidNonAdminUser()}" var = "user"
+							styleClass = "table table-striped table-hover"
+							headerClass = "text-center font-weight-bold"
+							rowClasses = "text-center">
+								<h:column>    				
+									<f:facet name = "header">Nom</f:facet>    				
+									#{user.lastName}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Prenom</f:facet>    				
+									#{user.firstName}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Date de naissance</f:facet>    				
+									#{user.birtDate}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Email</f:facet>    				
+									#{user.email}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Section</f:facet>    				
+									#{user.graduationSection.toString()}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Annee de Diplomation</f:facet>    				
+									#{user.graduateDate}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Action</f:facet>    				
+									<h:form>
+										<h:commandButton class="btn btn-danger btn-sm" value="Supprimer" action="#{userController.doDeletUser(user)}"></h:commandButton>
+									</h:form>
+								</h:column>
+							</h:dataTable>
 						</div>
 						<div class="tab-pane fade" id="messages">Messages ... (IN PROGRESS)</div>
 						<div class="tab-pane fade" id="events">événements... (IN PROGRESS)</div>
 						<div class="tab-pane fade" id="news">news... (IN PROGRESS)</div>
-						<div class="tab-pane fade" id="offers">offres... (IN PROGRESS)</div>
+						<div class="tab-pane fade" id="offersVal">
+							<h3>Offres de Stage</h3>
+							<h:dataTable value = "#{internshipOfferController.doSelectUnvalidOffer()}" var = "offer"
+							styleClass = "table table-striped table-hover"
+							headerClass = "text-center font-weight-bold"
+							rowClasses = "text-center">
+								<h:column>    				
+									<f:facet name = "header">Offre</f:facet>    				
+									#{offer.title}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Company</f:facet>    				
+									#{offer.company}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Email</f:facet>    				
+									#{offer.email}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Description</f:facet>    				
+									#{offer.offerDescription}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Section</f:facet>    				
+									#{offer.targetSection}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Action</f:facet>   
+									<h:form>		
+										<h:commandButton class="btn btn-success btn-sm" value="Valider" action="#{internshipOfferController.doValidateOffer(offer)}"></h:commandButton>
+									</h:form>
+									<h:form>
+										<h:commandButton class="btn btn-danger btn-sm" value="Supprimer" action="#{internshipOfferController.doDeleteIOffer(offer)}"></h:commandButton>
+									</h:form>
+								</h:column>
+							</h:dataTable>
+							
+							<h3>Offres d'emploi</h3>
+							<h:dataTable value = "#{jobOfferController.doSelectUnvalidOffer()}" var = "offer"
+							styleClass = "table table-striped table-hover"
+							headerClass = "text-center font-weight-bold"
+							rowClasses = "text-center">
+								<h:column>    				
+									<f:facet name = "header">Offre</f:facet>    				
+									#{offer.title}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Company</f:facet>    				
+									#{offer.company}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Email</f:facet>    				
+									#{offer.email}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Description</f:facet>    				
+									#{offer.offerDescription}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Section</f:facet>    				
+									#{offer.targetSection}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Action</f:facet>   
+									<h:form>		
+										<h:commandButton class="btn btn-success btn-sm" value="Valider" action="#{jobOfferController.doValidateOffer(offer)}"></h:commandButton>
+									</h:form>
+									<h:form>
+										<h:commandButton class="btn btn-danger btn-sm" value="Supprimer" action="#{jobOfferController.doDeleteIOffer(offer)}"></h:commandButton>
+									</h:form>
+								</h:column>
+							</h:dataTable>
+						</div>
+						<div class="tab-pane fade" id="offers">
+							<h3>Offres de Stage</h3>
+							<h:dataTable value = "#{internshipOfferController.doSelectValidOffer()}" var = "offer"
+							styleClass = "table table-striped table-hover"
+							headerClass = "text-center font-weight-bold"
+							rowClasses = "text-center">
+								<h:column>    				
+									<f:facet name = "header">Offre</f:facet>    				
+									#{offer.title}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Company</f:facet>    				
+									#{offer.company}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Email</f:facet>    				
+									#{offer.email}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Description</f:facet>    				
+									#{offer.offerDescription}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Section</f:facet>    				
+									#{offer.targetSection}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Action</f:facet>
+									<h:form>
+										<h:commandButton class="btn btn-danger btn-sm" value="Supprimer" action="#{internshipOfferController.doDeleteIOffer(offer)}"></h:commandButton>
+									</h:form>
+								</h:column>
+							</h:dataTable>
+							
+							<h3>Offres d'emploi</h3>
+							<h:dataTable value = "#{jobOfferController.doSelectValidOffer()}" var = "offer"
+							styleClass = "table table-striped table-hover"
+							headerClass = "text-center font-weight-bold"
+							rowClasses = "text-center">
+								<h:column>    				
+									<f:facet name = "header">Offre</f:facet>    				
+									#{offer.title}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Company</f:facet>    				
+									#{offer.company}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Email</f:facet>    				
+									#{offer.email}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Description</f:facet>    				
+									#{offer.offerDescription}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Section</f:facet>    				
+									#{offer.targetSection}
+								</h:column>
+								<h:column>    				
+									<f:facet name = "header">Action</f:facet>   
+									<h:form>
+										<h:commandButton class="btn btn-danger btn-sm" value="Supprimer" action="#{jobOfferController.doDeleteIOffer(offer)}"></h:commandButton>
+									</h:form>
+								</h:column>
+							</h:dataTable>
+						</div>
 					</div>
 				</div>
 			</div>

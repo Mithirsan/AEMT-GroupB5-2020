@@ -43,14 +43,8 @@ public class ManageUserEJB{
 	}
 
 	public boolean update(User newUser) {
-		try {
-			dao.update(newUser);
-			return true;
-		} catch (AddDuplicateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
+		dao.update(newUser);
+		return true;
 	}
 
 	public List<User> findUnvalid() {

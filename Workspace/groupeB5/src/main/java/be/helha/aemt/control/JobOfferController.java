@@ -12,6 +12,7 @@ import be.helha.aemt.ejb.ManageJobOfferEJB;
 import be.helha.aemt.entities.InternshipOffer;
 import be.helha.aemt.entities.JobOffer;
 import be.helha.aemt.entities.Offer;
+import be.helha.aemt.entities.User;
 import be.helha.aemt.model.OfferType;
 import be.helha.aemt.model.SectionEconomicHELHaMons;
 
@@ -30,21 +31,14 @@ public class JobOfferController implements Serializable {
 		// TODO Auto-generated constructor stub
 		jobOffer = new JobOffer();
 	}
-	
-	
+		
 	public SectionEconomicHELHaMons getTargetSection() {
 		return targetSection;
 	}
 
-
-
-
 	public void setTargetSection(SectionEconomicHELHaMons targetSection) {
 		this.targetSection = targetSection;
 	}
-
-
-
 
 	public void setJobOffer(JobOffer jobOffer) {
 		this.jobOffer = jobOffer;
@@ -69,6 +63,14 @@ public class JobOfferController implements Serializable {
 		this.jobOffer = offer;
 	}
 
+	public List<JobOffer> doSelectUnvalidOffer(){
+		return beanJO.findUnvalid();
+	}
+	
+	public List<JobOffer> doSelectValidOffer(){
+		return beanJO.findValid();
+	}
+	
 	public JobOffer getJobOffer() {
 		return jobOffer;
 	}
@@ -82,5 +84,13 @@ public class JobOfferController implements Serializable {
 		beanJO.add(jobOffer);
 		jobOffer = new JobOffer();
 	}
-
+	
+	public void doValidateOffer(JobOffer toUpdate) {
+		toUpdate.setValidOffer(true);
+		beanJO.update(toUpdate);
+	}
+	
+	public void doDeleteIOffer(JobOffer toDel) {
+		beanJO.delete(toDel);
+	}
 }

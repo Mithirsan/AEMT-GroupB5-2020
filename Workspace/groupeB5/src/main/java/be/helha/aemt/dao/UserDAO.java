@@ -65,18 +65,15 @@ public class UserDAO {
 		em.createQuery("DELETE FROM User u WHERE u.id = " + user.getId()).executeUpdate();
 	}
 	
-	public void update(User user) throws AddDuplicateException {
-		if(targetSelect(user)!=null)throw new AddDuplicateException();
+	public void update(User user) {
 		Address a = AddressDAO.targetSelect(user.getAdress(),em);
 		if(a!=null)user.setAdress(a);;
 		try {
 			user.setPassword(toHexString(getSHA(user.getPassword())));
-			em.merge(user);
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		em.merge(user);
 	} 
 	
 	

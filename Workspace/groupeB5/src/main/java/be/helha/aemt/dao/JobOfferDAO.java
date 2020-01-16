@@ -23,6 +23,13 @@ public class JobOfferDAO {
 		return em.createQuery("SELECT jo FROM JobOffer jo").getResultList();
 	}
 	
+	public List<JobOffer> findUnValid(){
+		return em.createQuery("SELECT jo FROM JobOffer jo WHERE jo.validOffer = 0").getResultList();
+	}
+	
+	public List<JobOffer> findValid(){
+		return em.createQuery("SELECT jo FROM JobOffer jo WHERE jo.validOffer = 1").getResultList();
+	}
 
 	public void add(JobOffer toAdd) throws AddDuplicateException{
 		if(targetSelect(toAdd)!=null)throw new AddDuplicateException();
