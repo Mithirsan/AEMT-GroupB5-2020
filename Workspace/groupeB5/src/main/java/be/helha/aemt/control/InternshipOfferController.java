@@ -80,14 +80,11 @@ public class InternshipOfferController implements Serializable {
 		return beanIO.findAll();
 	}
 	
-	public boolean doAddInterShipOffer() {
+	public String doAddInterShipOffer() {
 		internshipOffer.setOfferType(OfferType.TRAINEE);
-
-		boolean tmp = beanIO.add(internshipOffer);
-
+		beanIO.add(internshipOffer);
 		internshipOffer = new InternshipOffer();
-		
-		return tmp;
+		return "index.xhtml";
 	}
 	
 	public void doValidateOffer(InternshipOffer toUpdate) {

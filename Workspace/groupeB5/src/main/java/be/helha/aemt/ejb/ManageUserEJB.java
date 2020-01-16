@@ -1,5 +1,6 @@
 package be.helha.aemt.ejb;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -43,7 +44,12 @@ public class ManageUserEJB{
 	}
 
 	public boolean update(User newUser) {
-		dao.update(newUser);
+		try {
+			dao.update(newUser);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return true;
 	}
 	

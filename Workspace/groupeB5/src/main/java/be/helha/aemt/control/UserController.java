@@ -92,9 +92,10 @@ public class UserController implements Serializable{
 		return bean.findValidNoAdmin();
 	}
 	
-	public void doAddUser() {
+	public String doAddUser() {
 		bean.add(this.user);
 		user = new User();
+		return "index.xhtml";
 	}
 	
 	public void doUpdateUser(User newUser) {

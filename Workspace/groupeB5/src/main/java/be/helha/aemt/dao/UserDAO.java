@@ -72,10 +72,9 @@ public class UserDAO {
 		em.createQuery("DELETE FROM User u WHERE u.id = " + user.getId()).executeUpdate();
 	}
 	
-	public void update(User user) {
+	public void update(User user) throws NoSuchAlgorithmException {
 		Address a = AddressDAO.targetSelect(user.getAdress(),em);
-		if(a!=null)user.setAdress(a);;
-		User tmp = targetSelect(user);
+		if(a!=null)user.setAdress(a);
 		em.merge(user);
 	} 
 	

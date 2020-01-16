@@ -80,10 +80,11 @@ public class JobOfferController implements Serializable {
 		return beanJO.findAll();
 	}
 	
-	public void doAddJobOffer() {
+	public String doAddJobOffer() {
 		jobOffer.setOfferType(OfferType.JOB);
 		beanJO.add(jobOffer);
 		jobOffer = new JobOffer();
+		return "index.xhtml";
 	}
 	
 	public void doValidateOffer(JobOffer toUpdate) {
