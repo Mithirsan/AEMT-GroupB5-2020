@@ -23,24 +23,20 @@
         </div>
 
         <div class="form-group">
-          <label for="email">Mon adresse e-mail :</label> <input type="email" class="form-control" id="email" value="benoit.leroy@gmail.com" disabled="disabled" jsf:value="#{sessionController.user.email}"/>
+          <label for="email">Mon adresse e-mail :</label> <input type="email" class="form-control" id="email" disabled="disabled" jsf:value="#{sessionController.user.email}"/>
         </div>
 
         <div class="form-group">
-          <label for="password">Mon mot de passe :</label> <input type="text" class="form-control" id="password" value="123456mdp" disabled="disabled" jsf:value="#{sessionController.user.password}"/>
+          <label for="career">Mon diplôme :</label> <input type="text" class="form-control" id="career"  disabled="disabled" jsf:value="#{sessionController.user.graduationSection.toString()}"/>
         </div>
 
         <div class="form-group">
-          <label for="career">Mon diplôme :</label> <input type="text" class="form-control" id="career" value="Master en sciences informatiques" disabled="disabled" jsf:value="#{sessionController.user.graduationSection.toString()}"/>
-        </div>
-
-        <div class="form-group">
-          <label for="address">Mon adresse :</label> <input type="text" class="form-control" id="address" value="Rue de l'étang, 77 - 7000 Mons" disabled="disabled" jsf:value="#{sessionController.user.adress.toString()}"/>
+          <label for="address">Mon adresse :</label> <input type="text" class="form-control" id="address"  disabled="disabled" jsf:value="#{sessionController.user.adress.toString()}"/>
         </div>
 
         <div class="form-group">
           <label for="description">Mon commentaire :</label>
-          <textarea class="form-control" id="description" placeholder="Je suis bla bla bla..." disabled="disabled" jsf:value="#{sessionController.user.describtion}"></textarea>
+          <textarea class="form-control" id="description"  disabled="disabled" jsf:value="#{sessionController.user.describtion}"></textarea>
         </div>
 
         <div class="form-group">
@@ -55,35 +51,6 @@
       <a href="profile_editing.xhtml" class="btn btn-primary">Editer mon profil</a>
 
       <button type="button" class="btn btn-primary">Télécharger le PDF</button>
-
-      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal">Suprimer mon compte</button>
-
-      <div class="modal fade" id="modal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Avertissement</h5>
-              <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">X</span>
-              </button>
-            </div>
-            <div class="modal-body">Voulez-vous vraiment supprimer votre compte ?</div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-info" data-dismiss="modal" onclick="delete()">Oui</button>
-              <button type="button" class="btn btn-info" data-dismiss="modal">Non</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    
-    <script>
-    	function delete(){
-    		#{sessionController.doDeletUser()};
-    		location.reload();
-    	}
-    </script>
 
   </ui:define>
 

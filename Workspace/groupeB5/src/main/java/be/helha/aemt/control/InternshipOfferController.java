@@ -29,6 +29,7 @@ public class InternshipOfferController implements Serializable {
 	
 	public InternshipOfferController() {
 		internshipOffer = new InternshipOffer();
+		targetSection = SectionEconomicHELHaMons.ALL;
 	}
 	
 	public SectionEconomicHELHaMons getTargetSection() {
@@ -46,6 +47,7 @@ public class InternshipOfferController implements Serializable {
 	public void setTargetSection(SectionEconomicHELHaMons targetSection) {
 		this.targetSection = targetSection;
 	}
+	
 
 	public InternshipOffer getInternshipOffer() {
 		return internshipOffer;
@@ -62,7 +64,7 @@ public class InternshipOfferController implements Serializable {
 	public List<InternshipOffer> filterOffer(){
 		List<InternshipOffer> tmp = new ArrayList<>();
 		for(InternshipOffer i : doSelectValidOffer()) {
-			if(i.getTargetSection() == targetSection) {
+			if(i.getTargetSection() == targetSection || targetSection == SectionEconomicHELHaMons.ALL) {
 				tmp.add(i);
 			}
 		}

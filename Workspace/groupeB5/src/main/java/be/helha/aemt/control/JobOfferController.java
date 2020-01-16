@@ -30,6 +30,7 @@ public class JobOfferController implements Serializable {
 	public JobOfferController() {
 		// TODO Auto-generated constructor stub
 		jobOffer = new JobOffer();
+		targetSection = SectionEconomicHELHaMons.ALL;
 	}
 		
 	public SectionEconomicHELHaMons getTargetSection() {
@@ -51,7 +52,7 @@ public class JobOfferController implements Serializable {
 	public List<Offer> filterOffer() {
 		List<Offer> tmp = new ArrayList<>();
 		for (JobOffer j : doSelectValidOffer()) {
-			if (j.getTargetSection()==targetSection) {
+			if (j.getTargetSection()==targetSection || targetSection == SectionEconomicHELHaMons.ALL) {
 					tmp.add(j);
 			}
 		}

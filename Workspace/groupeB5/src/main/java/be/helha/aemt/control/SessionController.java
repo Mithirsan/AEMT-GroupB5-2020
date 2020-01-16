@@ -20,11 +20,12 @@ public class SessionController implements Serializable {
 	private ManageUserEJB bean;
 	private User user;
 	
+	/*
 	public void doDeletUser() {
 		bean.delete(bean.targetUser(user.getEmail()));
 		this.doLogout();
 	}
-
+*/
 	public User getUser() {
 		return user;
 	}
