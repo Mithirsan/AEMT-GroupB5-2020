@@ -41,7 +41,7 @@ public class UserDAO {
 	public void add(User user) throws AddDuplicateException {
 		if(targetSelect(user)!=null)throw new AddDuplicateException();
 		Address a = AddressDAO.targetSelect(user.getAdress(),em);
-		if(a.getCity()!=null)user.setAdress(a);;
+		if(a !=null)user.setAdress(a);
 		try {
 			user.setPassword(toHexString(getSHA(user.getPassword())));
 			em.persist(user);

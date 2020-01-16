@@ -16,7 +16,26 @@ public class Address implements Serializable{
 	
 	private String road, number, box, postCode, city, country;
 	
-	public Address() { }
+	public Address() { 
+		this.road = "unkwnow";
+		this.number = "unkwnow";
+		this.box = "unkwnow";
+		this.postCode = "unkwnow";
+		this.city = "unkwnow";
+		this.country = "unkwnow";
+	}
+	
+	
+	public Address(Integer id,String road, String number, String box, String postCode, String city, String country) {
+		super();
+		this.id = id;
+		this.road = road;
+		this.number = number;
+		this.box = box;
+		this.postCode = postCode;
+		this.city = city;
+		this.country = country;
+	}
 
 	public Address(String road, String number, String box, String postCode, String city, String country) {
 		super();
