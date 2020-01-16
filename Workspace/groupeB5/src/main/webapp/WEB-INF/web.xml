@@ -20,18 +20,7 @@
 			<role-name>1</role-name>
 		</auth-constraint>
 	</security-constraint>
-	<security-constraint>
-		<display-name>Profile Pages</display-name>
-		<web-resource-collection>
-			<web-resource-name>Profile Area</web-resource-name>
-			<description></description>
-			<url-pattern>/profile.xhtml</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<description></description>
-			<role-name>1</role-name>
-		</auth-constraint>
-	</security-constraint>
+	
 	<security-constraint>
 		<display-name>Community Pages</display-name>
 		<web-resource-collection>
@@ -150,22 +139,10 @@
 	</security-constraint>
 	
 	<!-- USER PAGES -->
-	<security-constraint>
-		<display-name>Profile Pages</display-name>
+		<security-constraint>
+		<display-name>Community Pages for User</display-name>
 		<web-resource-collection>
-			<web-resource-name>Profile Area</web-resource-name>
-			<description></description>
-			<url-pattern>/profile.xhtml</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<description></description>
-			<role-name>0</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<security-constraint>
-		<display-name>Community Pages</display-name>
-		<web-resource-collection>
-			<web-resource-name>Community Area</web-resource-name>
+			<web-resource-name>Community Area for User</web-resource-name>
 			<description></description>
 			<url-pattern>/community.xhtml</url-pattern>
 		</web-resource-collection>
@@ -176,9 +153,9 @@
 	</security-constraint>
 	
 	<security-constraint>
-		<display-name>Post Offer In Pages</display-name>
+		<display-name>Post Offer In Pages for User</display-name>
 		<web-resource-collection>
-			<web-resource-name>Post Offer In Area</web-resource-name>
+			<web-resource-name>Post Offer In Area for User</web-resource-name>
 			<description></description>
 			<url-pattern>/offer_post_internship.xhtml</url-pattern>
 		</web-resource-collection>
@@ -189,9 +166,9 @@
 	</security-constraint>
 	
 	<security-constraint>
-		<display-name>Post Offer J Pages</display-name>
+		<display-name>Post Offer J Pages for User</display-name>
 		<web-resource-collection>
-			<web-resource-name>Post Offer J Area</web-resource-name>
+			<web-resource-name>Post Offer J Area for User</web-resource-name>
 			<description></description>
 			<url-pattern>/offer_post_job.xhtml</url-pattern>
 		</web-resource-collection>
@@ -202,9 +179,9 @@
 	</security-constraint>
 	
 	<security-constraint>
-		<display-name>Post Offer router Pages</display-name>
+		<display-name>Post Offer router Pages for User</display-name>
 		<web-resource-collection>
-			<web-resource-name>Post Offer router Area</web-resource-name>
+			<web-resource-name>Post Offer router Area for User</web-resource-name>
 			<description></description>
 			<url-pattern>/offer_post_router.xhtml</url-pattern>
 		</web-resource-collection>
@@ -215,9 +192,9 @@
 	</security-constraint>
 
 	<security-constraint>
-		<display-name>Search Offer In Pages</display-name>
+		<display-name>Search Offer In Pages for User</display-name>
 		<web-resource-collection>
-			<web-resource-name>Search Offer In Area</web-resource-name>
+			<web-resource-name>Search Offer In Area for User</web-resource-name>
 			<description></description>
 			<url-pattern>/offer_search_internship.xhtml</url-pattern>
 		</web-resource-collection>
@@ -228,9 +205,9 @@
 	</security-constraint>
 	
 	<security-constraint>
-		<display-name>Search Offer J Pages</display-name>
+		<display-name>Search Offer J Pages for User</display-name>
 		<web-resource-collection>
-			<web-resource-name>Search Offer J Area</web-resource-name>
+			<web-resource-name>Search Offer J Area for User</web-resource-name>
 			<description></description>
 			<url-pattern>/offer_search_job.xhtml</url-pattern>
 		</web-resource-collection>
@@ -241,9 +218,9 @@
 	</security-constraint>
 	
 	<security-constraint>
-		<display-name>Search Offer Router Pages</display-name>
+		<display-name>Search Offer Router Pages for User</display-name>
 		<web-resource-collection>
-			<web-resource-name>Search Offer Router Area</web-resource-name>
+			<web-resource-name>Search Offer Router Area for User</web-resource-name>
 			<description></description>
 			<url-pattern>/offer_search_router.xhtml</url-pattern>
 		</web-resource-collection>
@@ -254,9 +231,9 @@
 	</security-constraint>
 	
 	<security-constraint>
-		<display-name>Profile Editing Pages</display-name>
+		<display-name>Profile Editing Pages for User</display-name>
 		<web-resource-collection>
-			<web-resource-name>Profile Editing Area</web-resource-name>
+			<web-resource-name>Profile Editing Area for User</web-resource-name>
 			<description></description>
 			<url-pattern>/profile_editing.xhtml</url-pattern>
 		</web-resource-collection>
@@ -267,9 +244,9 @@
 	</security-constraint>
 	
 	<security-constraint>
-		<display-name>Profile Pages</display-name>
+		<display-name>Profile Pages for User</display-name>
 		<web-resource-collection>
-			<web-resource-name>Profile Area</web-resource-name>
+			<web-resource-name>Profile Area for User</web-resource-name>
 			<description></description>
 			<url-pattern>/profile.xhtml</url-pattern>
 		</web-resource-collection>
