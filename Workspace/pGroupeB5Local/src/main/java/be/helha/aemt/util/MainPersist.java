@@ -23,14 +23,15 @@ import be.helha.aemt.model.SectionEconomicHELHaMons;
 public class MainPersist {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pGroupeB5Local");
 		EntityManager em = emf.createEntityManager();		
 		EntityTransaction tx = em.getTransaction();
 		
 		tx.begin();
-		
+/*		
 		em.persist(new JobOffer());
 		em.persist(new InternshipOffer());
 		em.persist(new User());
@@ -38,7 +39,7 @@ public class MainPersist {
 		em.persist(new Message());
 		em.persist(new News());
 		em.persist(new OverView());
-				
+*/				
 		tx.commit();
 		
 		em.close();

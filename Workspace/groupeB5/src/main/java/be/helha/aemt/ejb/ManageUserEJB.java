@@ -30,18 +30,27 @@ public class ManageUserEJB{
 		}
 	}
 	
-	public void delete(User user) {
+	public boolean delete(User user) {
 		// TODO Auto-generated method stub
 		try {
 			dao.delete(user);
+			return true;
 		} catch (AdminDeleteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void update(User newUser) {
-		dao.update(newUser);
+	public boolean update(User newUser) {
+		try {
+			dao.update(newUser);
+			return true;
+		} catch (AddDuplicateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public List<User> findUnvalid() {

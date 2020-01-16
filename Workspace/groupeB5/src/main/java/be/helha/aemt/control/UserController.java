@@ -91,6 +91,9 @@ public class UserController implements Serializable{
 	public void doDeletUser(User toDel) {
 		bean.delete(toDel);
 	}
+	public void doDeletUser() {
+		bean.delete(user);
+	}
 	
 	public void setUser(User user) {
 		this.user = user;

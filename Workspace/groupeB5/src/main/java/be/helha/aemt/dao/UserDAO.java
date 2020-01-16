@@ -40,7 +40,8 @@ public class UserDAO {
 	
 	public void add(User user) throws AddDuplicateException {
 		if(targetSelect(user)!=null)throw new AddDuplicateException();
-		if(AddressDAO.targetSelect(user.getAdress(),em)!=null)throw new AddDuplicateException();
+		Address a = AddressDAO.targetSelect(user.getAdress(),em);
+		if(a!=null)user.setAdress(a);;
 		try {
 			user.setPassword(toHexString(getSHA(user.getPassword())));
 			em.persist(user);
@@ -64,8 +65,18 @@ public class UserDAO {
 		em.createQuery("DELETE FROM User u WHERE u.id = " + user.getId()).executeUpdate();
 	}
 	
-	public void update(User newUser) {
-		em.merge(newUser);
+	public void update(User user) throws AddDuplicateException {
+		if(targetSelect(user)!=null)throw new AddDuplicateException();
+		Address a = AddressDAO.targetSelect(user.getAdress(),em);
+		if(a!=null)user.setAdress(a);;
+		try {
+			user.setPassword(toHexString(getSHA(user.getPassword())));
+			em.merge(user);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	} 
 	
 	

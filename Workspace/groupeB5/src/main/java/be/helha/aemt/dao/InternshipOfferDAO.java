@@ -25,16 +25,20 @@ public class InternshipOfferDAO {
 
 	public void add(InternshipOffer toAdd) throws AddDuplicateException{
 		if(targetSelect(toAdd)!=null)throw new AddDuplicateException();
-		if(AddressDAO.targetSelect(toAdd.getAdress(),em)!=null)throw new AddDuplicateException();
+		Address a = AddressDAO.targetSelect(toAdd.getAdress(),em);
+		if(a!=null)toAdd.setAdress(a);;
 		em.persist(toAdd);
 	}
 
-	public void update(InternshipOffer toUpdate) {
+	public void update(InternshipOffer toUpdate) throws AddDuplicateException {
+		if(targetSelect(toUpdate)!=null)throw new AddDuplicateException();
+		Address a = AddressDAO.targetSelect(toUpdate.getAdress(),em);
+		if(a!=null)toUpdate.setAdress(a);;
 		em.merge(toUpdate);
 	}
 
 	public void delete(InternshipOffer toDel)  {
-		em.createQuery("DELETE FROM Offer io WHERE io.id = " + toDel.getId()).executeUpdate();
+		em.createQuery("DELETE FROM InternshipOffer io WHERE io.id = " + toDel.getId()).executeUpdate();
 	}
 	
 	public InternshipOffer targetSelect(InternshipOffer entity) {

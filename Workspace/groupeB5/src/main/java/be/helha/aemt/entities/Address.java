@@ -141,7 +141,7 @@ public class Address implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Adress [id=" + id + ", road=" + road + ", number=" + number + ", box=" + box + ", postCode=" + postCode
-				+ ", city=" + city + ", country=" + country + "]";
+		return road +" n° "+ number + "\n" + postCode
+				+ " " + city + "\n" + country;
 	}
 }
