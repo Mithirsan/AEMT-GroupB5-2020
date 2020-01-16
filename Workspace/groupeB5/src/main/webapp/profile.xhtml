@@ -6,43 +6,77 @@
 
   <ui:define name="template-content">
 
-
     <div class="container">
       <br />
       <div class="jumbotron">
-        <h1 class="display-4">Aperçu de mon profil</h1>
+        <h1 class="display-4">Gestion de mon profil</h1>
       </div>
-
-
-      <!-- a changer = mdp, carrer, descri, addresse, private accoutn, photo -->
-
+      
       <h:form>
         <div class="form-group">
-          <label for="email">Adresse e-mail :</label> <input type="email" class="form-control" id="email" value="benoit.leroy@gmail.com" disabled="disabled" />
+          <label for="picture">Ma photo :</label>
+          <div class="text-center">
+            <img src="..." class="img-thumbnail" id="picture" alt="Ma photo" />
+            <br />
+            <input type="file" class="btn btn-outline-primary btn-sm" id="file" disabled="disabled"/>
+          </div>
         </div>
 
         <div class="form-group">
-          <label for="lastName">Diplôme :</label> <input type="text" class="form-control" id="lastName" value="Master en sciences informatiques" disabled="disabled" />
+          <label for="email">Mon adresse e-mail :</label> <input type="email" class="form-control" id="email" value="benoit.leroy@gmail.com" disabled="disabled" />
         </div>
 
+        <div class="form-group">
+          <label for="password">Mon mot de passe :</label> <input type="text" class="form-control" id="password" value="123456mdp" disabled="disabled" />
+        </div>
 
+        <div class="form-group">
+          <label for="career">Mon diplôme :</label> <input type="text" class="form-control" id="career" value="Master en sciences informatiques" disabled="disabled" />
+        </div>
 
-        <button type="submit" class="btn btn-primary">Rechercher</button>
-        <hr />
+        <div class="form-group">
+          <label for="address">Mon adresse :</label> <input type="text" class="form-control" id="address" value="Rue de l'étang, 77 - 7000 Mons" disabled="disabled" />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Mon commentaire :</label>
+          <textarea class="form-control" id="description" placeholder="Je suis bla bla bla..." disabled="disabled"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="privateAccount">Compte privé :</label> <select class="form-control" id="privateAccount" required="required" disabled="disabled">
+            <option>Oui</option>
+            <option>Non</option>
+          </select>
+        </div>
       </h:form>
 
+      <hr />
+      <a href="profile_editing.xhtml" class="btn btn-primary">Editer mon profil</a>
 
+      <button type="button" class="btn btn-primary">Télécharger le PDF</button>
 
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal">Suprimer mon compte</button>
 
-
-
-
-
+      <div class="modal fade" id="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Avertissement</h5>
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">X</span>
+              </button>
+            </div>
+            <div class="modal-body">Voulez-vous vraiment supprimer votre compte ?</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-dismiss="modal">Oui</button>
+              <button type="button" class="btn btn-info" data-dismiss="modal">Non</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
-
-
-
 
   </ui:define>
 
