@@ -18,7 +18,7 @@
 
         <div class="form-group">
           <label for="targetSection">Section concernée :</label>
-          <h:selectOneMenu class="form-control" id="targetSection" required="required" value="#{userController.targetSection}">
+          <h:selectOneMenu class="form-control" id="targetSection" required="required" value="#{internshipOfferController.targetSection}">
             <f:selectItem itemValue="AD" itemLabel="Assistant(e) de Direction"></f:selectItem>
             <f:selectItem itemValue="CG" itemLabel="Compatibilité de gestion"></f:selectItem>
             <f:selectItem itemValue="IG" itemLabel="Informatique de gestion"></f:selectItem>
@@ -44,7 +44,7 @@
 
         <h:column>
           <f:facet name="header">Domaine d'activité</f:facet>           
-            #{offer.targetSection}
+            #{offer.targetSection.toString()}
          </h:column>
 
         <h:column>
