@@ -62,14 +62,15 @@ public class UserController implements Serializable{
 		for (User user : doSelectValidNonAdminUser()) {
 			if(user.getGraduationSection()==targetSection)
 			{
-				if(year != "ALL") {
+				if(!year.equals("ALL")) {
 					if(user.getGraduateDate().equals(year))
 					{
 						tmp.add(user);
 					}
 				}
-				else {
-				tmp.add(user);
+				if(year.equals("ALL"))
+				{
+					tmp.add(user);
 				}
 			}
 		}
