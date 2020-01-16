@@ -50,7 +50,7 @@ public class JobOfferController implements Serializable {
 	
 	public List<Offer> filterOffer() {
 		List<Offer> tmp = new ArrayList<>();
-		for (JobOffer j : doSelectAllJobOfferAsList()) {
+		for (JobOffer j : doSelectValidOffer()) {
 			if (j.getTargetSection()==targetSection) {
 					tmp.add(j);
 			}

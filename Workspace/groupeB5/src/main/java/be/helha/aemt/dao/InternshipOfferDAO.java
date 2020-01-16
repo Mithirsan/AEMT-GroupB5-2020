@@ -60,7 +60,8 @@ public class InternshipOfferDAO {
 				+ "o.publishingDate = :oPubDate AND "
 				+ "o.adress = :oAddress AND "
 				+ "o.offerType = :oOType AND "
-				+ "o.targetSection = :oTSection");
+				+ "o.targetSection = :oTSection AND " 
+				+ "o.validOffer = :oVOffer");
 		qGet.setParameter("oCompany", entity.getCompany());
 		qGet.setParameter("oTitle", entity.getTitle());
 		qGet.setParameter("oContact", entity.getContact());
@@ -70,6 +71,7 @@ public class InternshipOfferDAO {
 		qGet.setParameter("oAddress", entity.getAdress());
 		qGet.setParameter("oOType", entity.getOfferType());
 		qGet.setParameter("oTSection", entity.getTargetSection());
+		qGet.setParameter("oVOffer", entity.getValidOffer());
 	
 		List<InternshipOffer> tmp = qGet.getResultList();
 		

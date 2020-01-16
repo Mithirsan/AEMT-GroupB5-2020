@@ -40,12 +40,7 @@ public class InternshipOfferController implements Serializable {
 	}
 	
 	public List<InternshipOffer> doSelectValidOffer(){
-		List<InternshipOffer> tmp = new ArrayList<InternshipOffer>();
-		for(InternshipOffer iOffer : beanIO.findValid()) {
-			iOffer.setOfferDescription(iOffer.getOfferDescription().substring(0, 50));
-			
-		}
-		return tmp;
+		return beanIO.findValid();
 	}
 
 	public void setTargetSection(SectionEconomicHELHaMons targetSection) {
@@ -66,10 +61,8 @@ public class InternshipOfferController implements Serializable {
 	
 	public List<InternshipOffer> filterOffer(){
 		List<InternshipOffer> tmp = new ArrayList<>();
-		for(InternshipOffer i : doSelectAllInternShipOfferAsList())
-		{
-			if(i.getTargetSection() == targetSection)
-			{
+		for(InternshipOffer i : doSelectValidOffer()) {
+			if(i.getTargetSection() == targetSection) {
 				tmp.add(i);
 			}
 		}
