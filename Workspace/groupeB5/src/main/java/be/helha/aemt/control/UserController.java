@@ -25,7 +25,6 @@ public class UserController implements Serializable{
 	@EJB
 	private ManageUserEJB bean;
 
-
 	public UserController() {
 		user = new User();
 	}
@@ -48,13 +47,9 @@ public class UserController implements Serializable{
 		return targetSection;
 	}
 
-
-
 	public void setTargetSection(SectionEconomicHELHaMons targetSection) {
 		this.targetSection = targetSection;
 	}
-
-
 
 	public List<User> filterUser()
 	{

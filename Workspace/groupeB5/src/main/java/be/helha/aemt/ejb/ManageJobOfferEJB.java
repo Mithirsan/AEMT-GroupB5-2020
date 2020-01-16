@@ -46,4 +46,12 @@ public class ManageJobOfferEJB{
 	public void delete(JobOffer toDel) {
 		dao.delete(toDel);	
 	}
+
+	public List<JobOffer> findUnvalid() {
+		return dao.findUnValid();
+	}
+
+	public List<JobOffer> findValid() {
+		return dao.findValid();
+	}
 }

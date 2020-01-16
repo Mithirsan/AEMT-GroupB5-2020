@@ -47,4 +47,12 @@ public class ManageInternshipOfferEJB {
 	public void delete(InternshipOffer toDel) {
 		dao.delete(toDel);
 	}
+
+	public List<InternshipOffer> findUnvalid() {
+		return dao.findUnValid();
+	}
+
+	public List<InternshipOffer> findValid() {
+		return dao.findValid();
+	}
 }
